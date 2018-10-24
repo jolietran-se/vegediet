@@ -60,6 +60,36 @@ class IngredientsTableSeeder extends Seeder
                 'protein' => 0.218,
                 'lipid' => 0.016,
                 'calories' => 3.21,
+            ], [
+                'name' => 'Mỳ Ý',
+                'farina' => 0.31,
+                'protein' => 0.06,
+                'lipid' => 0.009,
+                'calories' => 1.57,
+            ], [
+                'name' => 'Súp lơ xanh',
+                'farina' => 0.029,
+                'protein' => 0.03,
+                'lipid' => 0.029,
+                'calories' => 0.26,
+            ], [
+                'name' => 'Mộc nhĩ',
+                'farina' => 0.65,
+                'protein' => 0.106,
+                'lipid' => 0.002,
+                'calories' => 3.04,
+            ], [
+                'name' => 'Rau muống',
+                'farina' => 0.021,
+                'protein' => 0.032,
+                'lipid' => 0.004,
+                'calories' => 0.25,
+            ], [
+                'name' => 'Đậu phụ',
+                'farina' => 0.019,
+                'protein' => 0.08,
+                'lipid' => 0.048,
+                'calories' => 0.76,
             ],
         ];
 
