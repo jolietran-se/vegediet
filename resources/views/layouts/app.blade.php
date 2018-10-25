@@ -22,7 +22,14 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ trans('login.vigediet') }}
                 </a>
-                {!! Form::button('<span class="navbar-toggler-icon"></span>', ['class' => 'navbar-toggler', 'data-toogle' => 'collapse', 'data-target' => '#navbarSupportedContent', 'aria-controls' => 'navbarSupportedContent', 'aria-expanded' => 'false', ' aria-label' => "{{ __('Toggle navigation') }}"]) !!}
+                {!! Form::button('<span class="navbar-toggler-icon"></span>', [
+                    'class' => 'navbar-toggler', 
+                    'data-toogle' => 'collapse', 
+                    'data-target' => '#navbarSupportedContent', 
+                    'aria-controls' => 'navbarSupportedContent', 
+                    'aria-expanded' => 'false', 
+                    'aria-label' => "{{ trans('login.toggle') }}",
+                ]) !!}
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->

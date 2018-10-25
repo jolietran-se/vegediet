@@ -24,5 +24,7 @@ return [
 
     'reset' => 'Reset Password',
     'reset_link' => 'Send Password Reset Link',
-
+    'another_request' => 'Click here to request another',
+    'toggle' => 'Toggle navigation',
+    
 ];

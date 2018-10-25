@@ -30,7 +30,7 @@
                             {!! Form::label('password', trans('login.password'), ['class' => 'col-md-4 col-form-label text-md-right']) !!}
 
                             <div class="col-md-6">
-                                {!! Form::password('password', ['class' => 'form-control', 'id' => 'password',  'required' => 'required']) !!}  
+                                {!! Form::password('password', ['class' => 'form-control', 'id' => 'password', 'required' => 'required']) !!}  
 
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">

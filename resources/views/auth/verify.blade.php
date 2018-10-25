@@ -15,7 +15,7 @@
                     @endif
 
                     {{ trans('login.check_mail') }}
-                    {{ trans('login.not_receive_mail') }}, <a href="{{ route('verification.resend') }}">{{ __('click here to request another') }}</a>.
+                    {{ trans('login.not_receive_mail') }}, <a href="{{ route('verification.resend') }}">{{ trans('login.another_request') }}</a>.
                 </div>
             </div>
         </div>
