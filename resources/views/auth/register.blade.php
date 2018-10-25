@@ -56,7 +56,7 @@
                             {!! Form::label('password-confirm', trans('login.confirm'), ['class' => 'col-md-4 col-form-label text-md-right']) !!}
 
                             <div class="col-md-6">
-                                {!! Form::password('password_confirmation', ['class' => 'form-control', 'id' => 'password-confirm',  'required' => 'required']) !!}
+                                {!! Form::password('password_confirmation', ['class' => 'form-control', 'id' => 'password-confirm', 'required' => 'required']) !!}
                             </div>
                         </div>
 

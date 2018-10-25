@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{ trans('login.vegediet')}}</title>
+        <title>{{ trans('login.vegediet') }}</title>
 
         <!-- Styles -->
         <style>
@@ -80,7 +80,7 @@
                 </div>
 
                 <div class="links">
-                    <h1>{{ trans('login.welcome')}}</h1>
+                    <h1>{{ trans('login.welcome') }}</h1>
                 </div>
             </div>
         </div>
