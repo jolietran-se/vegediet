@@ -5,7 +5,7 @@
         <div class="menu_block">
             <nav>
                 <ul class="sf-menu">
-                    <li><a href="{{ url('/') }}">{{ trans('login.home') }}</a></li>
+                    <li><a href="{{ url('/') }}">{{ trans('headertext.home') }}</a></li>
                     <li><a  href="#">{{ trans('headertext.aboutus') }}</a></li>
                     <li><a  href="#">{{ trans('headertext.contact') }}</a></li>
                     @guest
@@ -31,7 +31,7 @@
                                     {!! Form::close() !!}
                                 </li>
                                 <li>
-                                    <a href="#">{{ trans('headertext.yourpro') }}</a>
+                                    <a href="#">{{ trans('headertext.yourprofile') }}</a>
                                 </li>
                             </ul>    
                         </li>
