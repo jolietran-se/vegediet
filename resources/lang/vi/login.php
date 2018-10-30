@@ -26,5 +26,4 @@ return [
     'reset_link' => 'Gửi liên kết đặt lại mật khẩu',
     'another_request' => 'Yêu cầu khác',
     'toggle' => 'Điều hướng',
-
 ];

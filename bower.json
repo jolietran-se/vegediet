@@ -1,0 +1,25 @@
+{
+  "name": "vegediet.framgia",
+  "description": "",
+  "main": "",
+  "authors": [
+    "phuongyeol <phuongtran99.k60@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/phuongyeol/php_cook_recipe_01",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery-carouFredSel": "*",
+    "jquery.easing": "^1.3.1",
+    "jquery-equalheights": "^1.2.2",
+    "jquery-prettyPhoto": "^3.1.6",
+    "html5shiv": "^3.7.3",
+    "jquery-migrate": "1.1.1"
+  }
+}
