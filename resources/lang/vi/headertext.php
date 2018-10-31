@@ -5,5 +5,5 @@ return [
     'aboutus' => 'Về chúng tôi',
     'contact' => 'Liên hệ',
     'home' => 'Trang chủ',
-    'yourprofile' => 'Tài khoản cá nhân',
+    'your_profile' => 'Tài khoản cá nhân',
 ];

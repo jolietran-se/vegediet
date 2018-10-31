@@ -1,7 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.master')
+
+@section('head')
+@endsection
 
 @section('content')
-@include('layouts.header')
 <h1>{{ $dish->name }}</h1>
 <ul>
     <li>{{ $dish->farina_amount }} {{ trans('dish.amount') }} {{ trans('dish.farina') }}</li>
@@ -10,5 +12,4 @@
     <li>{{ $dish->calories_amount }} {{ trans('dish.calories') }}</li>
 </ul>
 <p>{{ trans('dish.like_number') }}: {{ $dish->like_number }}</p>
-@include('layouts.footer')
 @endsection

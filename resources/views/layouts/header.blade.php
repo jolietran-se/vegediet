@@ -31,7 +31,7 @@
                                     {!! Form::close() !!}
                                 </li>
                                 <li>
-                                    <a href="#">{{ trans('headertext.yourprofile') }}</a>
+                                    <a href="#">{{ trans('headertext.your_profile') }}</a>
                                 </li>
                             </ul>    
                         </li>
