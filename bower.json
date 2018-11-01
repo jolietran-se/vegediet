@@ -16,12 +16,14 @@
     "public/bower_components/"
   ],
   "dependencies": {
-    "jquery":"^1.9",
+    "jquery": "^1.9",
     "jquery-carouFredSel": "*",
     "jquery.easing": "^1.3.1",
     "jquery-equalheights": "^1.2.2",
     "jquery-prettyPhoto": "^3.1.6",
     "html5shiv": "^3.7.3",
-    "jquery-migrate": "1.1.1"
+    "jquery-migrate": "1.1.1",
+    "source-sans-pro": "git://github.com/adobe-fonts/source-sans-pro.git#release",
+    "components-font-awesome": "^4.7.0"
   }
 }
