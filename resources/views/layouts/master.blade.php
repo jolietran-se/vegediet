@@ -12,7 +12,6 @@
     
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/slider.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     
     <script src="{{ asset('bower_components/jquery/dist/jquery.js') }}"></script>
     <script src="{{ asset('bower_components/jquery-migrate/jquery-migrate.js') }}"></script> 

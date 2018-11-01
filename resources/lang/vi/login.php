@@ -4,6 +4,7 @@ return [
     'register' => 'Đăng ký',
     'vegediet' => 'Vegediet',
     'welcome' => 'Mạng xã hội của tín đồ ăn chay!',
+    'ask' => 'Chưa có tài khoản?',
 
     'email' => 'Địa chỉ Email',
     'password' => 'Mật khẩu',
