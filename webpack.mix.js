@@ -19,7 +19,8 @@ mix.js('resources/js/js-temp/camera.js', 'public/js')
    .js('resources/js/js-temp/sForm.js', 'public/js')
    .js('resources/js/js-temp/slide.js', 'public/js')
    .js('resources/js/js-temp/superfish.js', 'public/js')
-   .js('resources/js/js-temp/tms-0.4.1.js', 'public/js');
+   .js('resources/js/js-temp/tms-0.4.1.js', 'public/js')
+   .js('resources/js/main.js', 'public/js');
 
 mix.styles(['resources/css/form.css'], 'public/css/form.css')
    .styles(['resources/css/grid.css'], 'public/css/grid.css')
@@ -27,6 +28,8 @@ mix.styles(['resources/css/form.css'], 'public/css/form.css')
    .styles(['resources/css/reset.css'], 'public/css/reset.css')
    .styles(['resources/css/slider.css'], 'public/css/slider.css')
    .styles(['resources/css/style.css'], 'public/css/style.css')
-   .styles(['resources/css/superfish.css'], 'public/css/superfish.css');
+   .styles(['resources/css/superfish.css'], 'public/css/superfish.css')
+   .styles(['resources/css/util.css'], 'public/css/util.css')
+   .styles(['resources/css/main.css'], 'public/css/main.css');
 
 

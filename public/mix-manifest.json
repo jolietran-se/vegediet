@@ -1,6 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
+    "/js/main.js": "/js/main.js",
     "/js/tms-0.4.1.js": "/js/tms-0.4.1.js",
     "/js/superfish.js": "/js/superfish.js",
     "/js/slide.js": "/js/slide.js",
@@ -13,5 +14,7 @@
     "/css/reset.css": "/css/reset.css",
     "/css/slider.css": "/css/slider.css",
     "/css/style.css": "/css/style.css",
-    "/css/superfish.css": "/css/superfish.css"
+    "/css/superfish.css": "/css/superfish.css",
+    "/css/util.css": "/css/util.css",
+    "/css/main.css": "/css/main.css"
 }
