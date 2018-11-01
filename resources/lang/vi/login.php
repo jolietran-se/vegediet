@@ -5,6 +5,8 @@ return [
     'vegediet' => 'Vegediet',
     'welcome' => 'Mạng xã hội của tín đồ ăn chay!',
     'ask' => 'Chưa có tài khoản?',
+    'facebook' => 'Facebook',
+    'google' => 'Google',
 
     'email' => 'Địa chỉ Email',
     'password' => 'Mật khẩu',

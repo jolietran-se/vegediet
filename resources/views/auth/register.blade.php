@@ -1,75 +1,100 @@
 @extends('layouts.app')
 
+@section('title')
+    {{ trans('login.register') }}
+@endsection
+
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ trans('login.register') }}</div>
+    {!! Form::open([
+        'method' => 'POST', 
+        'route' => 'register', 
+        'class' => 'login100-form validate-form flex-sb flex-w',
+    ]) !!}
+    <span class="login100-form-title p-b-53">{{ trans('login.register') }}</span>
 
-                <div class="card-body">
-                    {!! Form::open(['method' => 'POST', 'route' => 'register']) !!}
-
-                        <div class="form-group row">
-                            {!! Form::label('name', trans('login.name'), ['class' => 'col-md-4 col-form-label text-md-right']) !!}
-
-                            <div class="col-md-6">
-                                {!! Form::text('name', '', ['class' => 'form-control', 'id' => 'name', 'value' => "{{ old('email')}}", 'required' => 'required', 'autofocus' => 'autofocus']) !!}
-
-                                @if ($errors->has('name'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            {!! Form::label('email', trans('login.email'), ['class' => 'col-sm-4 col-form-label text-md-right']) !!}
-
-                            <div class="col-md-6">
-                                {!! Form::email('email', '', ['class' => 'form-control', 'id' => 'email', 'value' => "{{ old('email') }}", 'required' => 'required', 'autofocus' => 'autofocus']) !!}
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            {!! Form::label('password', trans('login.password'), ['class' => 'col-md-4 col-form-label text-md-right']) !!}
-
-                            <div class="col-md-6">
-                                {!! Form::password('password', ['class' => 'form-control', 'id' => 'password', 'required' => 'required']) !!}
-
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            {!! Form::label('password-confirm', trans('login.confirm'), ['class' => 'col-md-4 col-form-label text-md-right']) !!}
-
-                            <div class="col-md-6">
-                                {!! Form::password('password_confirmation', ['class' => 'form-control', 'id' => 'password-confirm', 'required' => 'required']) !!}
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                {!! Form::button(trans('login.register'), ['class' => 'btn btn-primary', 'type' => 'submit']) !!}
-                            </div>
-                        </div>
-
-                    {!! Form::close() !!}
-                </div>
-            </div>
-        </div>
+    <div class="p-t-31 p-b-9">
+        {!! Form::label('name', trans('login.name'), [
+            'class' => 'txt1',
+        ]) !!}
     </div>
-</div>
+
+    <div class="wrap-input100 validate-input">
+        {!! Form::text('name', '', [
+            'class' => 'input100', 
+            'id' => 'name',  
+            'required' => 'required', 
+            'autofocus' => 'autofocus',
+        ]) !!}
+    </div>
+
+    @if ($errors->has('name'))
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $errors->first('name') }}</strong>
+        </span>
+    @endif
+
+    <div class="p-t-31 p-b-9">
+        {!! Form::label('email', trans('login.email'), [
+            'class' => 'txt1',
+        ]) !!}
+    </div>
+
+    <div class="wrap-input100 validate-input">
+        {!! Form::email('email', '', [
+            'class' => 'input100', 
+            'id' => 'email', 
+            'value' => old('email'), 
+            'required' => 'required', 
+            'autofocus' => 'autofocus',
+        ]) !!}
+    </div>
+
+    @if ($errors->has('email'))
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $errors->first('email') }}</strong>
+        </span>
+    @endif
+
+    <div class="p-t-31 p-b-9">
+        {!! Form::label('password', trans('login.password'), [
+            'class' => 'txt1',
+        ]) !!}
+    </div>
+
+    <div class="wrap-input100 validate-input">
+        {!! Form::password('password', [
+            'class' => 'input100', 
+            'id' => 'password', 
+            'required' => 'required',
+        ]) !!}
+    </div>
+                                
+    @if ($errors->has('password'))
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $errors->first('password') }}</strong>                        
+        </span>                                
+    @endif
+
+    <div class="p-t-31 p-b-9">
+        {!! Form::label('password-confirm', trans('login.confirm'), [
+            'class' => 'txt1',
+        ]) !!}
+    </div>
+   
+    <div class="wrap-input100 validate-input"> 
+        {!! Form::password('password_confirmation', [
+            'class' => 'input100', 
+            'id' => 'password-confirm', 
+            'required' => 'required',
+        ]) !!}
+    </div>             
+
+    <div class="container-login100-form-btn m-t-17">
+        {!! Form::button(trans('login.register'), [
+            'class' => 'login100-form-btn', 
+            'type' => 'submit',
+        ]) !!}
+    </div>
+                    
+    {!! Form::close() !!}
 @endsection
