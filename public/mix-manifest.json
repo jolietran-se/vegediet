@@ -1,6 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
+    "/css/search.css": "/css/search.css",
     "/js/main.js": "/js/main.js",
     "/js/tms-0.4.1.js": "/js/tms-0.4.1.js",
     "/js/superfish.js": "/js/superfish.js",
