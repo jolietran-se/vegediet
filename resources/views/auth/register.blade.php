@@ -10,7 +10,7 @@
         'route' => 'register', 
         'class' => 'login100-form validate-form flex-sb flex-w',
     ]) !!}
-    <span class="login100-form-title p-b-53">{{ trans('login.register') }}</span>
+    <span class="login100-form-title">{{ trans('login.register') }}</span>
 
     <div class="p-t-31 p-b-9">
         {!! Form::label('name', trans('login.name'), [
@@ -89,12 +89,20 @@
         ]) !!}
     </div>             
 
-    <div class="container-login100-form-btn m-t-17">
+    <div class="container-login100-form-btn m-t-17 p-t-31">
         {!! Form::button(trans('login.register'), [
             'class' => 'login100-form-btn', 
             'type' => 'submit',
         ]) !!}
     </div>
-                    
+    <div class="w-full text-center p-t-30">
+		<span class="txt2 fs-17">
+			{{ trans('login.acc_exits') }}
+		</span>
+
+		<a href="{{ route('login') }}" class="txt2 fs-17">
+			{{ trans('login.login') }}
+		</a>
+	</div>               
     {!! Form::close() !!}
 @endsection

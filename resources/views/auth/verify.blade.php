@@ -1,24 +1,16 @@
 @extends('layouts.app')
 
+@section('title')
+    {{ trans('login.verify_email') }}
+@endsection
+
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ trans('login.verify_email') }}</div>
-
-                <div class="card-body">
-                    @if (session('resent'))
-                        <div class="alert alert-success" role="alert">
-                            {{ trans('login.verification_link') }}
-                        </div>
-                    @endif
-
-                    {{ trans('login.check_mail') }}
-                    {{ trans('login.not_receive_mail') }}, <a href="{{ route('verification.resend') }}">{{ trans('login.another_request') }}</a>.
-                </div>
-            </div>
+    @if (session('resent'))
+        <div class="alert alert-success" role="alert">
+            {{ trans('login.verification_link') }}
         </div>
-    </div>
-</div>
+    @endif
+
+    {{ trans('login.check_mail') }}
+    {{ trans('login.not_receive_mail') }}, <a href="{{ route('verification.resend') }}">{{ trans('login.another_request') }}</a>.
 @endsection

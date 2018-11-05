@@ -81,20 +81,23 @@
             'class' => 'login100-form-btn', 
             'type' => 'submit',
         ]) !!}
-
-        <a class="txt2 fs-17" href="{{ route('password.request') }}">
-            {{ trans('login.forgot') }}
-        </a>
     </div>
 
-    <div class="w-full text-center p-t-55">
-		<span class="txt2 fs-17">
-			{{ trans('login.ask') }}
-		</span>
+    <div class="w-full text-center p-t-20">
+        <div class="txt2  p-t-10 ">
+            <a class="fs-17" href="{{ route('password.request') }}">
+                {{ trans('login.forgot') }}
+            </a>
+        </div>
+        <div class="p-t-5">
+            <span class="txt2 fs-17">
+                {{ trans('login.acc_not_exits') }}
+            </span>
 
-		<a href="{{ route('register') }}" class="txt2 fs-17">
-			{{ trans('login.register') }}
-		</a>
+            <a href="{{ route('register') }}" class="txt2 fs-17">
+                {{ trans('login.register') }}
+            </a>
+        </div>
 	</div>
 
 {!! Form::close() !!}
