@@ -2,6 +2,8 @@
 
 @section('head')
   <script src="{{ asset('js/slide.js') }}"></script>
+  <link rel="stylesheet" href="{{ asset('css/search.css') }}">
+  <link rel="stylesheet" href="{{ asset('bower_components/components-font-awesome/css/font-awesome.min.css') }}">
 @endsection
 
 @section('content')
@@ -18,27 +20,22 @@
     </div>
     <div class="content page1">
       <div class="container_12">
-        <div class="grid_7">
-          <h2>Welcome</h2>
-          <div class="page1_block col1"> <img src="{{ asset('/images/images-temp/welcome_img.png') }}" alt="">
-            <div class="extra_wrapper">
-              <p><span class="col2"><a href="#">Click here</a></span> for more info about this free website template created by TemplateMonster.com </p>
-              Aenean nonummy hendrerit mau rellus porta. Fusce suscipit varius m sociis natoque penaibet magni parturient montes nasetur ridiculumula dui. <br>
-              <a href="#" class="btn">more</a> </div>
-            <div class="clear"></div>
-          </div>
-        </div>
-
-        <div class="grid_5">
-          <h2>Features</h2>
-          <ul class="list">
-            <li><a href="#">Unlimited consultations and/or planning</a></li>
-            <li><a href="#">Expert advice on traditions, customs, aetiquette</a></li>
-            <li><a href="#">Determine and stay within budget</a></li>
-            <li><a href="#">Choosing the right Wedding Venue</a></li>
-            <li><a href="#">Provide preferred vendor's list</a></li>
-            <li><a href="#">Assist with wedding scheme and design</a></li>
-          </ul>
+        <div class="grid_12">
+            <h2>{{ trans('homepage.search') }}</h2>
+            {!! Form::open([
+                'method' => 'GET', 
+                'class' => 'search-container',
+            ]) !!}
+                {!! Form::text('search', '', [
+                    'class' => 'search-bar', 
+                    'id' => 'search-bar',
+                    'placeholder' => trans('homepage.search_placeholder'),
+                ]) !!}
+                {!! Form::button('<i class="fa fa-search"></i>', [
+                    'class' => 'search-icon',
+                    'type' => 'submit',
+                ]) !!}
+            {!! Form::close() !!}
         </div>
 
         <div class="clear"></div>
@@ -49,42 +46,37 @@
 
         <div class="grid_12">
           <div class="car_wrap">
-            <h2>Best Choice</h2>
+            <h2>{{ trans('homepage.favorites') }}</h2>
             <a href="#" class="prev"></a><a href="#" class="next"></a>
             <ul class="carousel1">
               <li>
                 <div><img src="{{ asset('/images/images-temp/page1_img1.jpg') }}" alt="">
                   <div class="col1 upp"> <a href="#">Lorem ipsum doamet consectet</a></div>
-                  <span> Dorem ipsum dolor amet consectetur</span>
-                  <div class="price">45$</div>
+                  <span> Dorem ipsum dolor amet consectetur</span>                  
                 </div>
               </li>
               <li>
                 <div><img src="{{ asset('/images/images-temp/page1_img2.jpg') }}" alt="">
                   <div class="col1 upp"> <a href="#">Lorem ipsum doamet consectet</a></div>
-                  <span> Dorem ipsum dolor amet consectetur</span>
-                  <div class="price">45$</div>
+                  <span> Dorem ipsum dolor amet consectetur</span>                  
                 </div>
               </li>
               <li>
                 <div><img src="{{ asset('/images/images-temp/page1_img3.jpg') }}" alt="">
                   <div class="col1 upp"> <a href="#">Lorem ipsum doamet consectet</a></div>
-                  <span> Dorem ipsum dolor amet consectetur</span>
-                  <div class="price">45$</div>
+                  <span> Dorem ipsum dolor amet consectetur</span>                  
                 </div>
               </li>
               <li>
                 <div><img src="{{ asset('/images/images-temp/page1_img4.jpg') }}" alt="">
                   <div class="col1 upp"> <a href="#">Lorem ipsum doamet consectet</a></div>
-                  <span> Dorem ipsum dolor amet consectetur</span>
-                  <div class="price">45$</div>
+                  <span> Dorem ipsum dolor amet consectetur</span>                  
                 </div>
               </li>
               <li>
                 <div><img src="{{ asset('/images/images-temp/page1_img3.jpg') }}" alt="">
                   <div class="col1 upp"> <a href="#">Lorem ipsum doamet consectet</a></div>
-                  <span> Dorem ipsum dolor amet consectetur</span>
-                  <div class="price">45$</div>
+                  <span> Dorem ipsum dolor amet consectetur</span>                  
                 </div>
               </li>
             </ul>
@@ -95,7 +87,7 @@
 
         <div class="bottom_block">
             <div class="grid_6">
-                <h3>Follow Us</h3>
+                <h3>{{ trans('homepage.follow_us') }}</h3>
                 <div class="socials"> <a href="#"></a> <a href="#"></a> <a href="#"></a> </div>
                 <nav>
                 <ul>
@@ -106,14 +98,12 @@
                 </nav>
             </div>
             <div class="grid_6">
-                <h3>Email Updates</h3>
-                <p class="col1">Join our digital mailing list and get news<br>
-                deals and be first to know about events</p>
+                <h3>{{ trans('homepage.feedback') }}</h3>
+                <p class="col1">{{ trans('homepage.feedback_encourage') }}</p>
                 <form id="newsletter" action="#">
-                <div class="success">Your subscribe request has been sent!</div>
-                <label class="email">
-                    <input type="email" value="Enter e-mail address" >
-                    <a href="#" class="btn" data-type="submit">subscribe</a> <span class="error">*This is not a valid email address.</span> </label>
+                <div class="success">{{ trans('homepage.feedback_success') }}</div>
+                    <textarea name="feedback" id="feedback" cols="73" rows="5"></textarea>
+                    <a href="#" class="btn" data-type="submit">{{ trans('hoamepage.sent') }}</a>
                 </form>
             </div>
         </div>
