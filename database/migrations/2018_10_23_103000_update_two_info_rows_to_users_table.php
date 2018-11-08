@@ -27,8 +27,7 @@ class UpdateTwoInfoRowsToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('facebook_id', 191)->nullable(false)->change();
-            $table->string('google_id', 191)->nullable(false)->change();
+            //
         });
     }
 }
