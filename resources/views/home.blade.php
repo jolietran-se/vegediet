@@ -100,11 +100,22 @@
             <div class="grid_6">
                 <h3>{{ trans('homepage.feedback') }}</h3>
                 <p class="col1">{{ trans('homepage.feedback_encourage') }}</p>
-                <form id="newsletter" action="#">
-                <div class="success">{{ trans('homepage.feedback_success') }}</div>
-                    <textarea name="feedback" id="feedback" cols="73" rows="5"></textarea>
-                    <a href="#" class="btn" data-type="submit">{{ trans('hoamepage.sent') }}</a>
-                </form>
+                {!! Form::open([
+                    'method' => 'POST', 
+                    'route' => 'feedbacks.store', 
+                    'class' => 'newsletter'
+                ]) !!}
+                    <div class="success">{{ trans('homepage.feedback_success') }}</div>
+                    {!! Form::textarea('feedback', null, [
+                        'id' => 'feedback', 
+                        'rows' => 5, 
+                        'cols' => 73,
+                    ]) !!}
+                    {!! Form::button(trans('homepage.feedback_sent'), [
+                        'class' => 'btn-submit-feedback', 
+                        'type' => 'submit',
+                    ]) !!}
+                {!! Form::close() !!}
             </div>
         </div>
 

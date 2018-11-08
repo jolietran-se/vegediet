@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ingredient extends Model
 {
-    protected $table = 'ingredient';
-    protected $filable = [
+    protected $table = 'ingredients';
+    protected $fillable = [
         'name',
         'farina',
         'protein',

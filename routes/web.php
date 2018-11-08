@@ -17,6 +17,11 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
+Route::group(['prefix' => '/feedbacks'], function () {
+    Route::get('/', 'FeedbackController@index')->name('feedbacks.index');
+    Route::post('/', 'FeedbackController@store')->name('feedbacks.store');
+});
+
 Route::group(['prefix' => '/dishes'], function () {
     Route::get('/', 'DishController@index')->name('dishes.index');
     Route::post('/', 'DishController@store')->name('dishes.store');
