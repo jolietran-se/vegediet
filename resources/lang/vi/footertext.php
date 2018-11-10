@@ -2,7 +2,7 @@
 
 return [
 
-    'copyright' => 'Vegediet &copy; 2018',
+    'copyright' => 'Vegediet',
     'policy' => 'Điều khoản',
     'design' => 'Thiết kế bởi:',
 
