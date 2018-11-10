@@ -2,11 +2,14 @@
 
 return [
 
+    'dish_by' => 'bởi',
     'like_number' => 'Số like',
-    'amount' => 'g chất',
-    'farina' => 'bột',
-    'protein' => 'đạm',
-    'lipid' => 'béo',
+    'amount' => 'gam',
+    'farina' => 'Chất bột',
+    'protein' => 'Chất đạm',
+    'lipid' => 'Chất béo',
     'calories' => 'calo',
+    'ingredients' => 'Nguyên liệu',
+    'steps' => 'Các bước làm',
 
 ];

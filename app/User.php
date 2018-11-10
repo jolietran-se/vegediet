@@ -2,9 +2,8 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -16,12 +15,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 
-        'email', 
-        'password', 
-        'facebook_id', 
-        'google_id', 
-        'avatar', 
+        'name',
+        'email',
+        'password',
+        'facebook_id',
+        'google_id',
+        'avatar',
         'phone',
     ];
 
@@ -31,18 +30,17 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 
+        'password',
         'remember_token',
     ];
 
-    
     // User 1 - n Dish
     public function dishes()
     {
-        return $this->hasMany('App\Dish');
+        return $this->hasMany('App\Dish', 'owner_id');
     }
 
-    // User 1 - n Day 
+    // User 1 - n Day
     public function days()
     {
         return $this->hasMany('App\Day');
@@ -53,13 +51,13 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Ingredient');
     }
-    
+
     // User n - n Role
     public function roles()
     {
-        return $this->belongsToMany('App\Role');    
+        return $this->belongsToMany('App\Role');
     }
-    
+
     // User 1 - 1 Favorite
     public function favorite()
     {
