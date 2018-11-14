@@ -19,7 +19,7 @@ class DishesTableSeeder extends Seeder
                 'lipid_amount' => 0.2,
                 'calories_amount' => 119,
                 'description' => 'Nếu bạn thích ăn khoai lang luộc nhưng chưa biết cách luộc khoai lang sao cho thơm ngon mà không bị nát thì bạn đã tìm đúng địa chỉ rồi đó.',
-                'picture' => 'product-0.jpg',
+                'picture' => 'product-1.jpg',
                 'like_number' => 1637,
                 'owner_id' => 1,
             ], [
@@ -29,7 +29,7 @@ class DishesTableSeeder extends Seeder
                 'lipid_amount' => 1.6,
                 'calories_amount' => 321,
                 'description' => 'Cách làm món Đậu cô ve luộc ngon tuyệt của nhà mình ;) Món này tuy đơn giản nhưng mẹ yêu cầu Như phải luộc sao cho có màu xanh và giữ màu lâu.',
-                'picture' => 'product-1.jpg',
+                'picture' => 'product-2.jpg',
                 'like_number' => 242,
                 'owner_id' => 1,
             ], [
@@ -39,7 +39,7 @@ class DishesTableSeeder extends Seeder
                 'lipid_amount' => 2.0,
                 'calories_amount' => 150,
                 'description' => 'Đậu phụ xốt mang hương vị cay nồng của tứ xuyên, món ăn dành cho các tín đồ chay thích ăn cay :v',
-                'picture' => 'product-2.jpg',
+                'picture' => 'product-3.jpg',
                 'like_number' => 2730,
                 'owner_id' => 2,
             ], [
@@ -49,7 +49,7 @@ class DishesTableSeeder extends Seeder
                 'lipid_amount' => 1.3,
                 'calories_amount' => 132,
                 'description' => 'Bún xào nghe lạ hoắc nhưng thử một lần là nghiện đấy nhé',
-                'picture' => 'product-3.jpg',
+                'picture' => 'product-4.jpg',
                 'like_number' => 782,
                 'owner_id' => 2,
             ], [
@@ -59,7 +59,7 @@ class DishesTableSeeder extends Seeder
                 'lipid_amount' => 1.9,
                 'calories_amount' => 159,
                 'description' => 'Đậu hũ xốt cà chua, thêm mùi thơm thơm của nấm hương, hành tươi',
-                'picture' => 'product-4.jpg',
+                'picture' => 'product-5.jpg',
                 'like_number' => 652,
                 'owner_id' => 2,
             ], [
@@ -69,7 +69,7 @@ class DishesTableSeeder extends Seeder
                 'lipid_amount' => 1.0,
                 'calories_amount' => 95,
                 'description' => 'Đậu hũ la hán với hương vị vô cùng độc đáo, đậm chất trung hoa',
-                'picture' => 'product-5.jpg',
+                'picture' => 'product-6.jpg',
                 'like_number' => 3452,
                 'owner_id' => 3,
             ], [
@@ -79,7 +79,7 @@ class DishesTableSeeder extends Seeder
                 'lipid_amount' => 0.9,
                 'calories_amount' => 105,
                 'description' => 'Rau củ quả kho là món ăn chay phổ biến, rất tốt cho những người bệnh tim mạch',
-                'picture' => 'product-6.jpg',
+                'picture' => 'product-7.jpg',
                 'like_number' => 241,
                 'owner_id' => 3,
             ], [
@@ -89,7 +89,7 @@ class DishesTableSeeder extends Seeder
                 'lipid_amount' => 2.6,
                 'calories_amount' => 223,
                 'description' => 'Món chay này sẽ khiến chúng ta thèm ăn chay hơn bao giờ hết',
-                'picture' => 'product-7.jpg',
+                'picture' => 'product-8.jpg',
                 'like_number' => 421,
                 'owner_id' => 4,
             ], [
@@ -99,7 +99,7 @@ class DishesTableSeeder extends Seeder
                 'lipid_amount' => 1.6,
                 'calories_amount' => 112,
                 'description' => 'Cách làm món Bún bò huế chay ! ngon tuyệt của nhà mình ;) Bún bò huế là một món ăn ngon nổi tiếng với hương vị đậm đà nồng nàn quyến rũ sa tế sả ớt.',
-                'picture' => 'product-8.jpg',
+                'picture' => 'product-9.jpg',
                 'like_number' => 2834,
                 'owner_id' => 4,
             ], [
@@ -109,7 +109,7 @@ class DishesTableSeeder extends Seeder
                 'lipid_amount' => 0.2,
                 'calories_amount' => 59,
                 'description' => 'Món salad hấp dẫn đây các chế',
-                'picture' => 'product-9.jpg',
+                'picture' => 'product-10.jpg',
                 'like_number' => 1455,
                 'owner_id' => 5,
             ], [
@@ -119,7 +119,7 @@ class DishesTableSeeder extends Seeder
                 'lipid_amount' => 1.9,
                 'calories_amount' => 155,
                 'description' => 'Mấy thím ghiền rau chân vịt thì ko thể nào bỏ qua',
-                'picture' => 'product-10.jpg',
+                'picture' => 'product-11.jpg',
                 'like_number' => 1223,
                 'owner_id' => 5,
             ], 

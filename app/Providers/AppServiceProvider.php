@@ -23,6 +23,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(
+            \App\Repositories\DishRepositoryInterface::class,
+            \App\Repositories\DishEloquentRepository::class
+        );
     }
 }
