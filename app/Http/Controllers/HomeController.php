@@ -2,26 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Dish;
+use App\Repositories\DishRepositoryInterface;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    protected $dishRepository;
+
+    public function __construct(DishRepositoryInterface $dishRepository)
     {
+        $this->dishRepository = $dishRepository;
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        return view('home');
+        $dishes = Dish::paginate(config('const.home_paginate'));
+
+        $dish_top = $this->dishRepository->topListDish();
+
+        $dish_new = $this->dishRepository->newListDish();
+
+        return view('home', compact('dishes', 'dish_top', 'dish_new'));
     }
 }
