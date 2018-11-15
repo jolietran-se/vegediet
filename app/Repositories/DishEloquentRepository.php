@@ -9,6 +9,13 @@ class DishEloquentRepository extends EloquentRepository implements DishRepositor
     {
         return \App\Dish::class;
     }
+    public function getAll(){
+        $result = $this->_model::whereNotNull('id')
+            ->orderBy('created_at', 'desc')
+            ->paginate(config('const.dish_paginate'));
+
+        return $result;
+    }
 
     public function topDishesList()
     {
