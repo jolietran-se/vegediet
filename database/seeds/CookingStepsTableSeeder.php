@@ -22,10 +22,10 @@ class CookingStepsTableSeeder extends Seeder
                 'dish_id' => 2,
                 'step' => 'Nhặt đậu cô ve',
             ], [
-                'dish_id' => 1,
+                'dish_id' => 2,
                 'step' => 'Rửa đậu cô ve',
             ], [
-                'dish_id' => 1,
+                'dish_id' => 2,
                 'step' => 'Luộc đậu cô ve',
             ],
         ];

@@ -3,8 +3,8 @@ namespace App\Repositories;
 
 interface DishRepositoryInterface
 {
-    public function topListDish();
+    public function topDishesList();
 
-    public function newListDish();
+    public function newDishesList();
 
 }

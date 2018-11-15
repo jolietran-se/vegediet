@@ -19,6 +19,7 @@ mix.js('resources/js/js-temp/camera.js', 'public/js')
    .js('resources/js/js-temp/forms.js', 'public/js') 
    .js('resources/js/js-temp/sForm.js', 'public/js')
    .js('resources/js/js-temp/slide.js', 'public/js')
+   .js('resources/js/js-temp/toplist.js', 'public/js')
    .js('resources/js/js-temp/superfish.js', 'public/js')
    .js('resources/js/js-temp/tms-0.4.1.js', 'public/js')
    .js('resources/js/main.js', 'public/js');
