@@ -18,10 +18,10 @@ class HomeController extends Controller
     {
         $dishes = Dish::paginate(config('const.home_paginate'));
 
-        $dish_top = $this->dishRepository->topListDish();
+        $top_dishes = $this->dishRepository->topDishesList();
 
-        $dish_new = $this->dishRepository->newListDish();
+        $new_dishes = $this->dishRepository->newDishesList();
 
-        return view('home', compact('dishes', 'dish_top', 'dish_new'));
+        return view('home', compact('dishes', 'top_dishes', 'new_dishes'));
     }
 }

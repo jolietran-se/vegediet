@@ -10,7 +10,7 @@ class DishEloquentRepository extends EloquentRepository implements DishRepositor
         return \App\Dish::class;
     }
 
-    public function topListDish()
+    public function topDishesList()
     {
         $result = $this->_model::whereNotNull('id')
             ->orderBy('like_number', 'desc')
@@ -20,7 +20,7 @@ class DishEloquentRepository extends EloquentRepository implements DishRepositor
         return $result;
     }
 
-    public function newListDish()
+    public function newDishesList()
     {
         $result = $this->_model::whereNotNull('id')
             ->orderBy('created_at', 'desc')
