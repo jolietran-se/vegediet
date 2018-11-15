@@ -4,17 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Dish;
 use Illuminate\Http\Request;
+use App\Repositories\DishRepositoryInterface;
 
 class DishController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    protected $dishRepository;
+
+    public function __construct(DishRepositoryInterface $dishRepository)
+    {
+        $this->dishRepository = $dishRepository;
+    }
+
     public function index()
     {
-        //
+        $dishes = $this->dishRepository->getAll();
+
+        $new_dishes = $this->dishRepository->newDishesList();
+
+        return view('dishes.index', compact('dishes', 'new_dishes'));
     }
 
     /**
