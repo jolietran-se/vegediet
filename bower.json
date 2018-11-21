@@ -16,7 +16,7 @@
     "public/bower_components/"
   ],
   "dependencies": {
-    "jquery": "^1.9",
+    "jquery": "2.1.4",
     "jquery-carouFredSel": "*",
     "jquery.easing": "^1.3.1",
     "jquery-equalheights": "^1.2.2",
@@ -24,6 +24,13 @@
     "html5shiv": "^3.7.3",
     "jquery-migrate": "1.1.1",
     "source-sans-pro": "git://github.com/adobe-fonts/source-sans-pro.git#release",
-    "components-font-awesome": "^4.7.0"
+    "components-font-awesome": "^4.7.0",
+    "magnific-popup": "Magnific-Popup#^1.1.0",
+    "bootstrap-select": "1.7.2",
+    "material-design-icons-iconfont": "^4.0.2",
+    "slick-carousel": "^1.8.1",
+    "bootstrap": "3.3.5",
+    "imagesloaded": "3.1.8",
+    "elevatezoom3": "^3.0.8"
   }
 }

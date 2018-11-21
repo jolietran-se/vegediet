@@ -17,8 +17,9 @@
 	overflow:hidden;
 	height: 625px;
 	margin: 0 auto;
-	
+	background: #ffffff;
 }
+
 .slider {
 	z-index:2;
 	height: 625px;

@@ -257,6 +257,11 @@ header h1 a img {
 
 /*Content*/
 
+.content{
+    background: #ffffff;
+    padding-bottom: 30px;
+}
+
 .content h2 {
 	padding-top: 36px;
 	font-size: 24px;
