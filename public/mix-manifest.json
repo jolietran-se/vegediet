@@ -3,12 +3,14 @@
     "/css/app.css": "/css/app.css",
     "/css/search.css": "/css/search.css",
     "/js/main.js": "/js/main.js",
+    "/js/toplist.js": "/js/toplist.js",
     "/js/tms-0.4.1.js": "/js/tms-0.4.1.js",
     "/js/superfish.js": "/js/superfish.js",
     "/js/slide.js": "/js/slide.js",
     "/js/sForm.js": "/js/sForm.js",
     "/js/forms.js": "/js/forms.js",
     "/js/camera.js": "/js/camera.js",
+    "/js/dish_detail.js": "/js/dish_detail.js",
     "/css/form.css": "/css/form.css",
     "/css/grid.css": "/css/grid.css",
     "/css/ie.css": "/css/ie.css",
@@ -17,5 +19,6 @@
     "/css/style.css": "/css/style.css",
     "/css/superfish.css": "/css/superfish.css",
     "/css/util.css": "/css/util.css",
-    "/css/main.css": "/css/main.css"
+    "/css/main.css": "/css/main.css",
+    "/css/dish_detail.css": "/css/dish_detail.css"
 }

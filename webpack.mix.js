@@ -34,4 +34,5 @@ mix.styles(['resources/css/form.css'], 'public/css/form.css')
    .styles(['resources/css/util.css'], 'public/css/util.css')
    .styles(['resources/css/main.css'], 'public/css/main.css');
 
-
+mix.styles(['resources/css/dishes/dish_detail.css'], 'public/css/dish_detail.css');
+mix.js('resources/js/dishes/dish_detail.js', 'public/js');

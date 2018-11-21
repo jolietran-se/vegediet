@@ -57,6 +57,6 @@ class Dish extends Model
     // Dish n - n Category
     public function categories()
     {
-        return $this->belongsToMany('App\Category');
+        return $this->belongsToMany('App\Category', 'dish_category');
     }
 }
