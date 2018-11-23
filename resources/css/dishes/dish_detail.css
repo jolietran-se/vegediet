@@ -1,15 +1,20 @@
-/* Font */
+/* Menu */
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	font-family: Arial;
-	padding: 10px 10px 10px 0px;
+.menu_block  {
+    padding-top: 21px;
 }
 
+.modal-footer {
+    margin-top: 20px;
+}
+
+textarea.description{
+    height: 100px;
+}
+
+.red {
+    color: red;
+}
 
 /* Navbar */
 

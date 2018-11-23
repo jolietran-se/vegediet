@@ -25,7 +25,7 @@ Route::group(['prefix' => '/feedbacks'], function () {
 Route::group(['prefix' => '/dishes'], function () {
     Route::get('/', 'DishController@index')->name('dishes.index');
     Route::post('/', 'DishController@store')->name('dishes.store');
-    Route::get('/create', 'DishController@create')->name('dishes.create');
+    Route::get('/create', 'DishController@create')->name('dishes.create')->middleware('auth');
     Route::put('/{dish}', 'DishController@update')->name('dishes.update');
     Route::get('/{dish}', 'DishController@show')->name('dishes.show');
     Route::delete('/{dish}', 'DishController@destroy')->name('dishes.destroy');

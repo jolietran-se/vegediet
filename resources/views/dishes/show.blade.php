@@ -20,7 +20,7 @@
                 <div class="container">
                     <ol class="breadcrumb breadcrumb--ys pull-left">
                         <li class="home-link"><a href="{{ route('home') }}" class="fa fa-home"></a></li>
-                        <li><a href="#">{{ trans('headertext.home') }}</a></li>
+                        <li><a href="{{ route('home') }}">{{ trans('headertext.home') }}</a></li>
                         <li class="active">{{ $dish->name }}</li>
                     </ol>
                 </div>
@@ -42,6 +42,9 @@
                                             <li class="text-right"><a href="#"><span class="fa fa-heart tooltip-link"></span><span class="text">{{ trans('dish.add_wishlist') }}</span></a></li>
                                             <li class="text-left"><a href="#"><span class="fa fa-print tooltip-link"></span><span class="text">{{ trans('dish.print') }}</span></a></li>
                                             <li class="text-left"><a href="#"><span class="fa fa-share-square tooltip-link"></span><span class="text">{{ trans('dish.share') }}</span></a></li>
+                                            <li class="text-left"><a href="{{ route('dishes.create') }}"><span class="fa fa-plus-circle tooltip-link"></span><span class="text">{{ trans('dish.add') }}</span></a></li>
+                                            <li class="text-left"><a href="{{ route('dishes.edit', $dish->id) }}"><span class="fa fa-edit tooltip-link"></span><span class="text">{{ trans('dish.edit') }}</span></a></li>
+                                            <li class="text-left"><a href="{{ route('dishes.destroy', $dish->id) }}"><span class="fa fa-trash tooltip-link"></span><span class="text">{{ trans('dish.destroy') }}</span></a></li>
                                         </ul>
                                     </div>
                                     <div class="product-info col-sm-6 col-md-6 col-lg-6 col-xl-6">
