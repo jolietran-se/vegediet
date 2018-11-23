@@ -248,6 +248,7 @@ header h1 a {
 
 header h1 a img {
 	display: block;
+    padding-top: 12px;
 }
 
 .main {

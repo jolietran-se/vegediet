@@ -34,7 +34,19 @@ return [
     'tag_add' => 'Thêm thẻ tag của bạn:',
     'tag_note' => 'Sử dụng dấu cách để phân tách các thẻ. Sử dụng dấu nháy đơn cho các cụm từ.', 
     'create' => 'Thêm mới',
+    'cancel' => 'Hủy',
     'review_add' => 'Thêm bình luận:',
     'following_dish' => 'Bạn có thể sẽ thích',
     'view' => 'Xem chi tiết',
+    'add' => 'Thêm món',
+    'edit' => 'Sửa',
+    'destroy' => 'Xóa',
+
+    'dish_picture' => 'Ảnh',
+    'dish_name' => 'Tên món ăn',
+    'description' => 'Mô tả',
+    'note_ingredient' => 'Mỗi nguyên liệu nằm trên một dòng',
+    'note_steps' => 'Ví dụ: Thịt lợn - 500gam',
+    'note_direction' => 'Mỗi bước chế biến nằm trên một dòng',
+
 ];
