@@ -1,6 +1,6 @@
 # PHP Training
-
 1. Command: 
+
 git clone https://github.com/phuongyeol/vegediet
 
 composer install 
