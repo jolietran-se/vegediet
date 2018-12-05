@@ -5,6 +5,7 @@ return [
     'like_number' => 'Lượt thích',
     'amount' => 'Tổng',
     'gam' => 'gam',
+    'mass' => 'Khối lượng - gam',
     'farina' => 'Tinh bột',
     'protein' => 'Chất đạm',
     'lipid' => 'Chất béo',
@@ -46,7 +47,11 @@ return [
     'dish_name' => 'Tên món ăn',
     'description' => 'Mô tả',
     'note_ingredient' => 'Mỗi nguyên liệu nằm trên một dòng',
-    'note_steps' => 'Ví dụ: Thịt lợn - 500gam',
+    'note_ingre' => 'Ví dụ: Thịt lợn - 500gam',
     'note_direction' => 'Mỗi bước chế biến nằm trên một dòng',
+    'note_steps' => 'Ví dụ: 
+    - Nhặt rau
+    - Rửa Rau',
 
+    'dish_slug' => 'Đường dẫn',
 ];

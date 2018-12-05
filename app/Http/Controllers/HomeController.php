@@ -16,7 +16,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $dishes = Dish::paginate(config('const.home_paginate'));
+        $dishes = $this->dishRepository->getAll();
 
         $top_dishes = $this->dishRepository->topDishesList();
 

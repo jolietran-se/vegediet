@@ -37,15 +37,24 @@
                                         {!! Form::label(null, trans('dish.dish_name')) !!}(<span class="red">*</span>)
                                         {!! Form::text('name',null, ['class' => 'form-control', 'id' => 'dish_name']) !!}
                                     </div>
+                                    <div class="form-group">
+                                        {!! Form::label(null, trans('dish.dish_slug')) !!}(<span class="red">*</span>)
+                                        {!! Form::text('slug',null, ['class' => 'form-control', 'id' => 'dish_slug']) !!}
+                                    </div>
                                     <div class="portlet light bordered">
                                         <div class="portlet-title">
                                             <div class="caption">
                                                 <i class="fa fa-list font-green" aria-hidden="true"></i>
-                                                <span class="caption-subject font-green bold">{{ trans('dish.category') }}</span>
+                                                <span class="caption-subject font-green bold">{{ trans('dish.tag') }}</span>
                                             </div>
                                         </div>
                                         <div class="portlet-body">
-                                            {!! Form::select('category_id', [], ['class' => 'form-control category', 'id' => 'category_id']) !!}
+                                            <datalist id="list_categories">
+                                                @foreach ($categories as $category)
+                                                    <option value="{{ $category->name }}"></option> 
+                                                @endforeach
+                                            </datalist>
+                                            {!! Form::text('category_id', null, ['class'=> 'form-control', 'list' => 'list_categories']) !!}
                                         </div>
                                     </div>
 
@@ -57,13 +66,43 @@
                                         {!! Form::textarea('description', null, ['class' => 'form-control description', 'id' => 'description']) !!}
                                     </div>
                                     <div class="form-group">
-                                        {!! Form::label(null, trans('dish.ingredient')) !!}(<span class="red">*</span>)
-                                        {!! Form::textarea('ingredient', null, ['class' => 'form-control', 'id' => 'description', 'placeholder' => trans('dish.note_ingredient').'&#x0a;'.trans('dish.note_steps')]) !!}
+                                        <datalist id="list_ingredients">
+                                            @foreach ($ingredients as $ingredient)
+                                                <option value="{{ $ingredient->name }}"></option> 
+                                            @endforeach
+                                        </datalist>
+
+                                        <div class="col-lg-5">
+                                            {!! Form::label(null, trans('dish.ingredient')) !!}(<span class="red">*</span>)
+                                            {!! Form::text('ingredient', null, ['class'=> 'form-control', 'list' => 'list_ingredients']) !!}
+                                        </div>
+                                        
+                                        <div class="col-lg-5">
+                                            {!! Form::label(null, trans('dish.mass')) !!}(<span class="red">*</span>)
+                                            {!! Form::number('number', null, ['id' => 'ingredient_mass', 'class' => 'form-control']) !!}
+                                        </div>
+
+                                        <div class="col-lg-1">
+                                            <button class="dynamic"><span class="fa fa-minus-circle"></span></button>
+                                        </div>
+                                        <div class="col-lg-1">
+                                            <button class="dynamic"><span class="fa fa-plus-circle"></span></button>
+                                        </div>
                                     </div>
+
                                     <div class="form-group">
-                                        {!! Form::label(null, trans('dish.direction')) !!}(<span class="red">*</span>)
-                                        {!! Form::textarea('direction', null, ['class' => 'form-control', 'id' => 'direction', 'placeholder' => trans('dish.note_direction')]) !!}
+                                        <div class="col-lg-10">
+                                            {!! Form::label(null, trans('dish.direction')) !!}(<span class="red">*</span>)
+                                            {!! Form::textarea('direction', null, ['class' => 'form-control steps', 'id' => 'direction']) !!}
+                                        </div>
+                                        <div class="col-lg-1">
+                                            <button class="dynamic"><span class="fa fa-minus-circle"></span></button>
+                                        </div>
+                                        <div class="col-lg-1">
+                                            <button class="dynamic"><span class="fa fa-plus-circle"></span></button>
+                                        </div>
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>
