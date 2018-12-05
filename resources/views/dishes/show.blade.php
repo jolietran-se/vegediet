@@ -55,8 +55,8 @@
                                             <div class="rating2">
                                                 <a>{{ $dish->like_number }} <span class="fa fa-heart rating-text"></span></a>
                                             </div>
-
                                         </div>
+
                                         <div class="divider divider--xs product-info__divider hidden-xs"></div>
                                         <div class="product-info__description hidden-xs">
                                             <div class="product-info__description__brand"><img src="{{ config('asset.image_path.owner_avatar').$dish->user->avatar }}" class="avatar_chef" alt=""/></div>
@@ -66,7 +66,11 @@
                                                 "{{ $dish->description }}"
                                             </div>
                                         </div>
-
+                                        <div class="categories">
+                                            @foreach ($dish->categories as $catgory)
+                                                <a href="#" class="category">{{ $catgory->name }}</a>
+                                            @endforeach
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="content">
@@ -121,8 +125,9 @@
                                         </div>
                                     </div>
 
-                                </div>
+                                    
 
+                                </div>
                             </div>
                         </div>
                     </div>

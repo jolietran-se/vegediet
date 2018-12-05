@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Dish;
+use App\Category;
+use App\Ingredient;
 use Illuminate\Http\Request;
 use App\Repositories\DishRepositoryInterface;
 
@@ -17,7 +19,7 @@ class DishController extends Controller
 
     public function index()
     {
-        $dishes = $this->dishRepository->getAll();
+        $dishes = $this->dishRepository->allDish();
 
         $new_dishes = $this->dishRepository->newDishesList();
 
@@ -31,7 +33,10 @@ class DishController extends Controller
      */
     public function create()
     {
-        return view('dishes.create');
+        $categories = Category::all();
+        $ingredients = Ingredient::all();
+
+        return view('dishes.create', compact('categories', 'ingredients'));
     }
 
     /**
@@ -54,7 +59,7 @@ class DishController extends Controller
     public function show($id)
     {
         $dish = Dish::with('user')->findOrFail($id);
-    
+        
         return view('dishes.show', compact('dish'));
     }
 
