@@ -27,7 +27,11 @@
                     ]) !!}
                 {!! Form::close() !!}
             </div>
-
+            <div class="grid_12 categories">
+                @foreach ($categories as $catgory)
+                    <a href="#" class="category">{{ $catgory->name }}</a>
+                @endforeach
+            </div>
             <!-- List Dishes -->
 
             <div class="grid_12">

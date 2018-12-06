@@ -8,12 +8,38 @@
     margin-top: 20px;
 }
 
-textarea.description{
+textarea.description, textarea.steps{
     height: 100px;
 }
 
 .red {
     color: red;
+}
+
+/* Catgory */
+
+.category {
+	border: solid 1px #5fa022;
+	background: #5fa022;
+	color: #ffffff;
+	padding: 5px 5px 5px 5px;
+	line-height: 32px;
+}
+
+.categories>a:hover {
+	text-decoration: none;
+	background-color: #ffffff;
+}
+/* Col */
+.col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-10 {
+	float: left;
+	padding-left: 0px;
+	margin-bottom: 15px;
+}
+
+.dynamic {
+	margin-top: 20px;
+	font-size: 23px;
 }
 
 /* Navbar */
@@ -689,4 +715,11 @@ input {
 
 li {
 	margin-top: 10px;
+}
+
+a.btn {
+	background: #5fa022;
+}
+a.btn:hover {
+	background: #ffffff;
 }
