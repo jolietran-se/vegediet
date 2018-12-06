@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 @section('head')
-<link rel="stylesheet" href="{{ asset('css/dish_detail.css') }}">
 @endsection
 
 @section('content')

@@ -5,9 +5,6 @@
     <link rel="stylesheet" href="{{ asset('bower_components/slick-carousel/slick/slick-theme.css') }}">
     <link rel="stylesheet" href="{{ asset('bower_components/magnific-popup/dist/magnific-popup.css') }}">
     <link rel="stylesheet" href="{{ asset('bower_components/bootstrap-select/dist/css/bootstrap-select.css') }}">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ asset('css/dish_detail.css') }}">
-
 @endsection
 
 @section('content')
