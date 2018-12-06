@@ -141,7 +141,7 @@
                     @endforeach
                     </ul>
                 </div>
-                <div><strong><a href="{{ route('dishes.index') }}">{{ trans('homepage.viewmore') }}</a></strong></div>
+                <div><a href="{{ route('dishes.index') }}" class="btn btn-success"><strong>{{ trans('homepage.viewmore') }}</strong></a></div>
             </div>
         </div>
     </div>

@@ -23,9 +23,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(
-            \App\Repositories\DishRepositoryInterface::class,
-            \App\Repositories\DishEloquentRepository::class
+        $models = array(
+            'Dish',
+            'Category',
+            'Ingredient'
         );
+
+        foreach ($models as $model) {
+            $this->app->bind("App\Repositories\\{$model}RepositoryInterface", "App\Repositories\\{$model}EloquentRepository");
+        }
     }
 }

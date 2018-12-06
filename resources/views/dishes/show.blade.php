@@ -95,10 +95,10 @@
                                         <div role="tabpanel" class="tab-pane active" id="Tab2">
                                             <h5><strong class="color text-uppercase">{{ trans('dish.repice') }}</strong></h5>
                                             <div class="divider divider--xs"></div>
-                                            <p>{{ $dish->description}}</p>
+                                            <p>{{ $dish->description }}</p>
                                             <ul>
                                             @foreach ($dish->cookingsteps as $step)
-                                                <li><span class="fa fa-check"></span> {{ $step->step}}</li>
+                                                <li><span class="fa fa-check"></span> {{ $step->step }}</li>
                                             @endforeach
                                             </ul>
 
@@ -122,7 +122,7 @@
                                         </div>
                                     </div>
 
-                                    
+
 
                                 </div>
                             </div>
@@ -135,10 +135,10 @@
         </div>
     </div>
 
-    
+
 </div>
 
-    
+
 @endsection
 
 @section('foot')

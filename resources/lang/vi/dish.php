@@ -46,12 +46,12 @@ return [
     'dish_picture' => 'Ảnh',
     'dish_name' => 'Tên món ăn',
     'description' => 'Mô tả',
-    'note_ingredient' => 'Mỗi nguyên liệu nằm trên một dòng',
-    'note_ingre' => 'Ví dụ: Thịt lợn - 500gam',
-    'note_direction' => 'Mỗi bước chế biến nằm trên một dòng',
-    'note_steps' => 'Ví dụ: 
-    - Nhặt rau
-    - Rửa Rau',
+    'note_des' => 'Nộm rau muống là món ăn đơn giản nhưng cực kì hấp dẫn',
+    'note_name' => 'Nộm rau muống',
+    'note_slug' => 'nom-rau-muong',
+    'note_ingre' => 'Rau muống',
+    'note_gram' => '100',
+    'note_direction' => 'Mỗi bước chế biến nằm trong một box riêng biệt',
 
     'dish_slug' => 'Đường dẫn',
 ];
