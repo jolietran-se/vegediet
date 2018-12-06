@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
 @section('head')
-  <script src="{{ asset('js/slide.js') }}"></script>
-  <script src="{{ asset('js/toplist.js') }}"></script>
+    <script src="{{ asset('js/slide.js') }}"></script>
+    <script src="{{ asset('js/toplist.js') }}"></script>
 
-  <link rel="stylesheet" href="{{ asset('css/search.css') }}">
-
+    <link rel="stylesheet" href="{{ asset('css/search.css') }}">
+~
 @endsection
 
 @section('content')
@@ -39,7 +39,11 @@
                     ]) !!}
                 {!! Form::close() !!}
             </div>
-
+            <div class="grid_12 categories">
+                @foreach ($categories as $catgory)
+                    <a href="#" class="category">{{ $catgory->name }}</a>
+                @endforeach
+            </div>
             <div class="clear"></div>
 
             <div class="grid_12">
