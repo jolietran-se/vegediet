@@ -22,6 +22,7 @@ class DishesTableSeeder extends Seeder
                 'picture' => 'product-1.jpg',
                 'like_number' => 1637,
                 'owner_id' => 1,
+                'slug' => 'khoai-lang-luoc',
             ], [
                 'name' => 'Đậu cô ve luộc',
                 'farina_amount' => 54.9,
@@ -32,6 +33,7 @@ class DishesTableSeeder extends Seeder
                 'picture' => 'product-2.jpg',
                 'like_number' => 242,
                 'owner_id' => 1,
+                'slug' => 'dau-co-ve-luoc',
             ], [
                 'name' => 'Đậu phụ xốt tứ xuyên',
                 'farina_amount' => 70.5,
@@ -42,6 +44,7 @@ class DishesTableSeeder extends Seeder
                 'picture' => 'product-3.jpg',
                 'like_number' => 2730,
                 'owner_id' => 2,
+                'slug' => 'dau-phu-xot-tu-xuyen',
             ], [
                 'name' => 'Bún xào chay',
                 'farina_amount' => 30.4,
@@ -52,6 +55,7 @@ class DishesTableSeeder extends Seeder
                 'picture' => 'product-4.jpg',
                 'like_number' => 782,
                 'owner_id' => 2,
+                'slug' => 'bun-xao-chay',
             ], [
                 'name' => 'Đậu hũ cay xốt',
                 'farina_amount' => 55.9,
@@ -62,6 +66,7 @@ class DishesTableSeeder extends Seeder
                 'picture' => 'product-5.jpg',
                 'like_number' => 652,
                 'owner_id' => 2,
+                'slug' => 'dau-hu-xot-cay',
             ], [
                 'name' => 'Đậu hũ la hán',
                 'farina_amount' => 60.6,
@@ -72,6 +77,7 @@ class DishesTableSeeder extends Seeder
                 'picture' => 'product-6.jpg',
                 'like_number' => 3452,
                 'owner_id' => 3,
+                'slug' => 'dau-hu-la-han',
             ], [
                 'name' => 'Rau củ kho chay',
                 'farina_amount' => 30.7,
@@ -82,6 +88,7 @@ class DishesTableSeeder extends Seeder
                 'picture' => 'product-7.jpg',
                 'like_number' => 241,
                 'owner_id' => 3,
+                'slug' => 'rau-cu-kho-chay',
             ], [
                 'name' => 'Chả giò bắp chay',
                 'farina_amount' => 64.9,
@@ -92,6 +99,7 @@ class DishesTableSeeder extends Seeder
                 'picture' => 'product-8.jpg',
                 'like_number' => 421,
                 'owner_id' => 4,
+                'slug' => 'cha-gio-bap-chay',
             ], [
                 'name' => 'Bún bò huế chay',
                 'farina_amount' => 54.9,
@@ -102,6 +110,7 @@ class DishesTableSeeder extends Seeder
                 'picture' => 'product-9.jpg',
                 'like_number' => 2834,
                 'owner_id' => 4,
+                'slug' => 'bun-bo-hue-chay',
             ], [
                 'name' => 'Salad cà chua bi',
                 'farina_amount' => 24.9,
@@ -112,6 +121,7 @@ class DishesTableSeeder extends Seeder
                 'picture' => 'product-10.jpg',
                 'like_number' => 1455,
                 'owner_id' => 5,
+                'slug' => 'salad-ca-chua-bi',
             ], [
                 'name' => 'Rau chân vịt trộn bơ lạc',
                 'farina_amount' => 54.9,
@@ -122,6 +132,7 @@ class DishesTableSeeder extends Seeder
                 'picture' => 'product-11.jpg',
                 'like_number' => 1223,
                 'owner_id' => 5,
+                'slug' => 'rau-chan-vit-tron-bo-lac',
             ], 
         ];
         
