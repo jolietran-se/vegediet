@@ -1,18 +1,20 @@
 # PHP Training
-1. Command: 
 
-git clone https://github.com/phuongyeol/vegediet
 
-composer install 
+- Clone project: git clone https://github.com/phuongyeol/vegediet
 
-php artisan key:generate
+- Cài đặt composer: composer install 
 
-npm install
+- Tạo file .env và cấu hình
 
-npm run dev
+- php artisan key:generate
 
-bower install 
+- Cài đặt npm: npm install
 
-php migrate:refresh --seed
+- Mix css, js: npm run dev
 
-2. Create file: .
+- Cài đặt Bower quản lý thư viện css, js: bower install
+
+- Thực hiện tạo các bảng trong CSDL và fake data: php migrate:refresh --seed
+
+ 
