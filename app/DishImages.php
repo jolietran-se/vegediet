@@ -4,15 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CookingStep extends Model
+class DishImages extends Model
 {
-    protected $table = 'cooking_steps';
+    protected $table = 'dish_images';
     protected $fillable = [
     	'dish_id',
-    	'step',
+    	'image_id',
     ];
 
-    // Dish 1 - n CookingStep
+    // Mỗi món ăn có nhiều ảnh
     public function dish()
     {
     	return $this->belongsTo('App\Dish');

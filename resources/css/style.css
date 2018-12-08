@@ -112,14 +112,10 @@ a:hover {
 }
 
 a.btn {
-	font-size: 12px;
 	display: inline-block;
 	background: #e2827e;
-	padding: 5px 14px 4px;
 	border-radius: 4px;
-	margin-top: 17px;
 	color: #fff;
-	text-transform: uppercase;
 }
 
 a.btn:hover {

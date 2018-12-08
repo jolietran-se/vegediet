@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateOwnerIdToDishesTable extends Migration
+class CreateImageUploadsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class UpdateOwnerIdToDishesTable extends Migration
      */
     public function up()
     {
-        Schema::table('dishes', function (Blueprint $table) {
-            $table->integer('owner_id')->unsigned()->nullable();
+        Schema::create('image_uploads', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('title')->nullable();
+            $table->string('image');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class UpdateOwnerIdToDishesTable extends Migration
      */
     public function down()
     {
-        Schema::table('dishes', function (Blueprint $table) {
-            $table->dropColumn('owner_id');
-        });
+        Schema::dropIfExists('image_uploads');
     }
 }

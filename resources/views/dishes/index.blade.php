@@ -3,6 +3,7 @@
 @section('head')
 <link rel="stylesheet" href="{{ asset('css/search.css') }}">
 <link rel="stylesheet" href="{{ asset('bower_components/components-font-awesome/css/font-awesome.min.css') }}">
+<link rel="stylesheet" href="{{ asset('css/dish_detail.css') }}">
 
 @endsection
 

@@ -31,7 +31,8 @@
     "slick-carousel": "^1.8.1",
     "bootstrap": "3.3.5",
     "imagesloaded": "3.1.8",
-    "elevatezoom3": "^3.0.8"
+    "elevatezoom3": "^3.0.8",
+    "popper.js": "^1.14.6"
   },
   "private": true
 }

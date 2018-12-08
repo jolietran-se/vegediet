@@ -36,6 +36,7 @@ return [
     'tag_note' => 'Sử dụng dấu cách để phân tách các thẻ. Sử dụng dấu nháy đơn cho các cụm từ.', 
     'create' => 'Thêm mới',
     'cancel' => 'Hủy',
+    'back' => 'Quay lại',
     'review_add' => 'Thêm bình luận:',
     'following_dish' => 'Bạn có thể sẽ thích',
     'view' => 'Xem chi tiết',
