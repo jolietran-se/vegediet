@@ -27,7 +27,7 @@ class Comment extends Model
     }
 
     // Comment 1 - n Comment_images 
-    public function commentimages()
+    public function commentImages()
     {
     	return $this->hasMany('App\CommentImage');
     }

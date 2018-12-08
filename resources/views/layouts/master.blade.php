@@ -23,7 +23,6 @@
         <script src="{{ asset('js/sForm.js') }}"></script>
         <script src="{{ asset('js/tms-0.4.1.js') }}"></script>
 
-        <link rel="stylesheet" href="{{ asset('css/dish_detail.css') }}">
     @yield('head')
     </head>
     <body>

@@ -5,7 +5,8 @@
     <script src="{{ asset('js/toplist.js') }}"></script>
 
     <link rel="stylesheet" href="{{ asset('css/search.css') }}">
-~
+    <link rel="stylesheet" href="{{ asset('css/dish_detail.css') }}">
+
 @endsection
 
 @section('content')

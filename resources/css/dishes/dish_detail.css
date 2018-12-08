@@ -17,7 +17,18 @@ textarea.description, textarea.steps{
 }
 
 /* Category */
-
+.fa {
+    display: inline;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.btn-kv {
+	line-height: auto;
+	font-size: auto;
+}
 .category {
 	border: solid 1px #5fa022;
 	background: #5fa022;

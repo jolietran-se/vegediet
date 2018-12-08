@@ -59,4 +59,10 @@ class Dish extends Model
     {
         return $this->belongsToMany('App\Category', 'dish_category');
     }
+
+    // Dish 1 - n ImageUploads
+    public function imageUploads()
+    {
+        return $this->hasMany('App\ImageUploads');
+    }
 }

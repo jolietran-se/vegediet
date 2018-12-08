@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Dish;
 use App\Category;
 use App\Ingredient;
+use App\ImageUploads;
 use Session;
 
 use Illuminate\Http\Request;
@@ -39,6 +40,16 @@ class DishController extends Controller
         return view('dishes.index', compact('dishes', 'new_dishes', 'categories'));
     }
 
+    /* Upload Images */
+    public function uploadImages(Request $request)
+    {
+        $path = $request->file->store('upload');
+
+        $img = ImageUploads::create(['image' => $path]);
+
+        return response()->json(['data' => $img]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -53,31 +64,26 @@ class DishController extends Controller
         return view('dishes.create', compact('categories', 'ingredients'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    // Store Dish detail to database 
     public function store(CreateDish $request)
     {
-        $dish = new Dish();
-        $dish->name = $request->name;
-        $dish->description = $request->description;
-        $dish->slug = str_slug($request->name);
-        $dish->like_number = 0;
+        dd($request->all());
+        // $dish = new Dish();
+        // $dish->name = $request->name;
+        // $dish->description = $request->description;
+        // $dish->slug = str_slug($request->name);
+        // $dish->like_number = 0;
+        // $dish->farina_amount = 1;
+        // $dish->protein_amount = 1;
+        // $dish->lipid_amount = 1;
+        // $dish->calories_amount = 1;
+        // $dish->owner_id = 1;
+        // $dish->picture = 'product-1.jpg';
 
-        $dish->picture = 'product-1.jpg';
-        $dish->farina_amount = 1;
-        $dish->protein_amount = 1;
-        $dish->lipid_amount = 1;
-        $dish->calories_amount = 1;
-        $dish->owner_id = 1;
-        $dish->save();
-        
-        Session::flash('success', 'Created Product Success');
+        // $dish->save();
+        // Session::flash('success', 'Created Product Success');
 
-        return redirect('dishes/');
+        // return redirect('dishes/');
     }
 
     /**

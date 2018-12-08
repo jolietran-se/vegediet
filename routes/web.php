@@ -30,4 +30,6 @@ Route::group(['prefix' => '/dishes'], function () {
     Route::get('/{dish}', 'DishController@show')->name('dishes.show');
     Route::delete('/{dish}', 'DishController@destroy')->name('dishes.destroy');
     Route::get('/{dish}/edit', 'DishController@edit')->name('dishes.edit');
+
+    Route::post('/image-uploads', 'DishController@uploadImages')->name('dish.uploadImages');
 });
