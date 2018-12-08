@@ -14,7 +14,7 @@ class UpdateOwnerIdToDishesTable extends Migration
     public function up()
     {
         Schema::table('dishes', function (Blueprint $table) {
-            $table->integer('owner_id')->unsigned();
+            $table->integer('owner_id')->unsigned()->nullable();
         });
     }
 

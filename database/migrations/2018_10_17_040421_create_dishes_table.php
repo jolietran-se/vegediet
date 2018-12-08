@@ -17,11 +17,11 @@ class CreateDishesTable extends Migration
             $table->increments('id')->unsigned();
             $table->string('name', 191);
             $table->text('description');
-            $table->string('picture');
-            $table->float('farina_amount');
-            $table->float('protein_amount');
-            $table->float('lipid_amount');
-            $table->float('calories_amount');
+            $table->string('picture')->nullable();
+            $table->float('farina_amount')->nullable();
+            $table->float('protein_amount')->nullable();
+            $table->float('lipid_amount')->nullable();
+            $table->float('calories_amount')->nullable();
             $table->integer('like_number');
             $table->timestamps();
         });

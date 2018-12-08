@@ -16,7 +16,7 @@ class CreateDishImagesTable extends Migration
         Schema::create('dish_images', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('dish_id');
-            $table->integer('image_id');
+            $table->string('link')->nullable();
             $table->timestamps();
         });
     }

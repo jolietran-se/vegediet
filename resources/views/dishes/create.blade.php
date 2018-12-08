@@ -32,7 +32,7 @@
                     </div>
                 </div>
 
-                <div id="pageContent">
+                <div id="pageContent" class="model">
                     {!! Form::open(['method' => 'POST', 'route' => 'dishes.store', 'class' => 'form-horizontal']) !!}
                         <div class="portlet-body form-group">
                             <div class="row">
@@ -41,7 +41,7 @@
                                     <div class="main-section">
                                         <div class="form-group">
                                             <div class="file-loading">
-                                                {!! Form::file('file', ['class' => 'file', 'multiple' => true, 'id' => 'file-1', 'name' => 'file']) !!}
+                                                {!! Form::file('file', ['class' => 'file', 'multiple' => true, 'id' => 'file-1', 'name' => 'file', 'data-overwrite-initial' => 'false', 'data-min-file-count' => '2']) !!}
                                             </div>
                                         </div>
                                     </div>
@@ -65,7 +65,7 @@
                                                         <option value="{{ $category->name }}"></option> 
                                                     @endforeach
                                                 </datalist>
-                                                {!! Form::text('category_id', null, ['class'=> 'form-control', 'list' => 'list_categories']) !!}
+                                                {!! Form::text('categories', null, ['class'=> 'form-control', 'list' => 'list_categories']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -117,9 +117,9 @@
                             </div>
                         </div>
 
-                        <div class=" form-group">
+                        <div class="modal-footer form-group">
                             <input type="hidden" name="images" id="img">
-                            {!! Form::submit(trans('dish.create'), ['class' => 'btn btn-success']) !!}
+                            {!! Form::submit(trans('dish.create'), ['class' => 'btn btn-success', 'data-dismiss' => 'modal', 'id' => 'submit']) !!}
                         </div>
                     {!! Form::close() !!}
                     
@@ -130,9 +130,10 @@
 @endsection
 
 @section('foot')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/js/fileinput.js" type="text/javascript"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/themes/fa/theme.js" type="text/javascript"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" type="text/javascript"></script>
+
+    <script src="{{ asset('bower_components/bootstrap-fileinput/js/fileinput.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('bower_components/bootstrap-fileinput/themes/fa/theme.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('bower_components/popper.js/dist/umd/popper.min.js') }}" type="text/javascript"></script>
 
     <script type="text/javascript">
         $("#file-1").fileinput({

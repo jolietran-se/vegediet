@@ -6,6 +6,7 @@ use App\Dish;
 use App\Category;
 use App\Ingredient;
 use App\ImageUploads;
+use App\DishImages;
 use Session;
 
 use Illuminate\Http\Request;
@@ -43,7 +44,9 @@ class DishController extends Controller
     /* Upload Images */
     public function uploadImages(Request $request)
     {
-        $path = $request->file->store('upload');
+        $path = $request->file->getClientOriginalName();
+
+        request()->file->move(public_path('images/dishes/'), $path);
 
         $img = ImageUploads::create(['image' => $path]);
 
@@ -67,23 +70,49 @@ class DishController extends Controller
     // Store Dish detail to database 
     public function store(CreateDish $request)
     {
-        dd($request->all());
-        // $dish = new Dish();
-        // $dish->name = $request->name;
-        // $dish->description = $request->description;
-        // $dish->slug = str_slug($request->name);
-        // $dish->like_number = 0;
-        // $dish->farina_amount = 1;
-        // $dish->protein_amount = 1;
-        // $dish->lipid_amount = 1;
-        // $dish->calories_amount = 1;
-        // $dish->owner_id = 1;
-        // $dish->picture = 'product-1.jpg';
+        $dish = new Dish();
+        $dish->name = $request->name;
+        $dish->slug = str_slug($request->name);
+        $dish->description = $request->description;
+        $dish->like_number = 0;
 
-        // $dish->save();
-        // Session::flash('success', 'Created Product Success');
+        // Example
+        $dish->farina_amount = 1;
+        $dish->protein_amount = 1;
+        $dish->lipid_amount = 1;
+        $dish->calories_amount = 1;
+        $dish->owner_id = 1;
+        $dish->save();
 
-        // return redirect('dishes/');
+        
+        // Store images
+        if(!empty($request->images))
+        {
+            $imageUpload = explode(',', $request->images);
+            unset($imageUpload['0']);
+            // dd($imageUpload);
+            if(isset($imageUpload))
+            {
+                foreach($imageUpload as $img){
+                    $temp = [];
+                    $temp['link'] = $img;
+                    $temp['dish_id'] = $dish->id;
+                    // dd($dish->id);
+                    DishImages::create($temp);
+                    $dish->picture = $temp['link'];
+                } 
+            }
+        }else {
+            $temp = [];
+            $temp['link'] = $img;
+            $temp['dish_id'] = $dish->id;
+            DishImages::create($temp);
+            $dish->picture = $temp['link'];
+        }
+
+        $dish->save();
+        
+        return redirect()->route('dishes.show', ['dish' => $dish->id]);
     }
 
     /**
