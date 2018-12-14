@@ -16,6 +16,24 @@ textarea.description, textarea.steps{
     color: red;
 }
 
+.pagination {
+	bottom: auto;
+}
+
+.page-link {
+	background-color: #fff;
+	color: #5fa022;
+}
+
+.page-item.active .page-link {
+	background-color: #5fa022;
+	color: #ffffff;
+}
+.content {
+	padding-bottom: 60px;
+	padding-top: 20px;
+}
+
 /* Category */
 .fa {
     display: inline;

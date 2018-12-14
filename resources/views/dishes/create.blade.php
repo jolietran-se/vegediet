@@ -1,9 +1,9 @@
 @extends('layouts.master')
 
 @section('head')
-    <link rel="stylesheet" href="{{ asset('bower_components/bootstrap-fileinput/css/fileinput.css') }}">
-    
     <link rel="stylesheet" href="{{ asset('css/dish_detail.css') }}">
+    <link rel="stylesheet" href="{{ asset('bower_components/bootstrap-fileinput/css/fileinput.css') }}">
+    <link rel="stylesheet" href="{{ asset('bower_components/select2/dist/css/select2.css') }}">
     
     <style type="text/css">
         .main-section{
@@ -52,20 +52,18 @@
                                             {!! Form::label(null, trans('dish.dish_name')) !!}(<span class="red">*</span>)
                                             {!! Form::text('name',null, ['class' => 'form-control', 'id' => 'name', 'name' => 'name', 'placeholder' => trans('dish.note_name')]) !!}
                                         </div>
+                                        <!-- <div class="form-group">
+                                            {!! Form::label(null, trans('dish.slug')) !!}(<span class="red">*</span>)
+                                            {!! Form::text('slug',null, ['class' => 'form-control', 'id' => 'slug', 'name' => 'name', 'placeholder' => trans('dish.slug'), 'value' => old('slug')]) !!}
+                                        </div> -->
                                         <div class="portlet light bordered form-group">
-                                            <div class="portlet-title">
-                                                <div class="caption">
-                                                    <i class="fa fa-list font-green" aria-hidden="true"></i>
-                                                    <span class="caption-subject font-green bold">{{ trans('dish.category') }}</span>
-                                                </div>
-                                            </div>
+                                            <i class="fa fa-list font-green" aria-hidden="true"></i>{!! Form::label(null, trans('dish.category')) !!}(<span class="red">*</span>)
                                             <div class="portlet-body">
-                                                <datalist id="list_categories">
-                                                    @foreach ($categories as $category)
-                                                        <option value="{{ $category->name }}"></option> 
+                                                <select class="form-control select2_tag" id="tags" name="tags[]" multiple="multiple">
+                                                    @foreach($categories as $tag)
+                                                        <option value="{{$tag->id}}">{!! $tag->name !!}</option>
                                                     @endforeach
-                                                </datalist>
-                                                {!! Form::text('categories', null, ['class'=> 'form-control', 'list' => 'list_categories']) !!}
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -130,11 +128,13 @@
 @endsection
 
 @section('foot')
-
+    <!-- Upload Image with fileinput -->
     <script src="{{ asset('bower_components/bootstrap-fileinput/js/fileinput.js') }}" type="text/javascript"></script>
 	<script src="{{ asset('bower_components/bootstrap-fileinput/themes/fa/theme.js') }}" type="text/javascript"></script>
 	<script src="{{ asset('bower_components/popper.js/dist/umd/popper.min.js') }}" type="text/javascript"></script>
-
+    <!-- Create Tags with Select2 -->
+	<script src="{{ asset('bower_components/select2/dist/js/select2.full.min.js') }}" type="text/javascript"></script>
+    
     <script type="text/javascript">
         $("#file-1").fileinput({
             theme: 'fa',
@@ -144,9 +144,9 @@
                     _token: $("input[name='_token']").val(),
                 };
             },
-            allowedFileExtensions: ['jpg', 'png', 'gif'],
+            allowedFileExtensions: ['jpg', 'png', 'gif', 'jpeg'],
             overwriteInitial: false,
-            maxFileSize:200,
+            maxFileSize:1000,
             maxFilesNum: 10,
             slugCallback: function (filename) {
                 console.log(filename);                                                                                               
@@ -161,4 +161,27 @@
         });
     </script>
 
+    <script type="text/javascript">
+        $('.select2_tag').select2({
+        tags: true,placeholder: "Thêm tags...",
+        minimumInputLength: 2,
+        tokenSeparators: [","],
+        createTag: function (tag) {
+            return {
+                id: tag.term,
+                text: tag.term,
+                isNew : true
+            };
+        },
+            multiple: true,
+        }).on("select2:select", function(e) {
+            if(e.params.data.isNew){
+                $(this).find('[value="'+e.params.data.id+'"]').replaceWith('<option selected value="'+e.params.data.id+'">'+e.params.data.text+'</option>');
+                $.ajax({
+                    //
+                });
+            }
+        });
+        </script>
+    
 @endsection

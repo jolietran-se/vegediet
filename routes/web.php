@@ -32,4 +32,6 @@ Route::group(['prefix' => '/dishes'], function () {
     Route::get('/{dish}/edit', 'DishController@edit')->name('dishes.edit');
 
     Route::post('/image-uploads', 'DishController@uploadImages')->name('dish.uploadImages');
+
+    Route::post('/catgories/create', 'CategoryController@store');
 });

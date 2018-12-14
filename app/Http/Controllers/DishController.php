@@ -64,12 +64,36 @@ class DishController extends Controller
 
         $ingredients = $this->ingredientRepository->all();
 
-        return view('dishes.create', compact('categories', 'ingredients'));
+        return view('dishes.create', compact('categories', 'ingredients'))->withCategories($categories);
+    }
+
+
+    protected function syncTags($dish, $tags)
+    {
+        $fresh = [];
+        foreach( $tags as $tag )
+        {
+            if( Category::find($tag) )
+            {
+                $fresh[] = $tag;
+            }else
+            {
+                $t = new Category();
+                $t->name = $tag;
+                $t->slug = str_slug($t->name);
+                $t->save();
+    
+                $fresh[] = $t->id;
+            }
+        }
+        $dish->categories()->sync( $fresh );
     }
 
     // Store Dish detail to database 
     public function store(CreateDish $request)
     {
+        // dd($request->all());
+
         $dish = new Dish();
         $dish->name = $request->name;
         $dish->slug = str_slug($request->name);
@@ -84,30 +108,30 @@ class DishController extends Controller
         $dish->owner_id = 1;
         $dish->save();
 
-        
+        DishController::syncTags($dish, $request->tags );
+
         // Store images
-        if(!empty($request->images))
+        $data = $request->all();
+        
+        if(!empty($data['images']))
         {
-            $imageUpload = explode(',', $request->images);
+            $imageUpload = explode(',', $data['images']);
             unset($imageUpload['0']);
-            // dd($imageUpload);
+            $dish->picture = $imageUpload['1'];
+
             if(isset($imageUpload))
             {
                 foreach($imageUpload as $img){
-                    $temp = [];
-                    $temp['link'] = $img;
-                    $temp['dish_id'] = $dish->id;
-                    // dd($dish->id);
-                    DishImages::create($temp);
-                    $dish->picture = $temp['link'];
+                    $dish_image = new DishImages();
+                    $dish_image->dish_id = $dish->id;
+                    $dish_image->link = $img;
+                    $dish_image->save();
                 } 
             }
         }else {
-            $temp = [];
-            $temp['link'] = $img;
-            $temp['dish_id'] = $dish->id;
-            DishImages::create($temp);
-            $dish->picture = $temp['link'];
+            $dish_image = new DishImages();
+            $dish_image->dish_id = $dish->id;
+            $dish_image->save();
         }
 
         $dish->save();
@@ -115,12 +139,11 @@ class DishController extends Controller
         return redirect()->route('dishes.show', ['dish' => $dish->id]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public function convert_slug($name){
+        $slug = str_slug($name, $separator = '-');
+        return $slug;
+    }
+    
     public function show($id)
     {
         $dish = Dish::with('user')->findOrFail($id);
@@ -128,35 +151,16 @@ class DishController extends Controller
         return view('dishes.show', compact('dish'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //

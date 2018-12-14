@@ -17,10 +17,10 @@ class CreateMealsTable extends Migration
             $table->increments('id')->unsigned();
             $table->integer('dish_id')->unsigned();
             $table->string('name');
-            $table->float('meal_farina');
-            $table->float('meal_protein');
-            $table->float('meal_lipid');
-            $table->float('meal_calories');
+            $table->float('meal_farina')->nullable();
+            $table->float('meal_protein')->nullable();
+            $table->float('meal_lipid')->nullable();
+            $table->float('meal_calories')->nullable();
             $table->timestamps();
         });
     }
