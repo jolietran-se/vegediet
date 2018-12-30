@@ -7,6 +7,8 @@ use App\Category;
 use App\Ingredient;
 use App\ImageUploads;
 use App\DishImages;
+use App\DishIngredient;
+use App\CookingStep;
 use Session;
 
 use Illuminate\Http\Request;
@@ -53,24 +55,23 @@ class DishController extends Controller
         return response()->json(['data' => $img]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    /* Thêm mới món ăn */
     public function create()
     {
         $categories = $this->cateRepository->all();
 
         $ingredients = $this->ingredientRepository->all();
 
-        return view('dishes.create', compact('categories', 'ingredients'))->withCategories($categories);
+        return view('dishes.create', compact('categories', 'ingredients'))
+            ->withCategories($categories)
+            ->withIngredients($ingredients);
     }
 
 
     protected function syncTags($dish, $tags)
     {
         $fresh = [];
+
         foreach( $tags as $tag )
         {
             if( Category::find($tag) )
@@ -93,26 +94,22 @@ class DishController extends Controller
     public function store(CreateDish $request)
     {
         // dd($request->all());
-
         $dish = new Dish();
         $dish->name = $request->name;
         $dish->slug = str_slug($request->name);
         $dish->description = $request->description;
         $dish->like_number = 0;
-
-        // Example
-        $dish->farina_amount = 1;
-        $dish->protein_amount = 1;
-        $dish->lipid_amount = 1;
-        $dish->calories_amount = 1;
         $dish->owner_id = 1;
         $dish->save();
-
-        DishController::syncTags($dish, $request->tags );
+        // Store Tags
+        if (count($request->tags) != 0) {
+            $this->syncTags($dish, $request->tags );
+        }
 
         // Store images
         $data = $request->all();
         
+        // dd($data['images']);
         if(!empty($data['images']))
         {
             $imageUpload = explode(',', $data['images']);
@@ -133,8 +130,43 @@ class DishController extends Controller
             $dish_image->dish_id = $dish->id;
             $dish_image->save();
         }
+        // Store Ingredient
+        $count1 = count($request->ingredients);
 
+        $dish->farina_amount = 0;
+        $dish->protein_amount = 0;
+        $dish->lipid_amount = 0;
+        $dish->calories_amount = 0;
+        for($i = 0 ; $i < $count1; $i++)
+        {
+            $dish_ingredient = new DishIngredient();
+            if (Ingredient::find($request->ingredients[$i]) == false) {
+                $ingredient = new Ingredient();
+                $ingredient->name = $request->ingredients[$i];
+                $ingredient->farina = 0;
+                $ingredient->protein = 0;
+                $ingredient->lipid = 0;
+                $ingredient->calories = 0;
+                $ingredient->save();
+                $dish_ingredient->ingredient_id = $ingredient->id;
+            }else {
+                $dish_ingredient->ingredient_id = $request->ingredients[$i];
+            }
+            $dish_ingredient->dish_id = $dish->id;
+            $dish_ingredient->weight = $request->masses[$i];
+            $dish_ingredient->save();
+        }
+
+        // Store Cooking Steps
+        $count2 = count($request->direction);
+        for ($i=0; $i < $count2 ; $i++) { 
+            $cooking_step = new CookingStep();
+            $cooking_step->dish_id = $dish->id;
+            $cooking_step->step = $request->direction[$i];
+            $cooking_step->save();
+        }
         $dish->save();
+        // dd($dish);
         
         return redirect()->route('dishes.show', ['dish' => $dish->id]);
     }

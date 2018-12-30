@@ -17,6 +17,6 @@ class Ingredient extends Model
 
     public function dishes()
     {
-        return $this->belongsToMany('App\Dish')->withPivot('weight');
+        return $this->belongsToMany('App\Dish')->withPivot('weight')->withTimestamps();
     }
 }

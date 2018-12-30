@@ -8,14 +8,19 @@
     margin-top: 20px;
 }
 
-textarea.description, textarea.steps{
+textarea.steps {
     height: 100px;
+}
+
+textarea.description {
+	height: 123px;
 }
 
 .red {
     color: red;
 }
 
+/* Pagination */
 .pagination {
 	bottom: auto;
 }
@@ -34,6 +39,29 @@ textarea.description, textarea.steps{
 	padding-top: 20px;
 }
 
+/* Item Dynamic */
+
+.dynamic {
+	background: none;
+	border: none;
+	font-size: 23px;
+	padding-right:0px;
+}
+
+button:focus {
+	outline: none;
+}
+
+.item-add-ingredient, .item-add-step {
+	color: #5fa022;
+}
+
+.item-add-step {
+	padding-top: 17px;
+}
+.item-remove-ingredient, .item-remove-step {
+	color: crimson;
+}
 /* Category */
 .fa {
     display: inline;
@@ -69,11 +97,6 @@ textarea.description, textarea.steps{
 	float: left;
 	padding-left: 0px;
 	margin-bottom: 15px;
-}
-
-.dynamic {
-	margin-top: 20px;
-	font-size: 23px;
 }
 
 /* Navbar */
