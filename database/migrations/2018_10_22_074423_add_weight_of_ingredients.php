@@ -14,7 +14,7 @@ class AddWeightOfIngredients extends Migration
     public function up()
     {
         Schema::table('dish_ingredient', function (Blueprint $table) {
-            $table->integer('weight');
+            $table->integer('weight')->nullable();
         });
     }
 

@@ -51,13 +51,13 @@ class Dish extends Model
     // Dish n - n Ingredient
     public function ingredients()
     {
-        return $this->belongsToMany('App\Ingredient')->withPivot('weight');
+        return $this->belongsToMany('App\Ingredient')->withPivot('weight')->withTimestamps();
     }
 
     // Dish n - n Category
     public function categories()
     {
-        return $this->belongsToMany('App\Category', 'dish_category');
+        return $this->belongsToMany('App\Category', 'dish_category')->withTimestamps();
     }
 
     // Dish 1 - n ImageUploads

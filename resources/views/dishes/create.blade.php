@@ -50,14 +50,14 @@
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                         <div class="form-group">
                                             {!! Form::label(null, trans('dish.dish_name')) !!}(<span class="red">*</span>)
+                                        </div>
+                                        <div class="form-group">
                                             {!! Form::text('name',null, ['class' => 'form-control', 'id' => 'name', 'name' => 'name', 'placeholder' => trans('dish.note_name')]) !!}
                                         </div>
-                                        <!-- <div class="form-group">
-                                            {!! Form::label(null, trans('dish.slug')) !!}(<span class="red">*</span>)
-                                            {!! Form::text('slug',null, ['class' => 'form-control', 'id' => 'slug', 'name' => 'name', 'placeholder' => trans('dish.slug'), 'value' => old('slug')]) !!}
-                                        </div> -->
-                                        <div class="portlet light bordered form-group">
+                                        <div class="form-group">
                                             <i class="fa fa-list font-green" aria-hidden="true"></i>{!! Form::label(null, trans('dish.category')) !!}(<span class="red">*</span>)
+                                        </div>
+                                        <div class="portlet light bordered form-group">
                                             <div class="portlet-body">
                                                 <select class="form-control select2_tag" id="tags" name="tags[]" multiple="multiple">
                                                     @foreach($categories as $tag)
@@ -66,50 +66,61 @@
                                                 </select>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                         <div class="form-group">
                                             {!! Form::label(null, trans('dish.description')) !!}(<span class="red">*</span>)
+                                        </div>
+                                        <div class="form-group">
                                             {!! Form::textarea('description', null, ['class' => 'form-control description', 'id' => 'description', 'name' => 'description', 'placeholder' => trans('dish.note_des')]) !!}
                                         </div>
                                     </div>
-
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                         <div class="form-group">
                                             <datalist id="list_ingredients">
                                                 @foreach ($ingredients as $ingredient)
-                                                    <option value="{{ $ingredient->name }}"></option> 
+                                                    <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option> 
                                                 @endforeach
                                             </datalist>
-
-                                            <div class="col-lg-5">
+                                            <div class="col-lg-6">
                                                 {!! Form::label(null, trans('dish.ingredient')) !!}(<span class="red">*</span>)
-                                                {!! Form::text('ingredient', null, ['class'=> 'form-control', 'list' => 'list_ingredients', 'name' => 'ingredients', 'placeholder' => trans('dish.note_ingre')]) !!}
                                             </div>
-                                            
-                                            <div class="col-lg-5">
+                                            <div class="col-lg-4">
                                                 {!! Form::label(null, trans('dish.mass')) !!}(<span class="red">*</span>)
-                                                {!! Form::number('number', null, ['id' => 'ingredient_mass', 'name' => 'masses', 'class' => 'form-control', 'placeholder' => trans('dish.note_gram')]) !!}
-                                            </div>
-
-                                            <div class="col-lg-1">
-                                                <button class="dynamic"><span class="fa fa-minus-circle"></span></button>
-                                            </div>
-                                            <div class="col-lg-1">
-                                                <button class="dynamic"><span class="fa fa-plus-circle"></span></button>
                                             </div>
                                         </div>
+                                            
+                                        <div class="form-group more-ingredien-1">
+                                            <div class="col-lg-6">
+                                                {!! Form::text('ingredients[]', null, ['class'=> 'form-control', 'list' => 'list_ingredients',  'placeholder' => trans('dish.note_ingre')]) !!}
+                                            </div>
+                                            <div class="col-lg-4">
+                                                {!! Form::number('masses[]', null, ['id' => 'ingredient_mass', 'class' => 'form-control', 'placeholder' => trans('dish.note_gram')]) !!}
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <button class="dynamic item-remove-ingredient"><span class="fa fa-minus-circle"></span></button>
+                                            </div>
+                                        </div >
+                                        <button class="dynamic item-add-ingredient pull-left"><span class="fa fa-plus-circle"></span></button>
+                                    </div>  
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 
                                         <div class="form-group">
                                             <div class="col-lg-10">
                                                 {!! Form::label(null, trans('dish.direction')) !!}(<span class="red">*</span>)
-                                                {!! Form::textarea('direction', null, ['class' => 'form-control steps', 'id' => 'direction', 'name' => 'directions', 'placeholder' => trans('dish.note_direction')]) !!}
+                                            </div>                                            
+                                        </div>
+                                        <div class="form-group more-cookingstep-1">
+                                            <div class="col-lg-10">
+                                                {!! Form::textarea('direction[]', null, ['class' => 'form-control steps', 'placeholder' => trans('dish.note_direction')]) !!}
                                             </div>
                                             <div class="col-lg-1">
-                                                <button class="dynamic"><span class="fa fa-minus-circle"></span></button>
-                                            </div>
-                                            <div class="col-lg-1">
-                                                <button class="dynamic"><span class="fa fa-plus-circle"></span></button>
+                                                <button class="dynamic item-remove-step"><span class="fa fa-minus-circle"></span></button>
                                             </div>
                                         </div>
+                                        <button class="dynamic item-add-step"><span class="fa fa-plus-circle"></span></button>
                                     </div>
                                 </div>
                             </div>
@@ -182,6 +193,51 @@
                 });
             }
         });
-        </script>
-    
+    </script>
+
+    <script>
+    // Thêm nguyên liệu hoặc các bước làm 
+        var add_ingredient = '<div class="form-group more-ingredient">'+
+                                    '<div class="col-lg-6">'+
+                                        '{!! Form::text('ingredients[]', null, ['class'=> 'form-control', 'list' => 'list_ingredients', 'placeholder' => trans('dish.note_ingre')]) !!}'+
+                                    '</div>'+
+                                    '<div class="col-lg-4">'+
+                                        '{!! Form::number('masses[]', null, ['id' => 'ingredient_mass', 'class' => 'form-control', 'placeholder' => trans('dish.note_gram')]) !!}'+
+                                    '</div>'+
+                                    '<div class="col-lg-1">'+
+                                        '<button class="dynamic item-remove-ingredient"><span class="fa fa-minus-circle"></span></button>'+
+                                    '</div>'+
+                                '</div>'
+
+        var add_cooking_step = '<div class="form-group more-cookingstep">'+
+                                    '<div class="col-lg-10">'+
+                                        '{!! Form::textarea('direction[]', null, ['class' => 'form-control steps', 'placeholder' => trans('dish.note_direction')]) !!}'+
+                                    '</div>'+
+                                    '<div class="col-lg-1">'+
+                                        '<button class="dynamic item-remove-step"><span class="fa fa-minus-circle"></span></button>'+
+                                    '</div>'+
+                                '</div>'
+        $('.item-add-ingredient').on('click', function(e){
+            e.preventDefault();
+                
+            $(this).after(add_ingredient);
+        });
+        $('.item-add-step').on('click', function(e){
+            e.preventDefault();
+                
+            $(this).after(add_cooking_step);
+        });
+
+        $(document).on('click', '.item-remove-ingredient', function(e){
+            e.preventDefault();
+            $(this).parents('.more-ingredient').remove();
+        });
+
+        $(document).on('click', '.item-remove-step', function(e){
+            e.preventDefault();
+            $(this).parents('.more-cookingstep').remove();
+        });
+
+    </script>
+
 @endsection
