@@ -27,7 +27,7 @@
                         <ol class="breadcrumb breadcrumb--ys pull-left">
                             <li class="home-link"><a href="{{ route('home') }}" class="fa fa-home"></a></li>
                             <li><a href="{{ route('home') }}">{{ trans('headertext.home') }}</a></li>
-                            <li class="active">{{ trans('dish.add') }}</li>
+                            <li class="active">{{ trans('dish.add') }} </li>
                         </ol>
                     </div>
                 </div>
@@ -55,11 +55,11 @@
                                             {!! Form::text('name',null, ['class' => 'form-control', 'id' => 'name', 'name' => 'name', 'placeholder' => trans('dish.note_name')]) !!}
                                         </div>
                                         <div class="form-group">
-                                            <i class="fa fa-list font-green" aria-hidden="true"></i>{!! Form::label(null, trans('dish.category')) !!}(<span class="red">*</span>)
+                                            <i class="fa fa-list font-green" aria-hidden="true"></i>{!! Form::label(null, trans('dish.category')) !!}
                                         </div>
                                         <div class="portlet light bordered form-group">
                                             <div class="portlet-body">
-                                                <select class="form-control select2_tag" id="tags" name="tags[]" multiple="multiple">
+                                                <select class="select2_tag form-control" id="tags" name="tags[]" multiple="multiple">
                                                     @foreach($categories as $tag)
                                                         <option value="{{$tag->id}}">{!! $tag->name !!}</option>
                                                     @endforeach
@@ -81,7 +81,7 @@
                                         <div class="form-group">
                                             <datalist id="list_ingredients">
                                                 @foreach ($ingredients as $ingredient)
-                                                    <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option> 
+                                                    <option data-value="{{ $ingredient->id }}" value="{{ $ingredient->name }}"></option> 
                                                 @endforeach
                                             </datalist>
                                             <div class="col-lg-6">
@@ -91,7 +91,6 @@
                                                 {!! Form::label(null, trans('dish.mass')) !!}(<span class="red">*</span>)
                                             </div>
                                         </div>
-                                            
                                         <div class="form-group more-ingredien-1">
                                             <div class="col-lg-6">
                                                 {!! Form::text('ingredients[]', null, ['class'=> 'form-control', 'list' => 'list_ingredients',  'placeholder' => trans('dish.note_ingre')]) !!}
@@ -105,8 +104,8 @@
                                         </div >
                                         <button class="dynamic item-add-ingredient pull-left"><span class="fa fa-plus-circle"></span></button>
                                     </div>  
-                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                         <div class="form-group">
                                             <div class="col-lg-10">
                                                 {!! Form::label(null, trans('dish.direction')) !!}(<span class="red">*</span>)
@@ -126,6 +125,11 @@
                             </div>
                         </div>
 
+                        <div id="auth">
+                            @if (Route::has('login'))
+                                <input type="hidden" name="auth" value="{{ Auth::user()->id }}">
+                            @endif
+                        </div>
                         <div class="modal-footer form-group">
                             <input type="hidden" name="images" id="img">
                             {!! Form::submit(trans('dish.create'), ['class' => 'btn btn-success', 'data-dismiss' => 'modal', 'id' => 'submit']) !!}
@@ -146,6 +150,7 @@
     <!-- Create Tags with Select2 -->
 	<script src="{{ asset('bower_components/select2/dist/js/select2.full.min.js') }}" type="text/javascript"></script>
     
+    <!-- Upload images -->
     <script type="text/javascript">
         $("#file-1").fileinput({
             theme: 'fa',
@@ -172,6 +177,7 @@
         });
     </script>
 
+    <!-- Tags -->
     <script type="text/javascript">
         $('.select2_tag').select2({
         tags: true,placeholder: "Thêm tags...",
@@ -194,9 +200,9 @@
             }
         });
     </script>
-
+    
+     <!-- Thêm nguyên liệu hoặc các bước làm -->
     <script>
-    // Thêm nguyên liệu hoặc các bước làm 
         var add_ingredient = '<div class="form-group more-ingredient">'+
                                     '<div class="col-lg-6">'+
                                         '{!! Form::text('ingredients[]', null, ['class'=> 'form-control', 'list' => 'list_ingredients', 'placeholder' => trans('dish.note_ingre')]) !!}'+
@@ -219,13 +225,11 @@
                                 '</div>'
         $('.item-add-ingredient').on('click', function(e){
             e.preventDefault();
-                
             $(this).after(add_ingredient);
         });
         $('.item-add-step').on('click', function(e){
             e.preventDefault();
-                
-            $(this).after(add_cooking_step);
+            $(this).before(add_cooking_step);
         });
 
         $(document).on('click', '.item-remove-ingredient', function(e){

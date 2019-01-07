@@ -67,29 +67,6 @@ class DishController extends Controller
             ->withIngredients($ingredients);
     }
 
-
-    protected function syncTags($dish, $tags)
-    {
-        $fresh = [];
-
-        foreach( $tags as $tag )
-        {
-            if( Category::find($tag) )
-            {
-                $fresh[] = $tag;
-            }else
-            {
-                $t = new Category();
-                $t->name = $tag;
-                $t->slug = str_slug($t->name);
-                $t->save();
-    
-                $fresh[] = $t->id;
-            }
-        }
-        $dish->categories()->sync( $fresh );
-    }
-
     // Store Dish detail to database 
     public function store(CreateDish $request)
     {
@@ -98,76 +75,30 @@ class DishController extends Controller
         $dish->name = $request->name;
         $dish->slug = str_slug($request->name);
         $dish->description = $request->description;
+        $dish->owner_id = $request->auth;
         $dish->like_number = 0;
-        $dish->owner_id = 1;
-        $dish->save();
-        // Store Tags
-        if (count($request->tags) != 0) {
-            $this->syncTags($dish, $request->tags );
-        }
-
-        // Store images
-        $data = $request->all();
-        
-        // dd($data['images']);
-        if(!empty($data['images']))
-        {
-            $imageUpload = explode(',', $data['images']);
-            unset($imageUpload['0']);
-            $dish->picture = $imageUpload['1'];
-
-            if(isset($imageUpload))
-            {
-                foreach($imageUpload as $img){
-                    $dish_image = new DishImages();
-                    $dish_image->dish_id = $dish->id;
-                    $dish_image->link = $img;
-                    $dish_image->save();
-                } 
-            }
-        }else {
-            $dish_image = new DishImages();
-            $dish_image->dish_id = $dish->id;
-            $dish_image->save();
-        }
-        // Store Ingredient
-        $count1 = count($request->ingredients);
-
         $dish->farina_amount = 0;
         $dish->protein_amount = 0;
         $dish->lipid_amount = 0;
         $dish->calories_amount = 0;
-        for($i = 0 ; $i < $count1; $i++)
-        {
-            $dish_ingredient = new DishIngredient();
-            if (Ingredient::find($request->ingredients[$i]) == false) {
-                $ingredient = new Ingredient();
-                $ingredient->name = $request->ingredients[$i];
-                $ingredient->farina = 0;
-                $ingredient->protein = 0;
-                $ingredient->lipid = 0;
-                $ingredient->calories = 0;
-                $ingredient->save();
-                $dish_ingredient->ingredient_id = $ingredient->id;
-            }else {
-                $dish_ingredient->ingredient_id = $request->ingredients[$i];
-            }
-            $dish_ingredient->dish_id = $dish->id;
-            $dish_ingredient->weight = $request->masses[$i];
-            $dish_ingredient->save();
+        $dish->save();
+        // Store tags
+        if (count($request->tags) != 0) {
+            $this->storeTags($dish, $request->tags );
         }
-
-        // Store Cooking Steps
-        $count2 = count($request->direction);
-        for ($i=0; $i < $count2 ; $i++) { 
-            $cooking_step = new CookingStep();
-            $cooking_step->dish_id = $dish->id;
-            $cooking_step->step = $request->direction[$i];
-            $cooking_step->save();
+        // Store images
+        $data = $request->all();
+        $this->storeImage($dish, $data['images']);
+        // Store ingredients
+        if (count($request->ingredients) !=0 ) {
+            $this->storeIngredient($dish, $request->ingredients,$request->masses);
+        }
+        // Store cooking steps
+        if (count($request->direction) != 0) {
+            $this->storeCookingStep($dish, $request->direction);
         }
         $dish->save();
-        // dd($dish);
-        
+
         return redirect()->route('dishes.show', ['dish' => $dish->id]);
     }
 
@@ -196,5 +127,83 @@ class DishController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    protected function storeTags($dish, $tags)
+    {
+        $fresh = [];
+        foreach( $tags as $tag )
+        {
+            if( Category::find($tag) )
+            {
+                $fresh[] = $tag;
+            }else
+            {
+                $t = new Category();
+                $t->name = $tag;
+                $t->slug = str_slug($t->name);
+                $t->save();
+    
+                $fresh[] = $t->id;
+            }
+        }
+        $dish->categories()->sync( $fresh );
+    }
+
+    protected function storeImage($dish, $images)
+    {
+        if(!empty($images))
+        {
+            $imageUpload = explode(',', $images);
+            unset($imageUpload['0']);
+            $dish->picture = $imageUpload['1'];
+
+            if(isset($imageUpload))
+            {
+                foreach($imageUpload as $img){
+                    $dish_image = new DishImages();
+                    $dish_image->dish_id = $dish->id;
+                    $dish_image->link = $img;
+                    $dish_image->save();
+                } 
+            }
+        }else {
+            $dish_image = new DishImages();
+            $dish_image->dish_id = $dish->id;
+            $dish_image->save();
+        }
+    }
+
+    protected function storeIngredient($dish, $ingredients, $masses)
+    {
+        for($i = 0 ; $i < count($ingredients); $i++)
+            {
+                $dish_ingredient = new DishIngredient();
+                if (Ingredient::find($ingredients[$i]) == false) {
+                    $ingredient = new Ingredient();
+                    $ingredient->name = $ingredients[$i];
+                    $ingredient->farina = 0;
+                    $ingredient->protein = 0;
+                    $ingredient->lipid = 0;
+                    $ingredient->calories = 0;
+                    $ingredient->save();
+                    $dish_ingredient->ingredient_id = $ingredient->id;
+                }else {
+                    $dish_ingredient->ingredient_id = $ingredients[$i];
+                }
+                $dish_ingredient->dish_id = $dish->id;
+                $dish_ingredient->weight = $masses[$i];
+                $dish_ingredient->save();
+            }
+    }
+
+    protected function storeCookingStep($dish, $steps)
+    {
+        for ($i=0; $i < count($steps) ; $i++) { 
+            $cooking_step = new CookingStep();
+            $cooking_step->dish_id = $dish->id;
+            $cooking_step->step = "Bước ".($i+1).": ".$steps[$i];
+            $cooking_step->save();
+        }
     }
 }

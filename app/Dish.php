@@ -61,8 +61,8 @@ class Dish extends Model
     }
 
     // Dish 1 - n ImageUploads
-    public function imageUploads()
+    public function dishImages()
     {
-        return $this->hasMany('App\ImageUploads');
+        return $this->hasMany('App\DishImages');
     }
 }

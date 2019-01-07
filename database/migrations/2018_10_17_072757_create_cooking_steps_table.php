@@ -16,7 +16,7 @@ class CreateCookingStepsTable extends Migration
         Schema::create('cooking_steps', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->integer('dish_id')->unsigned();
-            $table->string('step', 191);
+            $table->text('step')->nullable();
             $table->timestamps();
         });
     }

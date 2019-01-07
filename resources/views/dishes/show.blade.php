@@ -36,7 +36,14 @@
                                     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 hidden-xs">
                                         <div class="product-main-image">
                                             <div class="product-main-image__item"><img class="product-zoom" src="{{ config('asset.image_path.dish_detail').$dish->picture }}" data-zoom-image="{{ config('asset.image_path.dish_detail').$dish->picture }}" alt="" /></div>
-                                            <div class="product-main-image__zoom"></div>
+										    <div class="product-main-image__zoom"></div>
+                                        </div>
+                                        <div class="product-images-carousel">
+                                            <ul id="smallGallery" class="images-slide">
+                                                @foreach ($dish->dishImages as $image)
+                                                    <li><a href="#" data-image="{{ config('asset.image_path.dish_detail').$image->link }}" data-zoom-image="{{ config('asset.image_path.dish_detail').$image->link }}"><img src="{{ config('asset.image_path.dish_detail').$image->link }}" alt="" /></a></li>
+                                                @endforeach
+                                            </ul>
                                         </div>
                                         <ul class="product-link">
                                             <li class="text-right"><a href="#"><span class="fa fa-heart tooltip-link"></span><span class="text">{{ trans('dish.add_wishlist') }}</span></a></li>
@@ -67,8 +74,8 @@
                                             </div>
                                         </div>
                                         <div class="categories">
-                                            @foreach ($dish->categories as $catgory)
-                                                <a href="#" class="category">{{ $catgory->name }}</a>
+                                            @foreach ($dish->categories as $category)
+                                                <a href="#" class="category">{{ $category->name }}</a>
                                             @endforeach
                                         </div>
                                     </div>
@@ -98,7 +105,6 @@
                                         <div role="tabpanel" class="tab-pane active" id="Tab2">
                                             <h5><strong class="color text-uppercase">{{ trans('dish.repice') }}</strong></h5>
                                             <div class="divider divider--xs"></div>
-                                            <p>{{ $dish->description }}</p>
                                             <ul>
                                             @foreach ($dish->cookingsteps as $step)
                                                 <li><span class="fa fa-check"></span> {{ $step->step }}</li>
@@ -124,23 +130,15 @@
                                             </ul>
                                         </div>
                                     </div>
-
-
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
-
             </div>
-
         </div>
     </div>
-
-
 </div>
-
 
 @endsection
 
@@ -153,6 +151,7 @@
     <script src="{{ asset('bower_components/magnific-popup/dist/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ asset('bower_components/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
     <script src="{{ asset('bower_components/elevatezoom3/jquery.elevatezoom.js') }}"></script>
+    <script src="{{ asset('bower_components/jquery-colorbox/jquery.colorbox-min.js') }}"></script>
     <!-- Custom -->
     <script src="{{ asset('js/dish_detail.js') }}"></script>
 @endsection
