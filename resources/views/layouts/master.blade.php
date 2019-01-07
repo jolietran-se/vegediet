@@ -19,10 +19,6 @@
         <script src="{{ asset('bower_components/jquery.easing/js/jquery.easing.js') }}"></script>
         <script src="{{ asset('bower_components/jquery-carouFredSel/jquery.carouFredSel-6.2.1-packed.js') }}"></script>
 
-        <script src="{{ asset('js/superfish.js') }}"></script>
-        <script src="{{ asset('js/sForm.js') }}"></script>
-        <script src="{{ asset('js/tms-0.4.1.js') }}"></script>
-
     @yield('head')
     </head>
     <body>
