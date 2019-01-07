@@ -29,10 +29,7 @@ class UpdateFourInfoRowsToIngredientsTable extends Migration
     public function down()
     {
         Schema::table('ingredients', function (Blueprint $table) {
-            $table->float('farina')->nullable(false)->change();
-            $table->float('protein')->nullable(false)->change();
-            $table->float('lipid')->nullable(false)->change();
-            $table->float('calories')->nullable(false)->change();
+            //
         });
     }
 }

@@ -13,7 +13,7 @@ class DishImages extends Model
     ];
 
     // Mỗi món ăn có nhiều ảnh
-    public function dish()
+    public function imageDish()
     {
     	return $this->belongsTo('App\Dish');
     }

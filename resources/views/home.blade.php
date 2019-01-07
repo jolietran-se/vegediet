@@ -68,7 +68,7 @@
                                     </a>
                                     <strong class="pull-right">{{ $new_dish->like_number }} <i class="fa fa-heart"></i></strong>
                                 </div>
-                                <span>{{ $new_dish->description }}</span>
+                                <span>{{ str_limit($new_dish->description, 140) }}</span>
                                 <div>
                                     <strong>{{ $new_dish->created_at }}</strong>
                                 </div>
@@ -102,7 +102,7 @@
                                     </a>
                                     <strong class="pull-right">{{ $top_dish->like_number }} <i class="fa fa-heart"></i></strong>
                                 </div>
-                                <span>{{ $top_dish->description }}</span>
+                                <span>{{ str_limit($top_dish->description, 140) }}</span>
                                 <div>
                                     <strong>{{ $top_dish->created_at }}</strong>
                                 </div>
@@ -133,7 +133,7 @@
                                     <a href="{{ route('dishes.show', $home_view_dish->id) }}"><strong>{{ $home_view_dish->name }}</strong></a>
                                     <strong class="pull-right">{{ $home_view_dish->like_number }} <i class="fa fa-heart"></i></strong>
                                 </div>
-                                <span>{{ $home_view_dish->description }}</span>
+                                <span>{{ str_limit($home_view_dish->description, 140) }}</span>
                                 <div>
                                     <strong>{{ $home_view_dish->created_at }}</strong>
                                 </div>

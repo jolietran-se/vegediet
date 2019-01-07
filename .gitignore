@@ -16,5 +16,6 @@ yarn-error.log
 /public/bower_components
 /public/css
 /public/js
+/public/images/dishes
 
 .vs/
