@@ -6,36 +6,39 @@
             <nav>
                 <ul class="sf-menu">
                     <li><a href="{{ route('home') }}">{{ trans('headertext.home') }}</a></li>
+                    <li><a  href="#">{{ trans('headertext.all_dishes') }}</a></li>
+                    <li><a  href="#">{{ trans('headertext.all_ingredients') }}</a></li>
                     <li><a  href="#">{{ trans('headertext.aboutus') }}</a></li>
-                    <li><a  href="#">{{ trans('headertext.contact') }}</a></li>
                     @if (Route::has('login'))
                     @auth
                         <li>
                             <a>
-                                {{ Auth::user()->name }}<span class="caret"></span>
+                                <img src="{{ config('asset.image_path.owner_avatar').Auth::user()->avatar }}" class="img-circle">
+                                <span class="caret">{{ Auth::user()->name }}</span>
                             </a>
                             <ul>
                                 <li>
                                     <a href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
-                                        {{ trans('login.logout') }}
+                                        <span class="fa fa-sign-out pull-left"></span>{{ trans('login.logout') }}
                                     </a>
                                     {!! Form::open(['method' => 'POST', 'route' => 'logout', 'id' => 'logout-form']) !!}
                                     {!! Form::close() !!}
                                 </li>
                                 <li>
-                                    <a href="#">{{ trans('headertext.your_profile') }}</a>
+                                    <a href="#"><span class="fa fa-user pull-left"></span>{{ trans('headertext.your_profile') }}</a>
+                                </li>
+                                <li>
+                                    <a href="#"><span class="fa fa-apple pull-left"></span>{{ trans('headertext.your_dish') }}</a>
+                                </li>
+                                <li>
+                                    <a href="#"><span class="fa fa-heart pull-left"></span>{{ trans('headertext.your_favorites') }}</a>
                                 </li>
                             </ul>
                         </li>
                         @else
                             <li><a href="{{ route('login') }}">{{ trans('login.login') }}</a></li>
-                            <li>
-                                @if (Route::has('register'))
-                                    <a href="{{ route('register') }}">{{ trans('login.register') }}</a>
-                                @endif
-                            </li>
                         @endauth
                     @endif
                 </ul>
