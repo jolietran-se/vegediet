@@ -176,7 +176,7 @@ button:focus {
 	color: #5fa022;
 }
 .item-add-step {
-	padding-top: 17px;
+	padding-top: 24px;
 }
 .item-remove-ingredient, .item-remove-step {
 	color: crimson;
@@ -199,7 +199,7 @@ button:focus {
 	background: #5fa022;
 	color: #ffffff;
 	padding: 5px 5px 5px 5px;
-	line-height: 32px;
+	line-height: 37px;
 }
 
 .categories>a:hover {

@@ -1,9 +1,7 @@
 @extends('layouts.master')
 
 @section('head')
-    <script src="{{ asset('js/superfish.js') }}"></script>
-    <script src="{{ asset('js/sForm.js') }}"></script>
-    <script src="{{ asset('js/tms-0.4.1.js') }}"></script>
+    
     <script src="{{ asset('js/slide.js') }}"></script>
     <script src="{{ asset('js/toplist.js') }}"></script>
 
