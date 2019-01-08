@@ -29,7 +29,7 @@ Route::group(['prefix' => '/mon-chay'], function () {
     Route::put('/{dish}', 'DishController@update')->name('dishes.update');
     Route::get('/{dish}', 'DishController@show')->name('dishes.show');
     Route::delete('/{dish}', 'DishController@destroy')->name('dishes.destroy');
-    Route::get('/{dish}/chinh-sua', 'DishController@edit')->name('dishes.edit');
+    Route::get('/cap-nhat/{dish}', 'DishController@edit')->name('dishes.edit');
 
     Route::post('/image-uploads', 'DishController@uploadImages')->name('dish.uploadImages');
 

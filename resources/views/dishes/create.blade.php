@@ -44,6 +44,11 @@
                                                 {!! Form::file('file', ['class' => 'file', 'multiple' => true, 'id' => 'file-1', 'name' => 'file', 'data-overwrite-initial' => 'false', 'data-min-file-count' => '2']) !!}
                                             </div>
                                         </div>
+                                        @if ($errors->has('file'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('file') }}</strong>
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -54,6 +59,11 @@
                                         <div class="form-group">
                                             {!! Form::text('name',null, ['class' => 'form-control', 'id' => 'name', 'name' => 'name', 'placeholder' => trans('dish.note_name')]) !!}
                                         </div>
+                                        @if ($errors->has('name'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('name') }}</strong>
+                                            </span>
+                                        @endif
                                         <div class="form-group">
                                             <i class="fa fa-list font-green" aria-hidden="true"></i>{!! Form::label(null, trans('dish.category')) !!}
                                         </div>
@@ -74,6 +84,11 @@
                                         <div class="form-group">
                                             {!! Form::textarea('description', null, ['class' => 'form-control description', 'id' => 'description', 'name' => 'description', 'placeholder' => trans('dish.note_des')]) !!}
                                         </div>
+                                        @if ($errors->has('description'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('description') }}</strong>
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -87,7 +102,7 @@
                                             <div class="col-lg-6">
                                                 {!! Form::label(null, trans('dish.ingredient')) !!}(<span class="red">*</span>)
                                             </div>
-                                            <div class="col-lg-4">
+                                            <div class="col-lg-5">
                                                 {!! Form::label(null, trans('dish.mass')) !!}(<span class="red">*</span>)
                                             </div>
                                         </div>
@@ -154,7 +169,7 @@
     <script type="text/javascript">
         $("#file-1").fileinput({
             theme: 'fa',
-            uploadUrl: "http://127.0.0.1:8000/dishes/image-uploads",
+            uploadUrl: "http://127.0.0.1:8000/mon-chay/image-uploads",
             uploadExtraData: function() {
                 return {
                     _token: $("input[name='_token']").val(),

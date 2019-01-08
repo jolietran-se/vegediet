@@ -8,7 +8,7 @@
                     <li><a  href="{{ route('home') }}">{{ trans('headertext.home') }}</a></li>
                     <li><a  href="{{ route('dishes.index') }}">{{ trans('headertext.all_dishes') }}</a></li>
                     <li><a  href="#">{{ trans('headertext.all_ingredients') }}</a></li>
-                    <li><a  href="#">{{ trans('headertext.aboutus') }}</a></li>
+                    <li><a  href="#">{{ trans('headertext.contact') }}</a></li>
                     @if (Route::has('login'))
                     @auth
                         <li>

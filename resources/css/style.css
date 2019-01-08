@@ -19,7 +19,7 @@ a[href^="tel:"] {
 }
 
 body {
-	font: 14px/18px Arial, Helvetica, sans-serif;
+	/* font: 14px/18px Arial, Helvetica, sans-serif; */
 	color: #826660;
 	position: relative;
 	min-width: 960px;
@@ -336,7 +336,7 @@ header h1 a img {
 }
 
 .pull-right {
-	padding-top: 4px;
+	padding-top: 2px;
 	line-height: 13px;
 }
 
@@ -720,4 +720,9 @@ footer a:hover {
 
 .btn-submit-feedback:hover {
 	background: #699440;
+}
+
+.center-block{
+	width: 80px;
+	margin-left: 45%;
 }
