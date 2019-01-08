@@ -13,7 +13,6 @@ class DishEloquentRepository extends EloquentRepository implements DishRepositor
         $result = $this->_model::whereNotNull('id')
             ->orderBy('created_at', 'desc')
             ->paginate(config('const.dish_paginate'));
-
         return $result;
     }
 
