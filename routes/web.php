@@ -22,14 +22,14 @@ Route::group(['prefix' => '/feedbacks'], function () {
     Route::post('/', 'FeedbackController@store')->name('feedbacks.store');
 });
 
-Route::group(['prefix' => '/dishes'], function () {
+Route::group(['prefix' => '/mon-chay'], function () {
     Route::get('/', 'DishController@index')->name('dishes.index');
     Route::post('/', 'DishController@store')->name('dishes.store');
-    Route::get('/create', 'DishController@create')->name('dishes.create')->middleware('auth');
+    Route::get('/them-moi', 'DishController@create')->name('dishes.create')->middleware('auth');
     Route::put('/{dish}', 'DishController@update')->name('dishes.update');
     Route::get('/{dish}', 'DishController@show')->name('dishes.show');
     Route::delete('/{dish}', 'DishController@destroy')->name('dishes.destroy');
-    Route::get('/{dish}/edit', 'DishController@edit')->name('dishes.edit');
+    Route::get('/{dish}/chinh-sua', 'DishController@edit')->name('dishes.edit');
 
     Route::post('/image-uploads', 'DishController@uploadImages')->name('dish.uploadImages');
 

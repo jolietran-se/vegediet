@@ -62,11 +62,11 @@
                     @foreach ($new_dishes as $new_dish)
                         <li>
                             <div>
-                                <a href="{{ route('dishes.show', $new_dish->id) }}">
+                                <a href="{{ route('dishes.show', $new_dish->slug) }}">
                                     <img src="{{ config('asset.image_path.dish').$new_dish->picture }}" alt="">
                                 </a>
                                 <div class="col1 upp">
-                                    <a href="{{ route('dishes.show', $new_dish->id) }}">
+                                    <a href="{{ route('dishes.show', $new_dish->slug) }}">
                                         <strong>{{ $new_dish->name }}</strong>
                                     </a>
                                     <strong class="pull-right">{{ $new_dish->like_number }} <i class="fa fa-heart"></i></strong>
@@ -96,11 +96,11 @@
                     @foreach ($top_dishes as $top_dish)
                         <li>
                             <div>
-                                <a href="{{ route('dishes.show', $top_dish->id) }}">
+                                <a href="{{ route('dishes.show', $top_dish->slug) }}">
                                     <img src="{{ config('asset.image_path.dish').$top_dish->picture }}" alt="">
                                 </a>
                                 <div class="col1 upp">
-                                    <a href="{{ route('dishes.show', $top_dish->id) }}">
+                                    <a href="{{ route('dishes.show', $top_dish->slug) }}">
                                         <strong>{{ $top_dish->name }}</strong>
                                     </a>
                                     <strong class="pull-right">{{ $top_dish->like_number }} <i class="fa fa-heart"></i></strong>
@@ -125,25 +125,28 @@
             <div class="grid_12">
                 <div class="car_wrap">
                     <h2>{{ trans('homepage.dish_list') }}</h2>
-                    <ul class="carousel1">
-                    @foreach ($dishes as $home_view_dish)
-                        <li>
-                            <div>
-                                <a href="{{ route('dishes.show', $home_view_dish->id) }}">
-                                    <img src="{{ config('asset.image_path.dish').$home_view_dish->picture }}" alt="">
-                                </a>
-                                <div class="col1 upp">
-                                    <a href="{{ route('dishes.show', $home_view_dish->id) }}"><strong>{{ $home_view_dish->name }}</strong></a>
-                                    <strong class="pull-right">{{ $home_view_dish->like_number }} <i class="fa fa-heart"></i></strong>
-                                </div>
-                                <span>{{ str_limit($home_view_dish->description, 140) }}</span>
+                    <div class="infinite-scroll">
+                        <ul class="carousel1">
+                        @foreach ($dishes as $home_view_dish)
+                            <li>
                                 <div>
-                                    <strong>{{ $home_view_dish->created_at }}</strong>
+                                    <a href="{{ route('dishes.show', $home_view_dish->slug) }}">
+                                        <img src="{{ config('asset.image_path.dish').$home_view_dish->picture }}" alt="">
+                                    </a>
+                                    <div class="col1 upp">
+                                        <a href="{{ route('dishes.show', $home_view_dish->slug) }}"><strong>{{ $home_view_dish->name }}</strong></a>
+                                        <strong class="pull-right">{{ $home_view_dish->like_number }} <i class="fa fa-heart"></i></strong>
+                                    </div>
+                                    <span>{{ str_limit($home_view_dish->description, 140) }}</span>
+                                    <div>
+                                        <strong>{{ $home_view_dish->created_at }}</strong>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                    @endforeach
-                    </ul>
+                            </li>
+                        @endforeach
+                        </ul>
+                        {{ $dishes->links() }}
+                    </div>
                 </div>
                 <div><a href="{{ route('dishes.index') }}" class="btn btn-success"><strong>{{ trans('homepage.viewmore') }}</strong></a></div>
             </div>
@@ -152,5 +155,20 @@
 @endsection
 
 @section('foot')
-
+    <script src="{{ asset('bower_components/jscroll/dist/jquery.jscroll.min.js') }}" type="text/javascript"></script>
+    <script type="text/javascript">
+        $('ul.pagination').hide();
+        $(function() {
+            $('.infinite-scroll').jscroll({
+                autoTrigger: true,
+                loadingHtml: '<img class="center-block" src="{{ asset('images/loading.gif') }}" alt="Loading..." />',
+                padding: 0,
+                nextSelector: '.pagination li.active + li a',
+                contentSelector: 'div.infinite-scroll',
+                callback: function() {
+                    $('ul.pagination').remove();
+                }
+            });
+        });
+    </script>
 @endsection

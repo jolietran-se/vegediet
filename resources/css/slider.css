@@ -15,14 +15,14 @@
 .slider-block {
 	position:relative;
 	overflow:hidden;
-	height: 625px;
+	height: 550px;
 	margin: 0 auto;
 	background: #ffffff;
 }
 
 .slider {
 	z-index:2;
-	height: 625px;
+	height: 550px;
 	position: absolute;
 	left: 50%;
 	margin-left: -800px;

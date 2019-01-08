@@ -107,9 +107,9 @@ class DishController extends Controller
         return $slug;
     }
     
-    public function show($id)
+    public function show($slug)
     {
-        $dish = Dish::with('user')->findOrFail($id);
+        $dish = Dish::with('user')->where('slug', $slug)->first();
         
         return view('dishes.show', compact('dish'));
     }

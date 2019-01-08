@@ -43,14 +43,14 @@
                         @foreach ($dishes as $home_view_dish)
                             <li>
                                 <div>
-                                    <a href="{{ route('dishes.show', $home_view_dish->id) }}">
+                                    <a href="{{ route('dishes.show', $home_view_dish->slug) }}">
                                         <img src="{{ config('asset.image_path.dish').$home_view_dish->picture }}" alt="">
                                     </a>
                                     <div class="col1 upp">
-                                        <a href="{{ route('dishes.show', $home_view_dish->id) }}"><strong>{{ $home_view_dish->name }}</strong></a>
+                                        <a href="{{ route('dishes.show', $home_view_dish->slug) }}"><strong>{{ $home_view_dish->name }}</strong></a>
                                         <strong class="pull-right">{{ $home_view_dish->like_number }} <i class="fa fa-heart"></i></strong>
                                     </div>
-                                    <span>{{ $home_view_dish->description }}</span>
+                                    <span>{{ str_limit($home_view_dish->description,140) }}</span>
                                     <div>
                                         <strong>{{ $home_view_dish->created_at }}</strong>
                                     </div>
@@ -67,7 +67,6 @@
 @endsection
 
 @section('foot')
-    <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('bower_components/jscroll/dist/jquery.jscroll.min.js') }}" type="text/javascript"></script>
     
     <script type="text/javascript">
