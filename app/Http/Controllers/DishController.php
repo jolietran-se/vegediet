@@ -83,23 +83,23 @@ class DishController extends Controller
         $dish->calories_amount = 0;
         $dish->save();
         // Store tags
-        if (count($request->tags) != 0) {
+        if ($request->tags[0] != null) {
             $this->storeTags($dish, $request->tags );
         }
         // Store images
         $data = $request->all();
         $this->storeImage($dish, $data['images']);
         // Store ingredients
-        if (count($request->ingredients) !=0 ) {
+        if ($request->ingredients[0] != null) {
             $this->storeIngredient($dish, $request->ingredients,$request->masses);
         }
         // Store cooking steps
-        if (count($request->direction) != 0) {
+        if ($request->direction[0] != null) {
             $this->storeCookingStep($dish, $request->direction);
         }
         $dish->save();
 
-        return redirect()->route('dishes.show', ['dish' => $dish->id]);
+        return redirect()->route('dishes.show', ['dish' => $dish->slug]);
     }
 
     public function convert_slug($name){

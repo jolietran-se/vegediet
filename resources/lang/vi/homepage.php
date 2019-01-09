@@ -10,6 +10,6 @@ return [
     'feedback_sent' => 'Gửi phản hồi',
     'viewmore' => 'Xem thêm',
     'dish_list' => 'Danh sách món ăn chay',
-    'top' => '10 món ăn được yêu thích nhất tại Vegediet',
+    'top' => 'Top thịnh hành trên Vegediet',
     'new' => '10 món ăn mới nhất tại Vegediet',
 ];
