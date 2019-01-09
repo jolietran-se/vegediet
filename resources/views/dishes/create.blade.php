@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="{{ asset('css/dish_detail.css') }}">
     <link rel="stylesheet" href="{{ asset('bower_components/bootstrap-fileinput/css/fileinput.css') }}">
     <link rel="stylesheet" href="{{ asset('bower_components/select2/dist/css/select2.css') }}">
+    <link rel="stylesheet" href="{{ asset('bower_components/sweetalert2/dist/sweetalert2.min.css') }}">
     
     <style type="text/css">
         .main-section{
@@ -18,6 +19,13 @@
 @endsection
 
 @section('content')
+    @if($errors->count() > 0)
+        <div id="ERROR_COPPY" style="display:none" class="alert alert-danger">
+            @foreach($errors->all() as $error)
+                {{ $error }} <br>
+            @endforeach
+        </div>
+    @endif
     <div class="content page">
         <div class="container_12">
             <div class="grid_12">
@@ -33,7 +41,7 @@
                 </div>
 
                 <div id="pageContent" class="model">
-                    {!! Form::open(['method' => 'POST', 'route' => 'dishes.store', 'class' => 'form-horizontal']) !!}
+                    {!! Form::open(['method' => 'POST', 'route' => 'dishes.store', 'class' => 'form-horizontal validate-form flex-sb flex-w']) !!}
                         <div class="portlet-body form-group">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -41,14 +49,17 @@
                                     <div class="main-section">
                                         <div class="form-group">
                                             <div class="file-loading">
-                                                {!! Form::file('file', ['class' => 'file', 'multiple' => true, 'id' => 'file-1', 'name' => 'file', 'data-overwrite-initial' => 'false', 'data-min-file-count' => '2']) !!}
+                                                {!! Form::file('file', 
+                                                    ['class' => 'file', 
+                                                    'multiple' => true, 
+                                                    'id' => 'file-1', 
+                                                    'name' => 'file', 
+                                                    'data-overwrite-initial' => 'false', 
+                                                    'data-min-file-count' => '2'
+                                                    ]) 
+                                                !!}
                                             </div>
                                         </div>
-                                        @if ($errors->has('file'))
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('file') }}</strong>
-                                            </span>
-                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -57,13 +68,14 @@
                                             {!! Form::label(null, trans('dish.dish_name')) !!}(<span class="red">*</span>)
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::text('name',null, ['class' => 'form-control', 'id' => 'name', 'name' => 'name', 'placeholder' => trans('dish.note_name')]) !!}
+                                            {!! Form::text('name',null, [
+                                                'class' => 'form-control', 
+                                                'id' => 'name', 
+                                                'name' => 'name',
+                                                'placeholder' => trans('dish.note_name')
+                                                ]) 
+                                            !!}
                                         </div>
-                                        @if ($errors->has('name'))
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('name') }}</strong>
-                                            </span>
-                                        @endif
                                         <div class="form-group">
                                             <i class="fa fa-list font-green" aria-hidden="true"></i>{!! Form::label(null, trans('dish.category')) !!}
                                         </div>
@@ -82,13 +94,14 @@
                                             {!! Form::label(null, trans('dish.description')) !!}(<span class="red">*</span>)
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::textarea('description', null, ['class' => 'form-control description', 'id' => 'description', 'name' => 'description', 'placeholder' => trans('dish.note_des')]) !!}
+                                            {!! Form::textarea('description', null, [
+                                                'class' => 'form-control description', 
+                                                'id' => 'description', 
+                                                'name' => 'description',
+                                                'placeholder' => trans('dish.note_des')
+                                                ]) 
+                                            !!}
                                         </div>
-                                        @if ($errors->has('description'))
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('description') }}</strong>
-                                            </span>
-                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -108,10 +121,20 @@
                                         </div>
                                         <div class="form-group more-ingredien-1">
                                             <div class="col-lg-6">
-                                                {!! Form::text('ingredients[]', null, ['class'=> 'form-control', 'list' => 'list_ingredients',  'placeholder' => trans('dish.note_ingre')]) !!}
+                                                {!! Form::text('ingredients[]', null, [
+                                                    'class'=> 'form-control', 
+                                                    'list' => 'list_ingredients',  
+                                                    'placeholder' => trans('dish.note_ingre')
+                                                    ]) 
+                                                !!}
                                             </div>
                                             <div class="col-lg-4">
-                                                {!! Form::number('masses[]', null, ['id' => 'ingredient_mass', 'class' => 'form-control', 'placeholder' => trans('dish.note_gram')]) !!}
+                                                {!! Form::number('masses[]', null, [
+                                                    'id' => 'ingredient_mass', 
+                                                    'class' => 'form-control', 
+                                                    'placeholder' => trans('dish.note_gram')
+                                                    ]) 
+                                                !!}
                                             </div>
                                             <div class="col-lg-1">
                                                 <button class="dynamic item-remove-ingredient"><span class="fa fa-minus-circle"></span></button>
@@ -128,7 +151,11 @@
                                         </div>
                                         <div class="form-group more-cookingstep-1">
                                             <div class="col-lg-10">
-                                                {!! Form::textarea('direction[]', null, ['class' => 'form-control steps', 'placeholder' => trans('dish.note_direction')]) !!}
+                                                {!! Form::textarea('direction[]', null, [
+                                                    'class' => 'form-control steps', 
+                                                    'placeholder' => trans('dish.note_direction')
+                                                    ]) 
+                                                !!}
                                             </div>
                                             <div class="col-lg-1">
                                                 <button class="dynamic item-remove-step"><span class="fa fa-minus-circle"></span></button>
@@ -161,10 +188,13 @@
     <!-- Upload Image with fileinput -->
     <script src="{{ asset('bower_components/bootstrap-fileinput/js/fileinput.js') }}" type="text/javascript"></script>
 	<script src="{{ asset('bower_components/bootstrap-fileinput/themes/fa/theme.js') }}" type="text/javascript"></script>
-	<script src="{{ asset('bower_components/popper.js/dist/umd/popper.min.js') }}" type="text/javascript"></script>
-    <!-- Create Tags with Select2 -->
+    <script src="{{ asset('bower_components/popper.js/dist/umd/popper.min.js') }}" type="text/javascript"></script>
     
+    <!-- Create Tags with Select2 -->
 	<script src="{{ asset('bower_components/select2/dist/js/select2.full.min.js') }}" type="text/javascript"></script>
+    
+    <!-- SweetAlert -->
+	<script src="{{ asset('bower_components/sweetalert2/dist/sweetalert2.min.js') }}" type="text/javascript"></script>
     
     <!-- Upload images -->
     <script type="text/javascript">
@@ -259,5 +289,17 @@
         });
 
     </script>
-
+    <!-- SweetAlert2 -->
+    <script>
+        var has_errors = {{ $errors->count() > 0? 'true' : 'false'}};
+        if(has_errors){
+            swal({
+                title: 'Lỗi',
+                type: 'error',
+                html:jQuery('#ERROR_COPPY').html(),
+                showCloseButton: true,
+            })
+        }
+        
+    </script>
 @endsection
