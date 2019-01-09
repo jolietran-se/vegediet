@@ -46,12 +46,16 @@
                                             </ul>
                                         </div>
                                         <ul class="product-link">
-                                            <li class="text-right"><a href="#"><span class="fa fa-heart tooltip-link"></span><span class="text">{{ trans('dish.add_wishlist') }}</span></a></li>
-                                            <li class="text-left"><a href="#"><span class="fa fa-print tooltip-link"></span><span class="text">{{ trans('dish.print') }}</span></a></li>
-                                            <li class="text-left"><a href="#"><span class="fa fa-share-square tooltip-link"></span><span class="text">{{ trans('dish.share') }}</span></a></li>
-                                            <li class="text-left"><a href="{{ route('dishes.create') }}"><span class="fa fa-plus-circle tooltip-link"></span><span class="text">{{ trans('dish.add') }}</span></a></li>
-                                            <li class="text-left"><a href="{{ route('dishes.edit', $dish->id) }}"><span class="fa fa-edit tooltip-link"></span><span class="text">{{ trans('dish.edit') }}</span></a></li>
-                                            <li class="text-left"><a href="{{ route('dishes.destroy', $dish->id) }}"><span class="fa fa-trash tooltip-link"></span><span class="text">{{ trans('dish.destroy') }}</span></a></li>
+                                            <li class="text-right"><a href="#"><span class="fa fa-heart tooltip-link"></span><span> {{ trans('dish.add_wishlist') }}</span></a></li>
+                                            <li class="text-left"><a href="#"><span class="fa fa-print tooltip-link"></span><span> {{ trans('dish.print') }}</span></a></li>
+                                            <li class="text-left"><a href="#"><span class="fa fa-share-square tooltip-link"></span><span> {{ trans('dish.share') }}</span></a></li>
+                                        </ul>
+                                        <ul class="product-link product-link-2">
+                                            <li><a href="{{ route('dishes.create') }}" class="btn btn-success"><strong>{{ trans('dish.add') }}</strong></a></li>
+                                            @if (Route::has('login') && (Auth::user()->id == $dish->user->id))
+                                                <li><a href="{{ route('dishes.edit', $dish->slug) }}" class="btn btn-info"><strong>{{ trans('dish.edit') }}</strong></a></li>
+                                                <li><a href="{{ route('dishes.destroy', $dish->slug) }}" class="btn btn-danger"><strong>{{ trans('dish.destroy') }}</strong></a></li>
+                                            @endif
                                         </ul>
                                     </div>
                                     <div class="product-info col-sm-6 col-md-6 col-lg-6 col-xl-6">
@@ -68,7 +72,7 @@
                                         <div class="product-info__description hidden-xs">
                                             <div class="product-info__description__brand"><img src="{{ config('asset.image_path.owner_avatar').$dish->user->avatar }}" class="avatar_chef" alt=""/></div>
                                             <div class="product-info__description__text">
-                                                <a href="#">{{ trans('dish.repice') }}: <strong class="color">{{ $dish->user->name }}</strong></a>
+                                                {{ trans('dish.repice') }}: <a href="#"><strong class="color">{{ $dish->user->name }}</strong></a>
                                                 <div class="divider divider--xs product-info__divider hidden-xs"></div>
                                                 "{{ $dish->description }}"
                                             </div>

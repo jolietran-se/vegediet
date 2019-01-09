@@ -18,6 +18,7 @@ class DishEloquentRepository extends EloquentRepository implements DishRepositor
 
     public function getAll(){
         $result = $this->_model::whereNotNull('id')
+            ->distinct()
             ->inRandomOrder()
             ->paginate(config('const.home_paginate'));
 

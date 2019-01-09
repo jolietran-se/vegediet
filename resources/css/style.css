@@ -113,13 +113,8 @@ a:hover {
 
 a.btn {
 	display: inline-block;
-	background: #e2827e;
 	border-radius: 4px;
 	color: #fff;
-}
-
-a.btn:hover {
-	background: #699440;
 }
 
 a.btn.m1 {
@@ -385,8 +380,6 @@ header h1 a img {
 }
 
 .bottom_block {
-	background: url(../images/images-temp/hor_separator.png) center 38px no-repeat;
-	/* padding-top: 38px;s */
 	font-size: 12px;
 	padding-bottom: 34px;
 	overflow: hidden;

@@ -1,11 +1,10 @@
 /* Slick - slide images detail */
 .slick-slide img
 {
-    padding: 3px;
+    padding: 5px;
     border: 1px solid #e6e4e4;
 	box-shadow: 2px 2px 5px #ddd;
 	height: 100px;
-	width: 110px;
 }
 
 /* Arrows */
@@ -157,7 +156,6 @@ textarea.description {
 	color: #ffffff;
 }
 .content {
-	padding-bottom: 60px;
 	padding-top: 20px;
 }
 
@@ -294,16 +292,6 @@ button:focus {
 	left: auto;
 }
 
-@media (min-width: 768px) {
-	.nav-tabs.nav-justified>li {
-		display: table-cell;
-		width: 1%;
-	}
-	.nav-tabs.nav-justified>li>a {
-		margin-bottom: 0;
-	}
-}
-
 .nav-tabs.nav-justified>li>a {
 	margin-right: 0;
 	border-radius: 4px;
@@ -313,18 +301,6 @@ button:focus {
 .nav-tabs.nav-justified>.active>a:hover,
 .nav-tabs.nav-justified>.active>a:focus {
 	border: 1px solid #ddd;
-}
-
-@media (min-width: 768px) {
-	.nav-tabs.nav-justified>li>a {
-		border-bottom: 1px solid #ddd;
-		border-radius: 4px 4px 0 0;
-	}
-	.nav-tabs.nav-justified>.active>a,
-	.nav-tabs.nav-justified>.active>a:hover,
-	.nav-tabs.nav-justified>.active>a:focus {
-		border-bottom-color: #fff;
-	}
 }
 
 
@@ -422,12 +398,6 @@ button:focus {
 	list-style: none;
 }
 
-@media (max-width: 1298px) {
-	.product-link {
-		display: none;
-	}
-}
-
 .product-link li {
 	overflow: hidden;
 	white-space: nowrap;
@@ -445,9 +415,17 @@ button:focus {
 }
 
 .product-link li a {
-	font-size: 28px;
-	line-height: 32px;
+	font-size: 18px;
+	line-height: 28px;
 	color: #333333;
+	display: inline-block;
+	vertical-align: middle;
+	text-decoration: none;
+}
+.product-link-2 li a {
+	font-size: 18px;
+	line-height: 23px;
+	color: #fff;
 	display: inline-block;
 	vertical-align: middle;
 	text-decoration: none;
@@ -464,14 +442,6 @@ button:focus {
 	opacity: 0;
 	max-width: 0;
 	transition: max-width 500ms ease-out 100ms, opacity 500ms ease-out 100ms, color;
-}
-
-@media (max-width: 1199px) {
-	.product-link li a {
-		max-width: 150px;
-		opacity: 1;
-		text-align: center;
-	}
 }
 
 .product-link li:hover {
@@ -533,38 +503,6 @@ button:focus {
 	margin-top: -24.5px;
 }
 
-@media (max-width: 1200px) {
-	.product-info-outer #productPrevNext img {
-		top: auto;
-		bottom: -110px;
-		right: 20px;
-		left: auto;
-	}
-	.product-info-outer #productPrevNext .product-prev {
-		top: -60px !important;
-		right: 70px !important;
-		left: auto !important;
-		margin-top: 0;
-	}
-	.product-info-outer #productPrevNext .product-next {
-		top: -60px !important;
-		right: 0 !important;
-		left: auto !important;
-		margin-top: 0;
-	}
-}
-
-@media (max-width: 1333px) {
-	.product-info-outer #productPrevNext .product-prev img {
-		left: 18px;
-	}
-}
-
-@media (max-width: 1333px) {
-	.product-info-outer #productPrevNext .product-next img {
-		left: -53px;
-	}
-}
 
 .product-info-outer #productPrevNext .product-prev:hover:before,
 .product-info-outer #productPrevNext .product-next:hover:before {
@@ -664,31 +602,6 @@ button:focus {
 	margin-top: -4px;
 }
 
-@media (max-width: 991px) {
-	.product-info__sku {
-		float: none !important;
-		margin-bottom: 15px;
-	}
-}
-
-.product-info__availability {
-	font-weight: 300;
-	margin-top: -4px;
-}
-
-@media (min-width: 1770px) {
-	.product-info__availability {
-		float: left !important;
-		padding-left: 25px;
-	}
-}
-
-@media (max-width: 991px) {
-	.product-info__availability {
-		float: none !important;
-	}
-}
-
 .product-info__title {
 	margin: 8px 0 20px;
 }
@@ -715,18 +628,6 @@ button:focus {
 .breadcrumbs {
 	margin-bottom: 14px;
 	padding: 10px 0 10px;
-}
-
-@media (max-width: 767px) {
-	.breadcrumbs {
-		margin-bottom: 0;
-	}
-}
-
-@media (min-width: 1025px) {
-	.breadcrumbs .container {
-		border-top: 1px solid #e5e5e5;
-	}
 }
 
 .breadcrumbs .breadcrumb.breadcrumb--ys {
@@ -889,16 +790,27 @@ input {
 	color: #ac2925;
 }
 
-/* li {
-	margin-top: 10px;
-} */
-
-a.btn {
-	background: #5fa022;
+a:hover{
+	text-decoration: none;
 }
+
 a.btn:hover {
 	background: #ffffff;
 	color: #5fa022;
+}
+
+.btn-success {
+	background-color: #28a745;
+	border-color: #28a745;
+}
+.btn-info{
+	background-color: #17a2b8;
+	border-color: #17a2b8;
+}
+
+.btn-danger {
+	background-color: #dc3545;
+	border-color: #dc3545;
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
 	margin-bottom: 5px;
