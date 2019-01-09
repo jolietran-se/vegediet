@@ -14,6 +14,9 @@
         <link rel="stylesheet" href="{{ asset('css/slider.css') }}">
         <link rel="stylesheet" href="{{ asset('bower_components/components-font-awesome/css/font-awesome.min.css') }}">
 
+        <!-- <link rel="stylesheet" href="{{ asset('bower_components/sweetalert/src/sweetalert.css') }}">
+        <script src="{{ asset('bower_components/sweetalert/src/sweetalert.js') }}"></script> -->
+
         <script src="{{ asset('bower_components/jquery/dist/jquery.js') }}"></script>
         <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
         <script src="{{ asset('bower_components/jquery-migrate/jquery-migrate.js') }}"></script> 

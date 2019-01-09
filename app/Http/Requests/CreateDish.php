@@ -14,9 +14,8 @@ class CreateDish extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:8|max:50',
+            'name' => 'required|min:8',
             'description' => 'required',
-            'file' => 'required',
         ];
     }
     public function messages() 
@@ -24,9 +23,7 @@ class CreateDish extends FormRequest
         return [
             'name.required' => 'Bạn chưa nhập tên món ăn',
             'name.min' => 'Tên món ăn có tối thiểu 8 kí tự  ',
-            'name.max' => 'Tên món ăn có tối đa 50 kí tự  ',
             'description.required' => 'Bạn chưa viết mô tả',
-            'file.required' => 'Bạn chưa tải ảnh lên',
         ];
     }
 }

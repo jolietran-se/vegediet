@@ -889,9 +889,9 @@ input {
 	color: #ac2925;
 }
 
-li {
+/* li {
 	margin-top: 10px;
-}
+} */
 
 a.btn {
 	background: #5fa022;
@@ -899,4 +899,7 @@ a.btn {
 a.btn:hover {
 	background: #ffffff;
 	color: #5fa022;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+	margin-bottom: 5px;
 }
