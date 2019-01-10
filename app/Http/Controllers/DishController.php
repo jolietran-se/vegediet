@@ -99,6 +99,10 @@ class DishController extends Controller
         }
         $dish->save();
 
+        if(isset($dish)){
+            Session::flash('create_dish', 'Món ăn đã được thêm mới thành công!');
+        }
+        
         return redirect()->route('dishes.show', ['dish' => $dish->slug]);
     }
 

@@ -11,13 +11,23 @@
 @endsection
 
 @section('content')
+
+
+
 <div class="content page">
     <div class="container_12">
         <!-- DETAIL -->
         <div class= "grid_12">
+            <!-- Notice -->
+            @if( Session::has('create_dish') )
+                <div class="alert alert-success">
+                    {{ Session::get('create_dish') }}
+                </div>
+            @endif
             <!-- Home -->
             <div class="breadcrumbs">
                 <div class="container">
+                
                     <ol class="breadcrumb breadcrumb--ys pull-left">
                         <li class="home-link"><a href="{{ route('home') }}" class="fa fa-home"></a></li>
                         <li><a href="{{ route('home') }}">{{ trans('headertext.home') }}</a></li>
@@ -52,10 +62,13 @@
                                         </ul>
                                         <ul class="product-link product-link-2">
                                             <li><a href="{{ route('dishes.create') }}" class="btn btn-success"><strong>{{ trans('dish.add') }}</strong></a></li>
-                                            @if (Route::has('login') && (Auth::user()->id == $dish->user->id))
+                                            @if(isset(Auth::user()->id) && (Auth::user()->id == $dish->user->id))
                                                 <li><a href="{{ route('dishes.edit', $dish->slug) }}" class="btn btn-info"><strong>{{ trans('dish.edit') }}</strong></a></li>
-                                                <li><a href="{{ route('dishes.destroy', $dish->slug) }}" class="btn btn-danger"><strong>{{ trans('dish.destroy') }}</strong></a></li>
+                                                <li>
+                                                    <a href="{{ route('dishes.destroy', $dish->slug) }}" class="btn btn-danger"><strong>{{ trans('dish.destroy') }}</strong></a>
+                                                </li>
                                             @endif
+                                           
                                         </ul>
                                     </div>
                                     <div class="product-info col-sm-6 col-md-6 col-lg-6 col-xl-6">

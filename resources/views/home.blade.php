@@ -69,7 +69,7 @@
                                     </a>
                                     <strong class="pull-right">{{ $new_dish->like_number }} <i class="fa fa-heart"></i></strong>
                                 </div>
-                                <span>{{ str_limit($new_dish->description, 140) }}</span>
+                                <span>{{ str_limit($new_dish->description, 100) }}</span>
                                 <div>
                                     <strong>{{ $new_dish->created_at }}</strong>
                                 </div>
@@ -103,7 +103,7 @@
                                     </a>
                                     <strong class="pull-right">{{ $top_dish->like_number }} <i class="fa fa-heart"></i></strong>
                                 </div>
-                                <span>{{ str_limit($top_dish->description, 140) }}</span>
+                                <span>{{ str_limit($top_dish->description, 100) }}</span>
                                 <div>
                                     <strong>{{ $top_dish->created_at }}</strong>
                                 </div>
@@ -135,7 +135,7 @@
                                         <a href="{{ route('dishes.show', $home_view_dish->slug) }}"><strong>{{ $home_view_dish->name }}</strong></a>
                                         <strong class="pull-right">{{ $home_view_dish->like_number }} <i class="fa fa-heart"></i></strong>
                                     </div>
-                                    <span>{{ str_limit($home_view_dish->description, 140) }}</span>
+                                    <span>{{ str_limit($home_view_dish->description, 100) }}</span>
                                     <div>
                                         <strong>{{ $home_view_dish->created_at }}</strong>
                                     </div>
@@ -143,7 +143,6 @@
                             </li>
                         @endforeach
                         </ul>
-                        {{ $dishes->links() }}
                     </div>
                 </div>
                 <div><a href="{{ route('dishes.index') }}" class="btn btn-success"><strong>{{ trans('homepage.viewmore') }}</strong></a></div>
@@ -153,20 +152,4 @@
 @endsection
 
 @section('foot')
-    <script src="{{ asset('bower_components/jscroll/dist/jquery.jscroll.min.js') }}" type="text/javascript"></script>
-    <script type="text/javascript">
-        $('ul.pagination').hide();
-        $(function() {
-            $('.infinite-scroll').jscroll({
-                autoTrigger: true,
-                loadingHtml: '<img class="center-block" src="{{ asset('images/loading.gif') }}" alt="Loading..." />',
-                padding: 0,
-                nextSelector: '.pagination li.active + li a',
-                contentSelector: 'div.infinite-scroll',
-                callback: function() {
-                    $('ul.pagination').remove();
-                }
-            });
-        });
-    </script>
 @endsection
