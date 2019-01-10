@@ -41,7 +41,12 @@
                 </div>
 
                 <div id="pageContent" class="model">
-                    {!! Form::open(['method' => 'POST', 'route' => 'dishes.store', 'class' => 'form-horizontal validate-form flex-sb flex-w']) !!}
+                    {!! Form::open([
+                        'method' => 'POST', 
+                        'route' => 'dishes.store', 
+                        'class' => 'form-horizontal validate-form flex-sb flex-w'
+                        ]) 
+                    !!}
                         <div class="portlet-body form-group">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -208,6 +213,7 @@
             },
             allowedFileExtensions: ['jpg', 'png', 'gif', 'jpeg'],
             overwriteInitial: false,
+            minFileSize:50,
             maxFileSize:1000,
             maxFilesNum: 10,
             slugCallback: function (filename) {

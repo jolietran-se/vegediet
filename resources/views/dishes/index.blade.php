@@ -50,7 +50,7 @@
                                         <a href="{{ route('dishes.show', $home_view_dish->slug) }}"><strong>{{ $home_view_dish->name }}</strong></a>
                                         <strong class="pull-right">{{ $home_view_dish->like_number }} <i class="fa fa-heart"></i></strong>
                                     </div>
-                                    <span>{{ str_limit($home_view_dish->description,140) }}</span>
+                                    <span>{{ str_limit($home_view_dish->description,100) }}</span>
                                     <div>
                                         <strong>{{ $home_view_dish->created_at }}</strong>
                                     </div>
