@@ -6,6 +6,7 @@ return [
         'slide' => 'images/slides/',
         'dish_detail' => '../images/dishes/',
         'owner_avatar' => '../images/avatars/',
+        'auth_avatar' => '/images/avatars/',
 
     ],
 ];
