@@ -202,45 +202,7 @@
 	<script src="{{ asset('bower_components/sweetalert2/dist/sweetalert2.min.js') }}" type="text/javascript"></script>
     
     <!-- Delete dish with SweetAlert2 -->
-    <script>
-        // $('button.submit-delete').click(function()
-        // {
-        //     var dishRoute = $(this).attr("data-dish_destroy_route");
-        //     var dishName = $(this).attr("data-dish_name");
-        //     var dishId = $(this).attr("data-dish_id");
-        //     var token = $(this).attr("data-token");
-
-        //     function deleteDish(dishRoute, dishName, dishId)
-        //     {
-        //         swal({
-        //             title: "Xóa món ăn!",
-        //             text: "Bạn có chắc chắn rằng bạn sẽ xóa " + dishName + " ? " +
-        //             "Mọi dữ liệu sẽ bị xóa vĩnh viễn!",
-        //             type: "warning",
-        //             showCancelButton: true,
-        //             closeOnConfirm: false,
-        //             confirmButtonText: "Xóa!",
-        //             cancelButtonText: "Hủy",
-        //             confirmButtonColor: "#d33",
-        //             cancelButtonColor:"#3085d6",
-        //             },
-        //             function()
-        //             {
-        //                 if(isConfirm){
-        //                     $.ajax({
-        //                     type: "POST",
-        //                     url: dishRoute,
-        //                     data: {id:dishId},
-        //                     success:function(data) {
-        //                             //
-        //                     }         
-        //                 });
-        //                 }
-        //             }
-        //         )
-        //     };
-        // });
-    </script>
+   
     <script>
         $(document).on('click', '#destroy-dish', function(e){
             e.preventDefault();
