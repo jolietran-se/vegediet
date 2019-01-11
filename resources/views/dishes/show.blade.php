@@ -202,7 +202,6 @@
 	<script src="{{ asset('bower_components/sweetalert2/dist/sweetalert2.min.js') }}" type="text/javascript"></script>
     
     <!-- Delete dish with SweetAlert2 -->
-   
     <script>
         $(document).on('click', '#destroy-dish', function(e){
             e.preventDefault();
@@ -228,8 +227,6 @@
                         }
                     ) 
                 );
-            
-                
         });
     </script>
 @endsection
