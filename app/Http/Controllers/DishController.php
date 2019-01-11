@@ -113,14 +113,22 @@ class DishController extends Controller
     
     public function show($slug)
     {
-        $dish = Dish::with('user')->where('slug', $slug)->first();
+        $dish = Dish::where('slug', $slug)->first();
         
         return view('dishes.show', compact('dish'));
     }
 
-    public function edit($id)
+    public function edit($slug)
     {
-        //
+        $dish = Dish::where('slug', $slug)->first();
+
+        $categories = $this->cateRepository->all();
+
+        $ingredients = $this->ingredientRepository->all();
+
+        return view('dishes.edit', compact('dish', 'categories', 'ingredients'))
+            ->withCategories($categories)
+            ->withIngredients($ingredients);
     }
 
     public function update(Request $request, $id)
@@ -130,7 +138,13 @@ class DishController extends Controller
 
     public function destroy($id)
     {
-        //
+        $dish = Dish::findOrFail($id);
+
+        $dish->delete();
+
+        Session::flash('destroy_dish', 'Bạn đã hoàn thành xóa món ăn!');
+
+        return redirect()->route('dishes.index');
     }
 
     protected function storeTags($dish, $tags)

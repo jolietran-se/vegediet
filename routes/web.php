@@ -27,9 +27,9 @@ Route::group(['prefix' => '/mon-chay'], function () {
     Route::post('/', 'DishController@store')->name('dishes.store');
     Route::get('/them-moi', 'DishController@create')->name('dishes.create')->middleware('auth');
     Route::put('/{dish}', 'DishController@update')->name('dishes.update');
-    Route::get('/{dish}', 'DishController@show')->name('dishes.show');
-    Route::delete('/{dish}', 'DishController@destroy')->name('dishes.destroy');
-    Route::get('/cap-nhat/{dish}', 'DishController@edit')->name('dishes.edit');
+    Route::get('/{slug}', 'DishController@show')->name('dishes.show');
+    Route::get('/xoa/{id}', 'DishController@destroy')->name('dishes.destroy');
+    Route::get('/cap-nhat/{slug}', 'DishController@edit')->name('dishes.edit');
 
     Route::post('/image-uploads', 'DishController@uploadImages')->name('dish.uploadImages');
 

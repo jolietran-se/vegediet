@@ -42,6 +42,7 @@ return [
     'view' => 'Xem chi tiết',
     'add' => 'Thêm món',
     'edit' => 'Sửa',
+    'update' => 'Cập nhật món ăn',
     'destroy' => 'Xóa',
 
     'dish_picture' => 'Ảnh',

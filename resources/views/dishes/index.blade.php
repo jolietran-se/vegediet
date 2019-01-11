@@ -10,6 +10,12 @@
 @section('content')
     <div class="content">
         <div class="container_12">
+            <!-- Notice -->
+            @if(Session::has('destroy_dish') )
+                <div class="alert alert-success">
+                    {{ Session::get('destroy_dish') }}
+                </div>
+            @endif
             <!-- Search -->
             <div class="grid_12">
                 <h2>{{ trans('homepage.search') }}</h2>

@@ -718,3 +718,7 @@ footer a:hover {
 	width: 80px;
 	margin-left: 45%;
 }
+
+.li.home-link{
+	margin-left: -17px;
+}

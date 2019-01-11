@@ -306,6 +306,6 @@
                 showCloseButton: true,
             })
         }
-        
     </script>
 @endsection
+

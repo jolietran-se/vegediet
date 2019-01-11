@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="{{ asset('bower_components/slick-carousel/slick/slick-theme.css') }}">
     <link rel="stylesheet" href="{{ asset('bower_components/magnific-popup/dist/magnific-popup.css') }}">
     <link rel="stylesheet" href="{{ asset('bower_components/bootstrap-select/dist/css/bootstrap-select.css') }}">
+    <link rel="stylesheet" href="{{ asset('bower_components/sweetalert2/dist/sweetalert2.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('css/dish_detail.css') }}">
 
@@ -63,10 +64,36 @@
                                         <ul class="product-link product-link-2">
                                             <li><a href="{{ route('dishes.create') }}" class="btn btn-success"><strong>{{ trans('dish.add') }}</strong></a></li>
                                             @if(isset(Auth::user()->id) && (Auth::user()->id == $dish->user->id))
-                                                <li><a href="{{ route('dishes.edit', $dish->slug) }}" class="btn btn-info"><strong>{{ trans('dish.edit') }}</strong></a></li>
                                                 <li>
-                                                    <a href="{{ route('dishes.destroy', $dish->slug) }}" class="btn btn-danger"><strong>{{ trans('dish.destroy') }}</strong></a>
+                                                    <a href="{{ route('dishes.edit', $dish->slug) }}" class="btn btn-info">
+                                                        <strong>{{ trans('dish.edit') }}</strong>
+                                                    </a>
                                                 </li>
+                                                
+                                                <li>
+                                                    <!-- {!! Form::open(['method' => 'DELETE', 'route' => ['dishes.destroy', $dish->id], 'id' => 'submit-delete']) !!}
+                                                        <button type="button" class="btn btn-danger submit-delete"
+                                                            data-dish_id = "{{ $dish->id }}"
+                                                            data-token="{{ csrf_token() }}"
+                                                            data-dish_name="{{ $dish->name }}"
+                                                            data-dish_destroy_route="{{ route('dishes.destroy', $dish->id) }}">
+                                                            <strong>{{ trans('dish.destroy') }}</strong>
+                                                        </button>
+                                                    {!! Form::close() !!} -->
+                                                    <a href="javascript:" 
+                                                        class="btn btn-danger" 
+                                                        id="destroy-dish"
+                                                        dishId = "{{ $dish->id }}"
+                                                        dishName = "{{ $dish->name }}"
+                                                        dishRoute = "{{ route('dishes.destroy', $dish->id) }}"
+                                                        >
+                                                        <strong>{{ trans('dish.destroy') }}</strong>
+                                                    </a>
+                                                </li>
+
+                                                <!-- <li>
+                                                    <a href="{{ route('dishes.destroy', $dish->slug) }}" class="btn btn-danger"><strong>{{ trans('dish.destroy') }}</strong></a>
+                                                </li> -->
                                             @endif
                                            
                                         </ul>
@@ -171,4 +198,76 @@
     <script src="{{ asset('bower_components/jquery-colorbox/jquery.colorbox-min.js') }}"></script>
     <!-- Custom -->
     <script src="{{ asset('js/dish_detail.js') }}"></script>
+    <!-- SweetAlert -->
+	<script src="{{ asset('bower_components/sweetalert2/dist/sweetalert2.min.js') }}" type="text/javascript"></script>
+    
+    <!-- Delete dish with SweetAlert2 -->
+    <script>
+        // $('button.submit-delete').click(function()
+        // {
+        //     var dishRoute = $(this).attr("data-dish_destroy_route");
+        //     var dishName = $(this).attr("data-dish_name");
+        //     var dishId = $(this).attr("data-dish_id");
+        //     var token = $(this).attr("data-token");
+
+        //     function deleteDish(dishRoute, dishName, dishId)
+        //     {
+        //         swal({
+        //             title: "Xóa món ăn!",
+        //             text: "Bạn có chắc chắn rằng bạn sẽ xóa " + dishName + " ? " +
+        //             "Mọi dữ liệu sẽ bị xóa vĩnh viễn!",
+        //             type: "warning",
+        //             showCancelButton: true,
+        //             closeOnConfirm: false,
+        //             confirmButtonText: "Xóa!",
+        //             cancelButtonText: "Hủy",
+        //             confirmButtonColor: "#d33",
+        //             cancelButtonColor:"#3085d6",
+        //             },
+        //             function()
+        //             {
+        //                 if(isConfirm){
+        //                     $.ajax({
+        //                     type: "POST",
+        //                     url: dishRoute,
+        //                     data: {id:dishId},
+        //                     success:function(data) {
+        //                             //
+        //                     }         
+        //                 });
+        //                 }
+        //             }
+        //         )
+        //     };
+        // });
+    </script>
+    <script>
+        $(document).on('click', '#destroy-dish', function(e){
+            e.preventDefault();
+            var dishRoute = $(this).attr("dishRoute");
+            var dishName = $(this).attr("dishName");
+            var dishId = $(this).attr("dishId");
+            // alert(dishId);
+            swal({
+                    title: "Xóa món ăn!",
+                    text: "Bạn có chắc chắn rằng bạn sẽ xóa " + dishName + " ? " +
+                    "Mọi dữ liệu sẽ bị xóa vĩnh viễn!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonText: "Xóa!",
+                    confirmButtonColor: "#d33",
+                    cancelButtonText: "Hủy",
+                    cancelButtonColor:"#3085d6",
+                    buttonStyling: false,
+                }).then(
+                    $('button.swal2-confirm').click(
+                        function(){
+                            window.location.href = dishRoute;
+                        }
+                    ) 
+                );
+            
+                
+        });
+    </script>
 @endsection

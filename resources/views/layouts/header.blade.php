@@ -13,7 +13,7 @@
                     @auth
                         <li>
                             <a>
-                                <img src="{{ config('asset.image_path.owner_avatar').Auth::user()->avatar }}" class="img-circle">
+                                <img src="{{ config('asset.image_path.auth_avatar').Auth::user()->avatar }}" class="img-circle">
                                 <span class="caret">{{ Auth::user()->name }}</span>
                             </a>
                             <ul>
@@ -30,7 +30,7 @@
                                     <a href="#"><span class="fa fa-user pull-left"></span>{{ trans('headertext.your_profile') }}</a>
                                 </li>
                                 <li>
-                                    <a href="#"><span class="fa fa-apple pull-left"></span>{{ trans('headertext.your_dish') }}</a>
+                                    <a href="{{ route('dishes.create') }}"><span class="fa fa-apple pull-left"></span>{{ trans('headertext.add_dish') }}</a>
                                 </li>
                                 <li>
                                     <a href="#"><span class="fa fa-heart pull-left"></span>{{ trans('headertext.your_favorites') }}</a>
