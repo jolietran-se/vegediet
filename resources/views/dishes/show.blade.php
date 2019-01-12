@@ -71,29 +71,16 @@
                                                 </li>
                                                 
                                                 <li>
-                                                    <!-- {!! Form::open(['method' => 'DELETE', 'route' => ['dishes.destroy', $dish->id], 'id' => 'submit-delete']) !!}
-                                                        <button type="button" class="btn btn-danger submit-delete"
-                                                            data-dish_id = "{{ $dish->id }}"
-                                                            data-token="{{ csrf_token() }}"
-                                                            data-dish_name="{{ $dish->name }}"
-                                                            data-dish_destroy_route="{{ route('dishes.destroy', $dish->id) }}">
-                                                            <strong>{{ trans('dish.destroy') }}</strong>
-                                                        </button>
-                                                    {!! Form::close() !!} -->
                                                     <a href="javascript:" 
                                                         class="btn btn-danger" 
                                                         id="destroy-dish"
                                                         dishId = "{{ $dish->id }}"
                                                         dishName = "{{ $dish->name }}"
-                                                        dishRoute = "{{ route('dishes.destroy', $dish->id) }}"
-                                                        >
+                                                        dishRoute = "{{ route('dishes.destroy', $dish->id) }}">
                                                         <strong>{{ trans('dish.destroy') }}</strong>
                                                     </a>
                                                 </li>
 
-                                                <!-- <li>
-                                                    <a href="{{ route('dishes.destroy', $dish->slug) }}" class="btn btn-danger"><strong>{{ trans('dish.destroy') }}</strong></a>
-                                                </li> -->
                                             @endif
                                            
                                         </ul>
@@ -202,6 +189,7 @@
 	<script src="{{ asset('bower_components/sweetalert2/dist/sweetalert2.min.js') }}" type="text/javascript"></script>
     
     <!-- Delete dish with SweetAlert2 -->
+
     <script>
         $(document).on('click', '#destroy-dish', function(e){
             e.preventDefault();

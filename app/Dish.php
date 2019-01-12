@@ -65,4 +65,17 @@ class Dish extends Model
     {
         return $this->hasMany('App\DishImages');
     }
+
+    public static function boot() {
+        parent::boot();
+
+        static::deleting(function($dish) { // before delete() method call this
+            $dish->cookingsteps()->delete();
+            $dish->dishImages()->delete();
+            $dish->ingredients()->detach();
+            $dish->categories()->detach();
+        });
+    }
+
+    
 }
