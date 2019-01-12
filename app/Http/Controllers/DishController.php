@@ -8,6 +8,7 @@ use App\Ingredient;
 use App\ImageUploads;
 use App\DishImages;
 use App\DishIngredient;
+use App\DishCategory;
 use App\CookingStep;
 use Session;
 
@@ -139,7 +140,19 @@ class DishController extends Controller
     public function destroy($id)
     {
         $dish = Dish::findOrFail($id);
-
+        // Xóa ảnh khỏi Folder 
+        $dishImage = DishImages::where('dish_id', $id)->get();
+        foreach($dishImage as $img){
+            $image_path = public_path()."/images/dishes/".$img->link;  // Value is not URL but directory file path
+            @unlink($image_path);
+        }
+        // Xóa ảnh trong bảng trung gian
+        $imageUpload = ImageUploads::all();
+        foreach($imageUpload as $img){
+            $img->delete();
+        }
+        // Xóa các dữ liệu Relationship 
+        $dish->boot();
         $dish->delete();
 
         Session::flash('destroy_dish', 'Bạn đã hoàn thành xóa món ăn!');
