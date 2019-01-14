@@ -4,13 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class DishIngredient extends Model
+class DishCategory extends Model
 {
-    protected $table = 'dish_ingredient';
+    protected $table = 'dish_category';
     protected $fillable = [
     	'dish_id',
-    	'ingredient_id',
-    	'weight',
+    	'category_id',
     ];
 
     // Mỗi món ăn có nhiều nguyên liệu khác nhau
@@ -18,5 +17,4 @@ class DishIngredient extends Model
     {
     	return $this->belongsTo('App\Dish');
     }
-    
 }
