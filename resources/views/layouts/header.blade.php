@@ -10,7 +10,7 @@
                     <li><a  href="#">{{ trans('headertext.all_ingredients') }}</a></li>
                     <li><a  href="#">{{ trans('headertext.contact') }}</a></li>
                     @if (Route::has('login'))
-                    @auth
+                        @auth
                         <li>
                             <a>
                                 <img src="{{ config('asset.image_path.auth_avatar').Auth::user()->avatar }}" class="img-circle">

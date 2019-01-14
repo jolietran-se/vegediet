@@ -11,7 +11,7 @@ class CategoryEloquentRepository extends EloquentRepository implements CategoryR
     }
     public function all()
     {
-        $result = $this->_model::all();
+        $result = $this->_model::whereNotNull('id')->distinct()->get();
 
         return $result;
     }
