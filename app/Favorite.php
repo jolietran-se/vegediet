@@ -8,17 +8,12 @@ class Favorite extends Model
 {
     protected $table = 'favorites';
     protected $fillable = [
-        'user_id', 
         'dish_id',
+        'user_id', 
     ];
 
     public function dishes()
     {
         return $this->hasMany('App\Dish');
-    }
-
-    public function user()
-    {
-        return $this->belongsTo('App\User');
     }
 }

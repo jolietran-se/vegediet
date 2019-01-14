@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Dish;
+use App\User;
+use App\Favorite;
 use App\Category;
 use App\Ingredient;
 use App\ImageUploads;
@@ -78,26 +80,24 @@ class DishController extends Controller
         $dish->description = $request->description;
         $dish->owner_id = $request->auth;
         $dish->like_number = 0;
-        $dish->farina_amount = 0;
-        $dish->protein_amount = 0;
-        $dish->lipid_amount = 0;
-        $dish->calories_amount = 0;
         $dish->save();
         // Store tags
-        if ($request->tags[0] != null) {
+        if  ($request->tags[0] != null) {
             $this->storeTags($dish, $request->tags );
         }
         // Store images
         $data = $request->all();
         $this->storeImage($dish, $data['images']);
         // Store ingredients
-        if ($request->ingredients[0] != null) {
+        if($request->ingredients[0] != null) {
             $this->storeIngredient($dish, $request->ingredients,$request->masses);
         }
         // Store cooking steps
-        if ($request->direction[0] != null) {
+        if($request->direction[0] != null) {
             $this->storeCookingStep($dish, $request->direction);
         }
+        // Store nutrition_facts
+        $this->storeFacts($dish);
         $dish->save();
 
         if(isset($dish)){
@@ -115,10 +115,13 @@ class DishController extends Controller
     public function show($slug)
     {
         $dish = Dish::where('slug', $slug)->first();
-        
-        return view('dishes.show', compact('dish'));
+
+        $favorites = Favorite::where('dish_id', $dish->id)->get();
+
+        return view('dishes.show', compact('dish', 'favorites'));
     }
 
+    
     public function edit($slug)
     {
         $dish = Dish::where('slug', $slug)->first();
@@ -158,6 +161,17 @@ class DishController extends Controller
         Session::flash('destroy_dish', 'Bạn đã hoàn thành xóa món ăn!');
 
         return redirect()->route('dishes.index');
+    }
+
+    protected function storeFacts($dish){
+        // if(count($dish->ingredients) > 0){}
+        foreach($dish->ingredients as $ingredient)
+        {
+            $dish->farina_amount += $ingredient->farina*$ingredient->pivot->weight/100;
+            $dish->protein_amount += $ingredient->protein*$ingredient->pivot->weight/100;
+            $dish->lipid_amount += $ingredient->lipid*$ingredient->pivot->weight/100;
+            $dish->calories_amount += $ingredient->calories*$ingredient->pivot->weight/100;
+        }
     }
 
     protected function storeTags($dish, $tags)
@@ -210,7 +224,11 @@ class DishController extends Controller
         for($i = 0 ; $i < count($ingredients); $i++)
             {
                 $dish_ingredient = new DishIngredient();
-                if (Ingredient::find($ingredients[$i]) == false) {
+                // nguyên liệu có sẵn
+                $data_ingredient = Ingredient::where('name',$ingredients[$i])->first();
+
+                if ($data_ingredient== false) {
+                    // Nếu nguyên liệu không có sẵn => thêm mới nguyên liệu
                     $ingredient = new Ingredient();
                     $ingredient->name = $ingredients[$i];
                     $ingredient->farina = 0;
@@ -220,7 +238,9 @@ class DishController extends Controller
                     $ingredient->save();
                     $dish_ingredient->ingredient_id = $ingredient->id;
                 }else {
-                    $dish_ingredient->ingredient_id = $ingredients[$i];
+                    // Nếu nguyên liệu có sẵn, thêm id nguyên liệu đó vào data
+                    // dd($data_ingredient->id);
+                    $dish_ingredient->ingredient_id = $data_ingredient->id;
                 }
                 $dish_ingredient->dish_id = $dish->id;
                 $dish_ingredient->weight = $masses[$i];
@@ -237,4 +257,38 @@ class DishController extends Controller
             $cooking_step->save();
         }
     }
+    protected function like(Request $request)
+    {
+        $dish = Dish::findOrFail($request->dish_id);
+        $user = User::findOrFail($request->user_id);
+        
+        // Nếu user muốn like
+        $dish->like_number += 1; 
+
+        $favorite = new Favorite();
+        $favorite->dish_id = $dish->id;
+        $favorite->user_id = $user->id;
+        $favorite->save();
+
+        $dish->save();
+
+        return redirect()->route('dishes.show', $dish->slug)->with(compact('dish'));
+    }
+    protected function disLike(Request $request){
+        $dish = Dish::findOrFail($request->dish_id);
+        $user = User::findOrFail($request->user_id);
+
+        // Nếu user muốn unlike
+        $favorite = Favorite::whereNotNull('id')
+            ->where('dish_id', $dish->id)
+            ->where('user_id', $user->id)
+            ->delete();
+        if($dish->like_number > 0){
+            $dish->like_number -= 1;
+        }
+        $dish->save();
+        return redirect()->route('dishes.show', $dish->slug)->with(compact('dish'));
+
+    }
+
 }

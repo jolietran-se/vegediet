@@ -52,12 +52,40 @@
                                         <div class="product-images-carousel">
                                             <ul id="smallGallery" class="images-slide">
                                                 @foreach ($dish->dishImages as $image)
-                                                    <li><a href="#" data-image="{{ config('asset.image_path.dish_detail').$image->link }}" data-zoom-image="{{ config('asset.image_path.dish_detail').$image->link }}"><img src="{{ config('asset.image_path.dish_detail').$image->link }}" alt="" /></a></li>
+                                                    @if($image->link != null)
+                                                        <li><a href="#" data-image="{{ config('asset.image_path.dish_detail').$image->link }}" data-zoom-image="{{ config('asset.image_path.dish_detail').$image->link }}"><img src="{{ config('asset.image_path.dish_detail').$image->link }}" alt="" /></a></li>
+                                                    @endif
                                                 @endforeach
                                             </ul>
                                         </div>
                                         <ul class="product-link">
-                                            <li class="text-right"><a href="#"><span class="fa fa-heart tooltip-link"></span><span> {{ trans('dish.add_wishlist') }}</span></a></li>
+                                            <li class="text-right">
+                                                    @if((isset(Auth::user()->id) == null) || (isset(Auth::user()->id) && $favorites->count()==0))
+                                                        {!! Form::open(['method' => 'POST', 'route' => 'dishes.like', 'class' => 'form-favortie']) !!}
+                                                            <input type="hidden" name="dish_id" value="{{ $dish->id }}">
+                                                            @if(isset(Auth::user()->id))
+                                                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                                            @endif
+                                                            <span><span class="fa fa-heart tooltip-link"></span>{!! Form::submit(trans('dish.like'), ['class'=> 'form-favorite-submit']) !!}</span>
+                                                        {!! Form::close() !!}
+                                                    @elseif(isset(Auth::user()->id) && $favorites->count() !=0)
+                                                        @foreach($favorites as $favorite)
+                                                            @if( $favorite->user_id == Auth::user()->id )
+                                                                {!! Form::open(['method' => 'POST', 'route' => 'dishes.disLike', 'class' => 'form-favortie']) !!}
+                                                                    <input type="hidden" name="dish_id" value="{{ $dish->id }}">
+                                                                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                                                    <span><span class="fa fa-heart tooltip-link"></span>{!! Form::submit(trans('dish.dislike'), ['class'=> 'form-favorite-submit']) !!}</span>
+                                                                {!! Form::close() !!}
+                                                            @elseif( $favorite->user_id != Auth::user()->id)
+                                                                {!! Form::open(['method' => 'POST', 'route' => 'dishes.favorite', 'class' => 'form-favortie']) !!}
+                                                                    <input type="hidden" name="dish_id" value="{{ $dish->id }}">
+                                                                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                                                    <span><span class="fa fa-heart tooltip-link"></span>{!! Form::submit(trans('dishes.like'), ['class'=> 'form-favorite-submit']) !!}</span>
+                                                                {!! Form::close() !!}
+                                                            @endif
+                                                        @endforeach
+                                                    @endif
+                                            </li>
                                             <li class="text-left"><a href="#"><span class="fa fa-print tooltip-link"></span><span> {{ trans('dish.print') }}</span></a></li>
                                             <li class="text-left"><a href="#"><span class="fa fa-share-square tooltip-link"></span><span> {{ trans('dish.share') }}</span></a></li>
                                         </ul>
@@ -69,7 +97,6 @@
                                                         <strong>{{ trans('dish.edit') }}</strong>
                                                     </a>
                                                 </li>
-                                                
                                                 <li>
                                                     <a href="javascript:" 
                                                         class="btn btn-danger" 
@@ -80,9 +107,7 @@
                                                         <strong>{{ trans('dish.destroy') }}</strong>
                                                     </a>
                                                 </li>
-
                                             @endif
-                                           
                                         </ul>
                                     </div>
                                     <div class="product-info col-sm-6 col-md-6 col-lg-6 col-xl-6">
@@ -112,6 +137,12 @@
                                     </div>
                                 </div>
                                 <div class="content">
+                                    <ul class="product-link product-fact">
+                                        <li><span class="fa fa-smile-o"></span> {{ trans('dish.farina') }}: {{ $dish->farina_amount }} {{ trans('dish.gam') }}</li>
+                                        <li><span class="fa fa-pie-chart"></span> {{ trans('dish.protein') }}: {{ $dish->protein_amount }} {{ trans('dish.gam') }}</li>
+                                        <li><span class="fa fa-coffee"></span> {{ trans('dish.lipid') }}: {{ $dish->lipid_amount }} {{ trans('dish.gam') }}</li>
+                                        <li><span class="fa fa-tint"></span> {{ trans('dish.calories') }}: {{ $dish->calories_amount }} {{ trans('dish.calo') }}</li>
+                                    </ul>
                                     <!-- Nav tabs Ingredient -->
                                     <ul class="nav nav-tabs nav-tabs--ys1" role="tablist">
                                         <li class="active"><a href="#Tab1"  role="tab" data-toggle="tab" class="text-uppercase">{{ trans('dish.ingredient') }}</a></li>
@@ -146,21 +177,6 @@
                                     </div>
 
                                     <!-- Ntriion Facts -->
-                                    <ul class="nav nav-tabs nav-tabs--ys1" role="tablist">
-                                        <li class="active"><a href="#Tab3" role="tab" data-toggle="tab" class="text-uppercase">{{ trans('dish.nutrition_facts') }}</a></li>
-                                    </ul>
-                                    <div class="tab-content tab-content--ys nav-stacked">
-                                        <div role="tabpanel" class="tab-pane active" id="Tab3">
-                                            <h5><strong class="color text-uppercase">{{ trans('dish.nutrition_info') }}: {{ $dish->name }}</strong></h5>
-                                            <div class="divider divider--xs"></div>
-                                            <ul>
-                                                <li><span class="fa fa-check"></span> {{ trans('dish.farina') }}: {{ $dish->farina_amount }} {{ trans('dish.gam') }}</li>
-                                                <li><span class="fa fa-check"></span> {{ trans('dish.protein') }}: {{ $dish->protein_amount }} {{ trans('dish.gam') }}</li>
-                                                <li><span class="fa fa-check"></span> {{ trans('dish.lipid') }}: {{ $dish->lipid_amount }} {{ trans('dish.gam') }}</li>
-                                                <li><span class="fa fa-check"></span> {{ trans('dish.calories') }}: {{ $dish->calories_amount }} {{ trans('dish.calo') }}</li>
-                                            </ul>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>

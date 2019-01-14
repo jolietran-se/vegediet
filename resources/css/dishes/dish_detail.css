@@ -455,8 +455,30 @@ button:focus {
 	max-width: 150px;
 	transition: max-width 500ms ease-out 100ms, opacity 500ms ease-out 100ms, color 200ms;
 }
+.product-fact {
+	height: 50px;
+	margin-top: 0px;
+	background: #5fa022;
+}
+.product-fact li {
+	overflow: hidden;
+	font-size: 20px;
+	color: #fff;
+	margin:0 9px 0 8px;
+	padding-top: 10px;
+}
 
-
+.product-fact li:hover{
+	color: #fff;
+}
+.form-favorite-submit{
+	background:none; 
+	outline: 0;
+	border:none;
+}
+.form-favorite-submit:hover{
+	color: #5fa022;
+}
 /* product-page */
 
 .avatar_chef {

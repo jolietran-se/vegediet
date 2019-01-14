@@ -32,6 +32,7 @@ Route::group(['prefix' => '/mon-chay'], function () {
     Route::get('/cap-nhat/{slug}', 'DishController@edit')->name('dishes.edit');
 
     Route::post('/image-uploads', 'DishController@uploadImages')->name('dish.uploadImages');
-
     Route::post('/catgories/create', 'CategoryController@store');
+    Route::post('/yeu-thich', 'DishController@like')->name('dishes.like')->middleware('auth');
+    Route::post('/bo-yeu-thich', 'DishController@disLike')->name('dishes.disLike')->middleware('auth');
 });
