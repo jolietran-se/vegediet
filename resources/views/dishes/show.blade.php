@@ -60,31 +60,39 @@
                                         </div>
                                         <ul class="product-link">
                                             <li class="text-right">
-                                                    @if((isset(Auth::user()->id) == null) || (isset(Auth::user()->id) && $favorites->count()==0))
+                                                @if((isset(Auth::user()->id) == null) || (isset(Auth::user()->id) && $favorites->count()==0))
+                                                    {!! Form::open(['method' => 'POST', 'route' => 'dishes.like', 'class' => 'form-favortie']) !!}
+                                                        <input type="hidden" name="dish_id" value="{{ $dish->id }}">
+                                                        @if(isset(Auth::user()->id))
+                                                            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                                        @endif
+                                                        <span><span class="fa fa-heart tooltip-link"></span>{!! Form::submit(trans('dish.like'), ['class'=> 'form-favorite-submit']) !!}</span>
+                                                    {!! Form::close() !!}
+                                                @elseif(isset(Auth::user()->id) && $favorites->count() !=0)
+                                                    <?php 
+                                                        $user_like = 0; 
+                                                        $user_dislike = 0;
+                                                    ?>
+                                                    @foreach($favorites as $favorite)
+                                                        @if( $favorite->user_id == Auth::user()->id )
+                                                            {!! Form::open(['method' => 'POST', 'route' => 'dishes.disLike', 'class' => 'form-favortie']) !!}
+                                                                <input type="hidden" name="dish_id" value="{{ $dish->id }}">
+                                                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                                                <span><span class="fa fa-heart tooltip-link"></span>{!! Form::submit(trans('dish.dislike'), ['class'=> 'form-favorite-submit']) !!}</span>
+                                                            {!! Form::close() !!}
+                                                            <?php $user_dislike += 1; ?>
+                                                        @elseif($favorite->user_id != Auth::user()->id)
+                                                            <?php $user_like += 1; ?>
+                                                        @endif
+                                                    @endforeach
+                                                    @if($user_like != 0 && $user_dislike == 0)
                                                         {!! Form::open(['method' => 'POST', 'route' => 'dishes.like', 'class' => 'form-favortie']) !!}
                                                             <input type="hidden" name="dish_id" value="{{ $dish->id }}">
-                                                            @if(isset(Auth::user()->id))
-                                                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                                                            @endif
+                                                            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                                                             <span><span class="fa fa-heart tooltip-link"></span>{!! Form::submit(trans('dish.like'), ['class'=> 'form-favorite-submit']) !!}</span>
                                                         {!! Form::close() !!}
-                                                    @elseif(isset(Auth::user()->id) && $favorites->count() !=0)
-                                                        @foreach($favorites as $favorite)
-                                                            @if( $favorite->user_id == Auth::user()->id )
-                                                                {!! Form::open(['method' => 'POST', 'route' => 'dishes.disLike', 'class' => 'form-favortie']) !!}
-                                                                    <input type="hidden" name="dish_id" value="{{ $dish->id }}">
-                                                                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                                                                    <span><span class="fa fa-heart tooltip-link"></span>{!! Form::submit(trans('dish.dislike'), ['class'=> 'form-favorite-submit']) !!}</span>
-                                                                {!! Form::close() !!}
-                                                            @elseif( $favorite->user_id != Auth::user()->id)
-                                                                {!! Form::open(['method' => 'POST', 'route' => 'dishes.favorite', 'class' => 'form-favortie']) !!}
-                                                                    <input type="hidden" name="dish_id" value="{{ $dish->id }}">
-                                                                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                                                                    <span><span class="fa fa-heart tooltip-link"></span>{!! Form::submit(trans('dishes.like'), ['class'=> 'form-favorite-submit']) !!}</span>
-                                                                {!! Form::close() !!}
-                                                            @endif
-                                                        @endforeach
                                                     @endif
+                                                @endif
                                             </li>
                                             <li class="text-left"><a href="#"><span class="fa fa-print tooltip-link"></span><span> {{ trans('dish.print') }}</span></a></li>
                                             <li class="text-left"><a href="#"><span class="fa fa-share-square tooltip-link"></span><span> {{ trans('dish.share') }}</span></a></li>
