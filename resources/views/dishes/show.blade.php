@@ -107,10 +107,6 @@
                                                         <strong>{{ trans('dish.destroy') }}</strong>
                                                     </a>
                                                 </li>
-<<<<<<< HEAD
-
-=======
->>>>>>> c97a86ba2bbb42be878c02e121af3428f912fb57
                                             @endif
                                         </ul>
                                     </div>
