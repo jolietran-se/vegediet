@@ -36,3 +36,5 @@ mix.styles(['resources/css/form.css'], 'public/css/form.css')
 
 mix.styles(['resources/css/dishes/dish_detail.css'], 'public/css/dish_detail.css');
 mix.js('resources/js/dishes/dish_detail.js', 'public/js');
+mix.styles(['resources/css/user.css'], 'public/css/user.css');
+

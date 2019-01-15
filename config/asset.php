@@ -7,6 +7,9 @@ return [
         'dish_detail' => '../images/dishes/',
         'owner_avatar' => '../images/avatars/',
         'auth_avatar' => '/images/avatars/',
-
     ],
+
+    'profile_path' => [
+        'dish' => '../images/dishes/',
+    ]
 ];

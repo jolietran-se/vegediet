@@ -27,7 +27,7 @@ class Dish extends Model
     // Dish n - 1 Favorite
     public function favorites()
     {
-        return $this->belongsToMany('App\Favorite');
+        return $this->hasMany('App\Favorite');
     }
 
     // Dish n - 1 Meal

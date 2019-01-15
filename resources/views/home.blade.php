@@ -61,7 +61,11 @@
                         <li>
                             <div>
                                 <a href="{{ route('dishes.show', $new_dish->slug) }}">
-                                    <img src="{{ config('asset.image_path.dish').$new_dish->picture }}" alt="">
+                                    @if(isset($new_dish->picture))
+                                        <img src="{{ config('asset.image_path.dish').$new_dish->picture }}" alt="">
+                                    @else
+                                        <img src="{{ config('asset.image_path.dish').'dish_none.png' }}" alt="">
+                                    @endif
                                 </a>
                                 <div class="col1 upp">
                                     <a href="{{ route('dishes.show', $new_dish->slug) }}">
@@ -95,7 +99,11 @@
                         <li>
                             <div>
                                 <a href="{{ route('dishes.show', $top_dish->slug) }}">
-                                    <img src="{{ config('asset.image_path.dish').$top_dish->picture }}" alt="">
+                                    @if(isset($top_dish->picture))
+                                        <img src="{{ config('asset.image_path.dish').$top_dish->picture }}" alt="">
+                                    @else
+                                        <img src="{{ config('asset.image_path.dish').'dish_none.png' }}" alt="">
+                                    @endif
                                 </a>
                                 <div class="col1 upp">
                                     <a href="{{ route('dishes.show', $top_dish->slug) }}">
@@ -129,7 +137,11 @@
                             <li>
                                 <div>
                                     <a href="{{ route('dishes.show', $home_view_dish->slug) }}">
-                                        <img src="{{ config('asset.image_path.dish').$home_view_dish->picture }}" alt="">
+                                        @if(isset($home_view_dish->picture))
+                                            <img src="{{ config('asset.image_path.dish').$home_view_dish->picture }}" alt="">
+                                        @else
+                                            <img src="{{ config('asset.image_path.dish').'dish_none.png' }}" alt="">
+                                        @endif
                                     </a>
                                     <div class="col1 upp">
                                         <a href="{{ route('dishes.show', $home_view_dish->slug) }}"><strong>{{ $home_view_dish->name }}</strong></a>

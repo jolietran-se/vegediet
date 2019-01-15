@@ -13,7 +13,11 @@
                         @auth
                         <li>
                             <a>
-                                <img src="{{ config('asset.image_path.auth_avatar').Auth::user()->avatar }}" class="img-circle">
+                                @if(isset(Auth::user()->avatar))
+                                    <img src="{{ config('asset.image_path.auth_avatar').Auth::user()->avatar }}" class="img-circle">
+                                @else
+                                    <img src="{{ config('asset.image_path.auth_avatar').'avatar_cat.png' }}" class="img-circle">
+                                @endif
                                 <span class="caret">{{ Auth::user()->name }}</span>
                             </a>
                             <ul>
@@ -27,7 +31,7 @@
                                     {!! Form::close() !!}
                                 </li>
                                 <li>
-                                    <a href="#"><span class="fa fa-user pull-left"></span>{{ trans('headertext.your_profile') }}</a>
+                                    <a href="{{ route('users.profile', Auth::user()->slug) }}"><span class="fa fa-user pull-left"></span>{{ trans('headertext.your_profile') }}</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('dishes.create') }}"><span class="fa fa-apple pull-left"></span>{{ trans('headertext.add_dish') }}</a>

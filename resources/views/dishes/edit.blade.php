@@ -46,8 +46,9 @@
 
                 <div id="pageContent" class="model">
                     {!! Form::open([
-                        'method' => 'POST', 
-                        'route' => 'dishes.store', 
+                        'route' => ['dishes.update',$dish->id],
+                        'method' => 'PUT',
+                        'files' => true,
                         'class' => 'form-horizontal validate-form flex-sb flex-w'
                         ]) 
                     !!}
@@ -67,21 +68,29 @@
                                                     'data-min-file-count' => '2'
                                                     ]) 
                                                 !!}
+                                                
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                @if(isset($dish->picture))
+                                    @foreach($dish->dishImages as $img)
+                                        <div class="col-md-2 remove-images">
+                                            <img id="preview" src="{{ '/'.config('asset.image_path.dish_detail').$img->link }}"/><br>
+                                            <input type="hidden" name="file" value="{{$img->id}}">
+                                            <button class="dynamic item-remove-image"><span class="fa fa-minus-circle"></span></button>
+                                        </div>
+                                    @endforeach
+                                @endif
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                         <div class="form-group">
                                             {!! Form::label(null, trans('dish.dish_name')) !!}(<span class="red">*</span>)
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::text('name',null, [
+                                            {!! Form::text('name', $dish->name, [
                                                 'class' => 'form-control', 
                                                 'id' => 'name', 
-                                                'name' => 'name',
-                                                'placeholder' => trans('dish.note_name')
                                                 ]) 
                                             !!}
                                         </div>
@@ -92,7 +101,7 @@
                                             <div class="portlet-body">
                                                 <select class="select2_tag form-control" id="tags" name="tags[]" multiple="multiple">
                                                     @foreach($categories as $tag)
-                                                        <option value="{{$tag->id}}">{!! $tag->name !!}</option>
+                                                        <option value="{{$tag->id}}" {{ in_array($tag->id,$dish->categories()->pluck('category_id')->toArray()) ? 'selected' : '' }}>{{ $tag->name}} </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -103,10 +112,9 @@
                                             {!! Form::label(null, trans('dish.description')) !!}(<span class="red">*</span>)
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::textarea('description', null, [
+                                            {!! Form::textarea('description',  $dish->description, [
                                                 'class' => 'form-control description', 
                                                 'id' => 'description', 
-                                                'name' => 'description',
                                                 'placeholder' => trans('dish.note_des')
                                                 ]) 
                                             !!}
@@ -128,27 +136,30 @@
                                                 {!! Form::label(null, trans('dish.mass')) !!}(<span class="red">*</span>)
                                             </div>
                                         </div>
-                                        <div class="form-group more-ingredien-1">
-                                            <div class="col-lg-6">
-                                                {!! Form::text('ingredients[]', null, [
-                                                    'class'=> 'form-control', 
-                                                    'list' => 'list_ingredients',  
-                                                    'placeholder' => trans('dish.note_ingre')
-                                                    ]) 
-                                                !!}
-                                            </div>
-                                            <div class="col-lg-4">
-                                                {!! Form::number('masses[]', null, [
-                                                    'id' => 'ingredient_mass', 
-                                                    'class' => 'form-control', 
-                                                    'placeholder' => trans('dish.note_gram')
-                                                    ]) 
-                                                !!}
-                                            </div>
-                                            <div class="col-lg-1">
-                                                <button class="dynamic item-remove-ingredient"><span class="fa fa-minus-circle"></span></button>
-                                            </div>
-                                        </div >
+                                        
+                                        @foreach($dish->ingredients as $ingredient)
+                                            <div class="form-group more-ingredient">
+                                                <div class="col-lg-6">
+                                                    {!! Form::text('ingredients[]', $ingredient->name, [
+                                                        'class'=> 'form-control', 
+                                                        'list' => 'list_ingredients',  
+                                                        'placeholder' => trans('dish.note_ingre')
+                                                        ]) 
+                                                    !!}
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    {!! Form::number('masses[]', $ingredient->pivot->weight, [
+                                                        'id' => 'ingredient_mass', 
+                                                        'class' => 'form-control', 
+                                                        'placeholder' => trans('dish.note_gram')
+                                                        ]) 
+                                                    !!}
+                                                </div>
+                                                <div class="col-lg-1">
+                                                    <button class="dynamic item-remove-ingredient"><span class="fa fa-minus-circle"></span></button>
+                                                </div>
+                                            </div >
+                                        @endforeach
                                         <button class="dynamic item-add-ingredient pull-left"><span class="fa fa-plus-circle"></span></button>
                                     </div>  
 
@@ -158,9 +169,10 @@
                                                 {!! Form::label(null, trans('dish.direction')) !!}(<span class="red">*</span>)
                                             </div>                                            
                                         </div>
-                                        <div class="form-group more-cookingstep-1">
+                                        @foreach($cooking_steps as $step)
+                                        <div class="form-group more-cookingstep">
                                             <div class="col-lg-10">
-                                                {!! Form::textarea('direction[]', null, [
+                                                {!! Form::textarea('direction[]', $step->step, [
                                                     'class' => 'form-control steps', 
                                                     'placeholder' => trans('dish.note_direction')
                                                     ]) 
@@ -170,6 +182,7 @@
                                                 <button class="dynamic item-remove-step"><span class="fa fa-minus-circle"></span></button>
                                             </div>
                                         </div>
+                                        @endforeach
                                         <button class="dynamic item-add-step"><span class="fa fa-plus-circle"></span></button>
                                     </div>
                                 </div>
@@ -183,7 +196,7 @@
                         </div>
                         <div class="modal-footer form-group">
                             <input type="hidden" name="images" id="img">
-                            {!! Form::submit(trans('dish.create'), ['class' => 'btn btn-success', 'data-dismiss' => 'modal', 'id' => 'submit']) !!}
+                            {!! Form::submit(trans('dish.update'), ['class' => 'btn btn-success', 'data-dismiss' => 'modal', 'id' => 'submit']) !!}
                         </div>
                     {!! Form::close() !!}
                     
@@ -281,7 +294,7 @@
                                 '</div>'
         $('.item-add-ingredient').on('click', function(e){
             e.preventDefault();
-            $(this).after(add_ingredient);
+            $(this).before(add_ingredient);
         });
         $('.item-add-step').on('click', function(e){
             e.preventDefault();
@@ -297,6 +310,7 @@
             e.preventDefault();
             $(this).parents('.more-cookingstep').remove();
         });
+        
 
     </script>
     <!-- SweetAlert2 -->
@@ -311,5 +325,12 @@
             })
         }
         
+    </script>
+
+    <script>
+        $(document).on('click', '.item-remove-image', function(e){
+            e.preventDefault();
+            $(this).parents('.remove-images').remove();
+        });
     </script>
 @endsection

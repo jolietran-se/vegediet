@@ -1,0 +1,16 @@
+/* Avatar */
+.product-main-image img{
+    width: 300px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.carousel1 {
+    height: 300px;
+    width: 1000px;
+}
+
+.tab-content--ys>.tab-pane{
+    border: none;
+    padding: 30px 0px;
+}
