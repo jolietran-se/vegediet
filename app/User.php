@@ -22,6 +22,7 @@ class User extends Authenticatable
         'google_id',
         'avatar',
         'phone',
+        'slug',
     ];
 
     /**
@@ -61,6 +62,6 @@ class User extends Authenticatable
     // User 1 - 1 Favorite
     public function favorites()
     {
-        return $this->belongToMany('App\Favorite');
+        return $this->hasMany('App\Dish');
     }
 }

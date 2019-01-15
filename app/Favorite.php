@@ -14,6 +14,7 @@ class Favorite extends Model
 
     public function dishes()
     {
-        return $this->hasMany('App\Dish');
+        return $this->belongsTo('App\Dish');
     }
+
 }

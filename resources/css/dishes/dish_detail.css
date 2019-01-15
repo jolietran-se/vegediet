@@ -1,3 +1,18 @@
+/* Image Preview */
+.remove-images {
+	margin-bottom: 25px;
+}
+
+.remove-images img{
+	width : auto;
+	height: 100px; 
+}
+
+.remove-images button{
+	margin-left: 38%;
+	font-size: 16px;
+	color: #ac2925;
+}
 /* Slick - slide images detail */
 .slick-slide img
 {
@@ -179,6 +194,7 @@ button:focus {
 .item-remove-ingredient, .item-remove-step {
 	color: crimson;
 }
+
 /* Category */
 .fa {
     display: inline;

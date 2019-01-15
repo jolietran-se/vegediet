@@ -13,8 +13,6 @@
 
 @section('content')
 
-
-
 <div class="content page">
     <div class="container_12">
         <!-- DETAIL -->
@@ -46,16 +44,24 @@
                                 <div class="row">
                                     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 hidden-xs">
                                         <div class="product-main-image">
-                                            <div class="product-main-image__item"><img class="product-zoom" src="{{ config('asset.image_path.dish_detail').$dish->picture }}" data-zoom-image="{{ config('asset.image_path.dish_detail').$dish->picture }}" alt="" /></div>
+                                            <div class="product-main-image__item">
+                                            @if(isset($dish->picture))
+                                                <img class="product-zoom" src="{{ config('asset.image_path.dish_detail').$dish->picture }}" data-zoom-image="{{ config('asset.image_path.dish_detail').$dish->picture }}" alt="" /></div>
+                                            @else
+                                                <img class="product-zoom" src="{{ config('asset.image_path.dish_detail').'dish_none.png' }}" data-zoom-image="{{ config('asset.image_path.dish_detail').'dish_none.png' }}" alt="" /></div>
+                                            @endif
 										    <div class="product-main-image__zoom"></div>
                                         </div>
                                         <div class="product-images-carousel">
                                             <ul id="smallGallery" class="images-slide">
+                                            @if(isset($dish->picture))
                                                 @foreach ($dish->dishImages as $image)
                                                     @if($image->link != null)
                                                         <li><a href="#" data-image="{{ config('asset.image_path.dish_detail').$image->link }}" data-zoom-image="{{ config('asset.image_path.dish_detail').$image->link }}"><img src="{{ config('asset.image_path.dish_detail').$image->link }}" alt="" /></a></li>
                                                     @endif
                                                 @endforeach
+                                            @endif
+                                                
                                             </ul>
                                         </div>
                                         <ul class="product-link">
@@ -130,7 +136,13 @@
 
                                         <div class="divider divider--xs product-info__divider hidden-xs"></div>
                                         <div class="product-info__description hidden-xs">
-                                            <div class="product-info__description__brand"><img src="{{ config('asset.image_path.owner_avatar').$dish->user->avatar }}" class="avatar_chef" alt=""/></div>
+                                            <div class="product-info__description__brand">
+                                            @if(isset($dish->user->avatar))
+                                                <img src="{{ config('asset.image_path.owner_avatar').$dish->user->avatar }}" class="avatar_chef" alt=""/>
+                                            @else
+                                                <img src="{{ config('asset.image_path.owner_avatar').'avatar_cat.png' }}" class="img-circle">
+                                            @endif
+                                            </div>
                                             <div class="product-info__description__text">
                                                 {{ trans('dish.repice') }}: <a href="#"><strong class="color">{{ $dish->user->name }}</strong></a>
                                                 <div class="divider divider--xs product-info__divider hidden-xs"></div>
@@ -158,7 +170,6 @@
                                     <div class="tab-content tab-content--ys nav-stacked">
                                         <div role="tabpanel" class="tab-pane active" id="Tab1">
                                             <div class="divider divider--md"></div>
-                                            <!-- Ingredients -->
                                             <ul>
                                             @foreach ($dish->ingredients as $ingredient)
                                                 <li><span class="fa fa-check"></span> {{ $ingredient->name }} : {{ $ingredient->pivot->weight }} {{ trans('dish.gam') }}</li>

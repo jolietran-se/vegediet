@@ -126,11 +126,13 @@ class DishController extends Controller
     {
         $dish = Dish::where('slug', $slug)->first();
 
+        $cooking_steps = CookingStep::where('dish_id', $dish->id)->get();
+
         $categories = $this->cateRepository->all();
 
         $ingredients = $this->ingredientRepository->all();
 
-        return view('dishes.edit', compact('dish', 'categories', 'ingredients'))
+        return view('dishes.edit', compact('dish', 'categories', 'ingredients', 'cooking_steps'))
             ->withCategories($categories)
             ->withIngredients($ingredients);
     }
