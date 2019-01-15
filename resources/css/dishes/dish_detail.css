@@ -472,6 +472,8 @@ button:focus {
 	transition: max-width 500ms ease-out 100ms, opacity 500ms ease-out 100ms, color 200ms;
 }
 .product-fact {
+	margin-left: -17px;
+	width: 1000px;
 	height: 50px;
 	margin-top: 0px;
 	background: #5fa022;

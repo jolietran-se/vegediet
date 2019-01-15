@@ -73,11 +73,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                @if(isset($dish->picture))
+                                @if(count($dish->dishImages) != 0)
                                     @foreach($dish->dishImages as $img)
                                         <div class="col-md-2 remove-images">
                                             <img id="preview" src="{{ '/'.config('asset.image_path.dish_detail').$img->link }}"/><br>
-                                            <input type="hidden" name="file" value="{{$img->id}}">
+                                            <input type="hidden" name="images_update[]" value="{{ $img->id }}">
                                             <button class="dynamic item-remove-image"><span class="fa fa-minus-circle"></span></button>
                                         </div>
                                     @endforeach
@@ -100,9 +100,15 @@
                                         <div class="portlet light bordered form-group">
                                             <div class="portlet-body">
                                                 <select class="select2_tag form-control" id="tags" name="tags[]" multiple="multiple">
-                                                    @foreach($categories as $tag)
-                                                        <option value="{{$tag->id}}" {{ in_array($tag->id,$dish->categories()->pluck('category_id')->toArray()) ? 'selected' : '' }}>{{ $tag->name}} </option>
-                                                    @endforeach
+                                                    @if($tag_count == 0)
+                                                        @foreach($categories as $tag)
+                                                            <option value="{{$tag->id}}">{{ $tag->name}} </option>
+                                                        @endforeach
+                                                    @else
+                                                        @foreach($categories as $tag)
+                                                            <option value="{{$tag->id}}" {{ in_array($tag->id,$dish->categories()->pluck('category_id')->toArray()) ? 'selected' : '' }}>{{ $tag->name}} </option>
+                                                        @endforeach
+                                                    @endif
                                                 </select>
                                             </div>
                                         </div>
@@ -136,11 +142,10 @@
                                                 {!! Form::label(null, trans('dish.mass')) !!}(<span class="red">*</span>)
                                             </div>
                                         </div>
-                                        
-                                        @foreach($dish->ingredients as $ingredient)
+                                        @if($ingredient_count == 0)
                                             <div class="form-group more-ingredient">
                                                 <div class="col-lg-6">
-                                                    {!! Form::text('ingredients[]', $ingredient->name, [
+                                                    {!! Form::text('ingredients[]', null, [
                                                         'class'=> 'form-control', 
                                                         'list' => 'list_ingredients',  
                                                         'placeholder' => trans('dish.note_ingre')
@@ -148,18 +153,42 @@
                                                     !!}
                                                 </div>
                                                 <div class="col-lg-4">
-                                                    {!! Form::number('masses[]', $ingredient->pivot->weight, [
+                                                    {!! Form::number('masses[]', null, [
                                                         'id' => 'ingredient_mass', 
                                                         'class' => 'form-control', 
                                                         'placeholder' => trans('dish.note_gram')
                                                         ]) 
                                                     !!}
                                                 </div>
-                                                <div class="col-lg-1">
-                                                    <button class="dynamic item-remove-ingredient"><span class="fa fa-minus-circle"></span></button>
-                                                </div>
-                                            </div >
-                                        @endforeach
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <button class="dynamic item-remove-ingredient"><span class="fa fa-minus-circle"></span></button>
+                                            </div>
+                                        @else
+                                            @foreach($dish->ingredients as $ingredient)
+                                                <div class="form-group more-ingredient">
+                                                    <div class="col-lg-6">
+                                                        {!! Form::text('ingredients[]', $ingredient->name, [
+                                                            'class'=> 'form-control', 
+                                                            'list' => 'list_ingredients',  
+                                                            'placeholder' => trans('dish.note_ingre')
+                                                            ]) 
+                                                        !!}
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        {!! Form::number('masses[]', $ingredient->pivot->weight, [
+                                                            'id' => 'ingredient_mass', 
+                                                            'class' => 'form-control', 
+                                                            'placeholder' => trans('dish.note_gram')
+                                                            ]) 
+                                                        !!}
+                                                    </div>
+                                                    <div class="col-lg-1">
+                                                        <button class="dynamic item-remove-ingredient"><span class="fa fa-minus-circle"></span></button>
+                                                    </div>
+                                                </div >
+                                            @endforeach
+                                        @endif
                                         <button class="dynamic item-add-ingredient pull-left"><span class="fa fa-plus-circle"></span></button>
                                     </div>  
 
@@ -169,20 +198,35 @@
                                                 {!! Form::label(null, trans('dish.direction')) !!}(<span class="red">*</span>)
                                             </div>                                            
                                         </div>
-                                        @foreach($cooking_steps as $step)
-                                        <div class="form-group more-cookingstep">
-                                            <div class="col-lg-10">
-                                                {!! Form::textarea('direction[]', $step->step, [
-                                                    'class' => 'form-control steps', 
-                                                    'placeholder' => trans('dish.note_direction')
-                                                    ]) 
-                                                !!}
+                                        @if($steps_count == 0)
+                                            <div class="form-group more-cookingstep">
+                                                <div class="col-lg-10">
+                                                    {!! Form::textarea('direction[]', null, [
+                                                        'class' => 'form-control steps', 
+                                                        'placeholder' => trans('dish.note_direction')
+                                                        ]) 
+                                                    !!}
+                                                </div>
+                                                <div class="col-lg-1">
+                                                    <button class="dynamic item-remove-step"><span class="fa fa-minus-circle"></span></button>
+                                                </div>
                                             </div>
-                                            <div class="col-lg-1">
-                                                <button class="dynamic item-remove-step"><span class="fa fa-minus-circle"></span></button>
+                                        @else
+                                            @foreach($cooking_steps as $step)
+                                            <div class="form-group more-cookingstep">
+                                                <div class="col-lg-10">
+                                                    {!! Form::textarea('direction[]', $step->step, [
+                                                        'class' => 'form-control steps', 
+                                                        'placeholder' => trans('dish.note_direction')
+                                                        ]) 
+                                                    !!}
+                                                </div>
+                                                <div class="col-lg-1">
+                                                    <button class="dynamic item-remove-step"><span class="fa fa-minus-circle"></span></button>
+                                                </div>
                                             </div>
-                                        </div>
-                                        @endforeach
+                                            @endforeach
+                                        @endif
                                         <button class="dynamic item-add-step"><span class="fa fa-plus-circle"></span></button>
                                     </div>
                                 </div>
