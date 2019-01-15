@@ -44,16 +44,17 @@
                                             <div>
                                                 <p>{{ trans('user.email') }}: {{ $user->email }}</p>
                                                 <p>{{ trans('user.phone') }}: {{ $user->phone }}</p>
-                                                <p>{{ $user->name}} {{ trans('user.your_dish') }}: {{ $dish_count }}</p>
-                                                <p>{{ $user->name}} {{ trans('user.your_favorite') }}: {{ $favorites_count }}</p>
+                                                <p>{{ trans('user.facebook_id') }}: {{ $user->facebook_id }}</p>
+                                                <p>{{ trans('user.google_id') }}: {{ $user->google_id }}</p>
+                                                <p>{{ trans('user.created_at') }}: {{ $user->created_at }}</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="content">
                                     <ul class="nav nav-tabs nav-tabs--ys1" role="tablist">
-                                        <li class="active"><a href="#Tab1"  role="tab" data-toggle="tab" class="text-uppercase">{{ $user->name}} {{ trans('user.your_favorite') }}</a></li>
-                                        <li class=""><a href="#Tab2"  role="tab" data-toggle="tab" class="text-uppercase">{{ $user->name}} {{ trans('user.your_dish') }}</a></li>
+                                        <li class="active"><a href="#Tab1"  role="tab" data-toggle="tab" class="text-uppercase">{{ $user->name}} {{ trans('user.your_favorite') }} ({{ $favorites_count }})</a></li>
+                                        <li class=""><a href="#Tab2"  role="tab" data-toggle="tab" class="text-uppercase">{{ $user->name}} {{ trans('user.your_dish') }} ({{ $dish_count }})</a></li>
                                     </ul>
                                     <!-- Nav tabs Ingredient -->
                                     <div class="tab-content tab-content--ys nav-stacked">

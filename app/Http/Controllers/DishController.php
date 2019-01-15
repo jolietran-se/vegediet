@@ -97,9 +97,8 @@ class DishController extends Controller
             $this->storeCookingStep($dish, $request->direction);
         }
         // Store nutrition_facts
-        $this->storeFacts($dish);
         $dish->save();
-
+        
         if(isset($dish)){
             Session::flash('create_dish', 'Món ăn đã được thêm mới thành công!');
         }
@@ -118,7 +117,10 @@ class DishController extends Controller
 
         $favorites = Favorite::where('dish_id', $dish->id)->get();
 
-        return view('dishes.show', compact('dish', 'favorites'));
+        $this->storeFacts($dish);
+
+        $step_count = CookingStep::where('dish_id', $dish->id)->get()->count();
+        return view('dishes.show', compact('dish', 'favorites', 'step_count'));
     }
 
     
@@ -132,14 +134,76 @@ class DishController extends Controller
 
         $ingredients = $this->ingredientRepository->all();
 
-        return view('dishes.edit', compact('dish', 'categories', 'ingredients', 'cooking_steps'))
+        $ingredient_count = DishIngredient::where('dish_id', $dish->id)->get()->count();
+
+        $steps_count = $cooking_steps->count();
+        
+        $tag_count = DishCategory::where('dish_id', $dish->id)->get()->count();
+
+        return view('dishes.edit', compact('dish', 'categories', 'ingredients', 'cooking_steps', 'ingredient_count', 'steps_count', 'tag_count'))
             ->withCategories($categories)
             ->withIngredients($ingredients);
     }
 
     public function update(Request $request, $id)
     {
-        //
+        // dd($request->all());
+        $data = $request->all();
+
+        $dish = Dish::findOrFail($id);
+        $dish->name = $request->name;
+        $dish->slug = str_slug($request->name);
+        $dish->description = $request->description;
+        // Store tags
+        if ($request->tags[0] != null) {
+            $this->storeTags($dish, $request->tags );
+        }
+        // Store ingredients
+        foreach($dish->ingredients as $ingredient){
+            DishIngredient::where('dish_id', $dish->id)->where('ingredient_id', $ingredient->id)->delete();
+        }
+        CookingStep::where('dish_id', $dish->id)->delete();
+
+        $this->storeIngredient($dish, $request->ingredients,$request->masses);
+        $this->storeCookingStep($dish, $request->direction);
+
+        // Xóa ảnh món ăn
+        $image_update = [];
+        $image_exist = [];
+        if(isset($data['images_update'])){
+            foreach($data['images_update'] as $key => $dishImage_id){
+                settype($dishImage_id, 'integer');
+                $images_update[] = $dishImage_id;
+            }
+            foreach($dish->dishImages as $dishImage){
+                $image_exist[] =$dishImage->id;
+            }
+        }
+        $image_delete = array_diff_assoc($image_exist, $image_update);
+        if(count($image_delete) != 0){
+            foreach($image_delete as $key => $img){
+                DishImages::where('id', $img)->delete();
+            }
+        }
+
+        if($data['images'] != null ){
+            $this->storeImage($dish, $data['images']);
+        }
+        //Thêm picture cho dish 
+        $picture = DishImages::where('dish_id', $dish->id)->first();
+        if( $picture != null ){
+            $dish->picture = $picture->link;
+        }else{
+            $dish->picture = null;
+        }
+        $dish->save();
+
+        if(isset($dish)){
+            Session::flash('update_dish', 'Món ăn đã được cập nhật thành công!');
+        }
+
+        return redirect()->route('dishes.show', ['dish' => $dish->slug]);
+
     }
 
     public function destroy($id)
@@ -147,10 +211,10 @@ class DishController extends Controller
         $dish = Dish::findOrFail($id);
         // Xóa ảnh khỏi Folder 
         $dishImage = DishImages::where('dish_id', $id)->get();
-        foreach($dishImage as $img){
-            $image_path = public_path()."/images/dishes/".$img->link;  // Value is not URL but directory file path
-            @unlink($image_path);
-        }
+        // foreach($dishImage as $img){
+            // $image_path = public_path()."/images/dishes/".$img->link;  // Value is not URL but directory file path
+            // @unlink($image_path);
+        // }
         // Xóa ảnh trong bảng trung gian
         $imageUpload = ImageUploads::all();
         foreach($imageUpload as $img){
@@ -166,12 +230,16 @@ class DishController extends Controller
     }
 
     protected function storeFacts($dish){
+        $dish->farina_amount = 0;
+        $dish->protein_amount = 0;
+        $dish->lipid_amount = 0;
+        $dish->calories_amount = 0;
         foreach($dish->ingredients as $ingredient)
         {
-            $dish->farina_amount += $ingredient->farina*$ingredient->pivot->weight/100;
-            $dish->protein_amount += $ingredient->protein*$ingredient->pivot->weight/100;
-            $dish->lipid_amount += $ingredient->lipid*$ingredient->pivot->weight/100;
-            $dish->calories_amount += $ingredient->calories*$ingredient->pivot->weight/100;
+            $dish->farina_amount += round($ingredient->farina*$ingredient->pivot->weight/100, 2);
+            $dish->protein_amount += round($ingredient->protein*$ingredient->pivot->weight/100, 2);
+            $dish->lipid_amount += round($ingredient->lipid*$ingredient->pivot->weight/100, 2);
+            $dish->calories_amount += round($ingredient->calories*$ingredient->pivot->weight/100, 2);
         }
     }
 
@@ -218,6 +286,13 @@ class DishController extends Controller
             $dish_image->dish_id = $dish->id;
             $dish_image->save();
         }
+
+        foreach($dish->dishImages as $img){
+            if($img->link == null){
+                $img->delete();
+            }
+        }
+
     }
 
     protected function storeIngredient($dish, $ingredients, $masses)
@@ -254,10 +329,11 @@ class DishController extends Controller
         for ($i=0; $i < count($steps) ; $i++) { 
             $cooking_step = new CookingStep();
             $cooking_step->dish_id = $dish->id;
-            $cooking_step->step = "Bước ".($i+1).": ".$steps[$i];
+            $cooking_step->step = $steps[$i];
             $cooking_step->save();
         }
     }
+    
     protected function like(Request $request)
     {
         $dish = Dish::findOrFail($request->dish_id);

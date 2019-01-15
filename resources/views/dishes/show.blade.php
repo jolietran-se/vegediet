@@ -187,9 +187,9 @@
                                             <h5><strong class="color text-uppercase">{{ trans('dish.repice') }}</strong></h5>
                                             <div class="divider divider--xs"></div>
                                             <ul>
-                                            @foreach ($dish->cookingsteps as $step)
-                                                <li><span class="fa fa-check"></span> {{ $step->step }}</li>
-                                            @endforeach
+                                            @for($i = 0; $i<$step_count; $i++)
+                                                <li><span class="fa fa-check"></span><?php echo "Bước ".($i+1).": ".$dish->cookingsteps[$i]->step ?></li>
+                                            @endfor
                                             </ul>
 
                                         </div>

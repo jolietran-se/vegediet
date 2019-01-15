@@ -76,6 +76,5 @@ class Dish extends Model
             $dish->categories()->detach();
         });
     }
-
     
 }
