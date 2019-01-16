@@ -40,3 +40,7 @@ Route::group(['prefix' => '/mon-chay'], function () {
 Route::group(['prefix' => '/tai-khoan-ca-nhan'], function () {
     Route::get('/{slug}', 'UserController@show')->name('users.profile');
 });
+
+Route::group(['prefix' => '/the-tag'], function (){
+    Route::get('/{slug}', 'CategoryController@show')->name('cate.show');
+});

@@ -147,7 +147,6 @@ class DishController extends Controller
 
     public function update(Request $request, $id)
     {
-        // dd($request->all());
         $data = $request->all();
 
         $dish = Dish::findOrFail($id);
@@ -164,28 +163,33 @@ class DishController extends Controller
         }
         CookingStep::where('dish_id', $dish->id)->delete();
 
-        $this->storeIngredient($dish, $request->ingredients,$request->masses);
-        $this->storeCookingStep($dish, $request->direction);
-
+        if($request->ingredients[0] != null) {
+            $this->storeIngredient($dish, $request->ingredients,$request->masses);
+        }
+        if($request->direction[0] != null) {
+            $this->storeCookingStep($dish, $request->direction);
+        }
         // Xóa ảnh món ăn
         $image_update = [];
         $image_exist = [];
         if(isset($data['images_update'])){
             foreach($data['images_update'] as $key => $dishImage_id){
                 settype($dishImage_id, 'integer');
-                $images_update[] = $dishImage_id;
+                $image_update[] = $dishImage_id;
             }
             foreach($dish->dishImages as $dishImage){
                 $image_exist[] =$dishImage->id;
             }
         }
         $image_delete = array_diff_assoc($image_exist, $image_update);
+
         if(count($image_delete) != 0){
             foreach($image_delete as $key => $img){
                 DishImages::where('id', $img)->delete();
             }
         }
 
+        // dd($data['images']);
         if($data['images'] != null ){
             $this->storeImage($dish, $data['images']);
         }
@@ -223,6 +227,7 @@ class DishController extends Controller
         // Xóa các dữ liệu Relationship 
         $dish->boot();
         $dish->delete();
+
 
         Session::flash('destroy_dish', 'Bạn đã hoàn thành xóa món ăn!');
 

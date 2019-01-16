@@ -36,7 +36,7 @@
             </div>
             <div class="grid_12 categories">
                 @foreach ($categories as $category)
-                    <a href="#" class="category">{{ $category->name }}</a>
+                    <a href="{{ route('cate.show', $category->slug) }}" class="category">{{ $category->name }}</a>
                 @endforeach
             </div>
             <!-- List Dishes -->

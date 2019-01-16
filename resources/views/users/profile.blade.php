@@ -44,10 +44,11 @@
                                             <div>
                                                 <p>{{ trans('user.email') }}: {{ $user->email }}</p>
                                                 <p>{{ trans('user.phone') }}: {{ $user->phone }}</p>
-                                                <p>{{ trans('user.facebook_id') }}: {{ $user->facebook_id }}</p>
-                                                <p>{{ trans('user.google_id') }}: {{ $user->google_id }}</p>
-                                                <p>{{ trans('user.created_at') }}: {{ $user->created_at }}</p>
+                                                <!-- <p>{{ trans('user.facebook_id') }}: {{ $user->facebook_id }}</p> -->
+                                                <!-- <p>{{ trans('user.google_id') }}: {{ $user->google_id }}</p> -->
+                                                <!-- <p>{{ trans('user.created_at') }}: {{ $user->created_at }}</p> -->
                                             </div>
+                                            <a href="{{ route('dishes.create') }}" class="btn btn-success"><strong>{{ trans('dish.add') }}</strong></a>
                                         </div>
                                     </div>
                                 </div>

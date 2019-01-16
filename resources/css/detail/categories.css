@@ -1,0 +1,24 @@
+.cate-list li{
+    float: left;
+    width: 180px !important;
+    font-size: 12px;
+    height: 38px;
+    overflow: hidden;
+}
+
+.category {
+    border: solid 1px #5fa022;
+    background: #5fa022;
+    color: #ffffff;
+    padding: 5px 5px 5px 5px;
+    line-height: 37px;
+}
+
+.cate-list li a{
+    color:#fff;
+    font-size: 14px;
+}
+.cate-list li a:hover{
+    color: #5fa022;
+    background: #fff;
+}

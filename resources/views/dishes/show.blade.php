@@ -144,14 +144,14 @@
                                             @endif
                                             </div>
                                             <div class="product-info__description__text">
-                                                {{ trans('dish.repice') }}: <a href="#"><strong class="color">{{ $dish->user->name }}</strong></a>
+                                                {{ trans('dish.repice') }}: <a href="{{ route('users.profile', $dish->user->slug) }}"><strong class="color">{{ $dish->user->name }}</strong></a>
                                                 <div class="divider divider--xs product-info__divider hidden-xs"></div>
                                                 "{{ $dish->description }}"
                                             </div>
                                         </div>
                                         <div class="categories">
                                             @foreach ($dish->categories as $category)
-                                                <a href="#" class="category">{{ $category->name }}</a>
+                                                <a href="{{ route('cate.show', $category->slug) }}" class="category">{{ $category->name }}</a>
                                             @endforeach
                                         </div>
                                     </div>
@@ -184,11 +184,10 @@
                                     </ul>
                                     <div class="tab-content tab-content--ys nav-stacked">
                                         <div role="tabpanel" class="tab-pane active" id="Tab2">
-                                            <h5><strong class="color text-uppercase">{{ trans('dish.repice') }}</strong></h5>
                                             <div class="divider divider--xs"></div>
                                             <ul>
                                             @for($i = 0; $i<$step_count; $i++)
-                                                <li><span class="fa fa-check"></span><?php echo "Bước ".($i+1).": ".$dish->cookingsteps[$i]->step ?></li>
+                                                <li><span class="fa fa-check"></span><?php echo " Bước ".($i+1).": ".$dish->cookingsteps[$i]->step ?></li>
                                             @endfor
                                             </ul>
 

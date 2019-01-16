@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Category;
+use App\DishCategory;
 
 class CategoryController extends Controller
 {
@@ -32,10 +34,23 @@ class CategoryController extends Controller
             'success' => 'Created Category Successful'
         ]);
     }
-    public function show($id)
+    public function show($slug)
     {
+        $categories = Category::all();
+
+        $dish_categories = DishCategory::all();
+        
         $category = Category::where('slug', $slug)->first();
-        return view('categories.index', compact('category'));
+        
+        $this->destroy($categories, $dish_categories);
+
+        $dishes = DishCategory::where('category_id', $category->id)
+            ->join('dishes', 'dishes.id', 'dish_category.dish_id')
+            ->orderBy('dishes.created_at', 'desc')
+            ->get();
+
+
+        return view('categories.show', compact('categories', 'category', 'dishes'));
     }
 
     public function edit($id)
@@ -57,11 +72,27 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function destroy($id)
+    protected function destroy($categories, $dish_categories)
     {
-        Category::find($id)->delete();
-        return response()->json([
-            'success' => 'Xóa danh mục thành công'
-        ]);
+        $category_list = [];
+        $dish_category = [];
+        foreach($categories as $category){
+            $category_list[] = $category->id;
+        }
+        foreach($dish_categories as $dish_cate){
+            $dish_category[] = $dish_cate->category_id;
+        }
+        sort($category_list);
+        sort($dish_category);
+        $dish_category2 = array_unique($dish_category);
+
+        $cate_diff = array_diff_assoc($category_list, $dish_category2);
+        if(count($category_list) > count($dish_category2)){
+            foreach($cate_diff as $key=> $cate){
+                Category::where('id', $cate)->delete();
+            }
+        }
+        
     }
+
 }

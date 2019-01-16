@@ -11,5 +11,9 @@ return [
 
     'profile_path' => [
         'dish' => '../images/dishes/',
-    ]
+    ],
+
+    'category_path' => [
+        'dish' => '../images/dishes/',
+    ],
 ];
