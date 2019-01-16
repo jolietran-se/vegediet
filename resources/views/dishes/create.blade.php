@@ -58,7 +58,7 @@
                                                     ['class' => 'file', 
                                                     'multiple' => true, 
                                                     'id' => 'file-1', 
-                                                    'name' => 'file', 
+                                                    'name' => 'file',
                                                     'data-overwrite-initial' => 'false', 
                                                     'data-min-file-count' => '2'
                                                     ]) 
