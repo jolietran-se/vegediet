@@ -10,5 +10,5 @@ return [
     'your_favorites' => 'Món ăn yêu thích',
     'your_dish' => 'Món ăn của tôi',
     'add_dish' => 'Thêm món ăn mới',
-
+    'search' => 'TÌm kiếm',
 ];

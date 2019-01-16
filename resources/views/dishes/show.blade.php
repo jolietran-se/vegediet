@@ -23,6 +23,11 @@
                     {{ Session::get('create_dish') }}
                 </div>
             @endif
+            @if( Session::has('update_dish') )
+                <div class="alert alert-success">
+                    {{ Session::get('update_dish') }}
+                </div>
+            @endif
             <!-- Home -->
             <div class="breadcrumbs">
                 <div class="container">

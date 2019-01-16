@@ -120,6 +120,7 @@ class DishController extends Controller
         $this->storeFacts($dish);
 
         $step_count = CookingStep::where('dish_id', $dish->id)->get()->count();
+       
         return view('dishes.show', compact('dish', 'favorites', 'step_count'));
     }
 
@@ -356,6 +357,7 @@ class DishController extends Controller
 
         return redirect()->route('dishes.show', $dish->slug)->with(compact('dish'));
     }
+
     protected function disLike(Request $request){
         $dish = Dish::findOrFail($request->dish_id);
         $user = User::findOrFail($request->user_id);

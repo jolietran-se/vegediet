@@ -12,4 +12,6 @@ return [
     'dish_list' => 'Danh sách món ăn chay',
     'top' => 'Top thịnh hành trên Vegediet',
     'new' => '10 món ăn mới nhất tại Vegediet',
+    'search_list' => 'Món ăn bạn quan tâm',
+    'tag_list' => 'Tag có thể bạn quan tâm',
 ];

@@ -29,11 +29,7 @@
     <div class="content page">
         <div class="container_12">
             <div class="grid_12">
-                @if( Session::has('update_dish') )
-                    <div class="alert alert-success">
-                        {{ Session::get('update_dish') }}
-                    </div>
-                @endif
+                
                 <div class="breadcrumbs">
                     <div class="container">
                         <ol class="breadcrumb breadcrumb--ys pull-left">

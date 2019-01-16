@@ -17,6 +17,8 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
+Route::post('/tim-kiem', 'Homecontroller@search')->name('search');
+
 Route::group(['prefix' => '/feedbacks'], function () {
     Route::get('/', 'FeedbackController@index')->name('feedbacks.index');
     Route::post('/', 'FeedbackController@store')->name('feedbacks.store');

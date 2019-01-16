@@ -39,6 +39,10 @@
                                 <li>
                                     <a href="{{ route('users.profile', Auth::user()->slug) }}"><span class="fa fa-heart pull-left"></span>{{ trans('headertext.your_favorites') }}</a>
                                 </li>
+
+                                <li>
+                                    <a href="{{ route('dishes.index') }}"><span class="fa fa-heart pull-left"></span>{{ trans('headertext.search') }}</a>
+                                </li>
                             </ul>
                         </li>
                         @else

@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     protected $table = 'categories';
-    protected $searchableColumns = ['name'];
-    protected $fillable = ['name'];
+    protected $fillable = [
+        'name',
+        'slug',
+    ];
 
     // Category n - n Dish
     public function dishes()
