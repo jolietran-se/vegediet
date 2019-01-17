@@ -237,6 +237,7 @@
                         <div class="modal-footer form-group">
                             <input type="hidden" name="images" id="img">
                             {!! Form::submit(trans('dish.update'), ['class' => 'btn btn-success', 'data-dismiss' => 'modal', 'id' => 'submit']) !!}
+                            <button type="button" class="btn btn-warning" onclick="window.location='{{ URL::previous() }}'">Cancel</button>
                         </div>
                     {!! Form::close() !!}
                     
