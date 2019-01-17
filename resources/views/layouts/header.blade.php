@@ -7,7 +7,7 @@
                 <ul class="sf-menu">
                     <li><a  href="{{ route('home') }}">{{ trans('headertext.home') }}</a></li>
                     <li><a  href="{{ route('dishes.index') }}">{{ trans('headertext.all_dishes') }}</a></li>
-                    <!-- <li><a  href="#">{{ trans('headertext.all_ingredients') }}</a></li> -->
+                    <li><a  href="#">{{ trans('headertext.all_ingredients') }}</a></li>
                     <li><a  href="#">{{ trans('headertext.contact') }}</a></li>
                     @if (Route::has('login'))
                         @auth
@@ -39,10 +39,10 @@
                                 <li>
                                     <a href="{{ route('users.profile', Auth::user()->slug) }}"><span class="fa fa-heart pull-left"></span>{{ trans('headertext.your_favorites') }}</a>
                                 </li>
-
+<!-- 
                                 <li>
                                     <a href="{{ route('dishes.index') }}"><span class="fa fa-heart pull-left"></span>{{ trans('headertext.search') }}</a>
-                                </li>
+                                </li> -->
                             </ul>
                         </li>
                         @else

@@ -16,13 +16,18 @@ class UserController extends Controller
 
         $user = User::where('slug', $slug)->first();
 
-        $favorites = Favorite::where('user_id', $user->id)->get();
+        $favorites = Favorite::where('user_id', $user->id)
+            ->orderBy('created_at', 'desc')
+            ->get();
 
-        $your_dishes = Dish::where('owner_id', $user->id)->get();
+        $your_dishes = Dish::where('owner_id', $user->id)
+            ->orderBy('created_at', 'desc')
+            ->get();
 
         $dishes = [];
         foreach($favorites as $favorite){
-            $dish = Dish::where('id', $favorite->dish_id)->get();
+            $dish = Dish::where('id', $favorite->dish_id)
+                ->get();
             $dishes[] = $dish;
         }
         $dish_count = $your_dishes->count();

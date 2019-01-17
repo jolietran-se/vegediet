@@ -12,7 +12,7 @@
     ]) !!}
     <span class="login100-form-title">{{ trans('login.register') }}</span>
 
-    <div class="p-t-31 p-b-9">
+    <div class=" p-b-9">
         {!! Form::label('name', trans('login.name'), [
             'class' => 'txt1',
         ]) !!}
@@ -33,7 +33,7 @@
         </span>
     @endif
 
-    <div class="p-t-31 p-b-9">
+    <div class=" p-b-9">
         {!! Form::label('email', trans('login.email'), [
             'class' => 'txt1',
         ]) !!}
@@ -55,7 +55,7 @@
         </span>
     @endif
 
-    <div class="p-t-31 p-b-9">
+    <div class=" p-b-9">
         {!! Form::label('password', trans('login.password'), [
             'class' => 'txt1',
         ]) !!}
@@ -75,7 +75,7 @@
         </span>                                
     @endif
 
-    <div class="p-t-31 p-b-9">
+    <div class=" p-b-9">
         {!! Form::label('password-confirm', trans('login.confirm'), [
             'class' => 'txt1',
         ]) !!}
@@ -89,7 +89,7 @@
         ]) !!}
     </div>             
 
-    <div class="container-login100-form-btn m-t-17 p-t-31">
+    <div class="container-login100-form-btn m-t-17 ">
         {!! Form::button(trans('login.register'), [
             'class' => 'login100-form-btn', 
             'type' => 'submit',

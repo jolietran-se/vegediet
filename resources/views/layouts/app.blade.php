@@ -22,7 +22,7 @@
 <body>
     <div class="limiter" id="app">
 		<main class="container-login100">
-			<div class="wrap-login100 p-l-50 p-r-50 p-t-62 p-b-62">
+			<div class="wrap-login100 p-l-35 p-r-35 p-t-35 p-b-28">
                 @yield('content')
             </div>
         </main>
