@@ -141,7 +141,9 @@ class DishController extends Controller
         
         $tag_count = DishCategory::where('dish_id', $dish->id)->get()->count();
 
-        return view('dishes.edit', compact('dish', 'categories', 'ingredients', 'cooking_steps', 'ingredient_count', 'steps_count', 'tag_count'))
+        return view('dishes.edit', compact('dish', 'categories', 'ingredients', 
+                                            'cooking_steps', 'ingredient_count', 
+                                            'steps_count', 'tag_count'))
             ->withCategories($categories)
             ->withIngredients($ingredients);
     }
