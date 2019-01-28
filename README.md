@@ -1,5 +1,8 @@
 # PHP Training
 
+- PHP version: 5.6 
+
+- Laravel version: 7.1
 
 - Clone project: git clone https://github.com/phuongyeol/vegediet
 
