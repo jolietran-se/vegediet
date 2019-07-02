@@ -22,12 +22,14 @@ class UsersTableSeeder extends Seeder
                 'facebook_id' => $faker->uuid,
                 'google_id' => $faker->uuid,
                 'avatar' => "1.jpg",
+                'slug' => "phuong-tran",
             ],
         ];
 
         DB::table('users')->insert($admin);
 
         for ($i = 1; $i < 16; $i++) {
+            $slug = str_slug($faker->name);
             DB::table('users')->insert([
                 'name' => $faker->name,
                 'email' => $faker->unique->email,
@@ -36,6 +38,7 @@ class UsersTableSeeder extends Seeder
                 'facebook_id' => $faker->uuid,
                 'google_id' => $faker->uuid,
                 'avatar' => $i . ".jpg",
+                'slug' => $slug ,
             ]);
         }
     }
