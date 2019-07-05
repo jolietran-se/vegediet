@@ -1,7 +1,7 @@
 <header>
     <div class="container_12">
       <div class="grid_12">
-        <h1><a href="{{ route('home') }}"><img src="{{ asset('images/logo.png') }}" alt="Logo"></a></h1>
+        <h1><a href="{{ route('home') }}"><img src="{{ asset('public/images/logo.png') }}" alt="Logo"></a></h1>
         <div class="menu_block">
             <nav>
                 <ul class="sf-menu">
