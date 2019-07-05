@@ -33,7 +33,9 @@
     "imagesloaded": "3.1.8",
     "elevatezoom3": "^3.0.8",
     "popper.js": "^1.14.6",
-    "sweetalert2": "^7.33.1"
+    "sweetalert2": "^7.33.1",
+    "bootstrap-fileinput": "4.4.7",
+    "select2": "^4.0.7"
   },
   "private": true
 }

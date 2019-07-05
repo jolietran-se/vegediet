@@ -2,12 +2,12 @@
 
 @section('head')
     
-    <script src="{{ asset('js/slide.js') }}"></script>
-    <script src="{{ asset('js/toplist.js') }}"></script>
+    <script src="{{ asset('public/js/slide.js') }}"></script>
+    <script src="{{ asset('public/js/toplist.js') }}"></script>
 
-    <link rel="stylesheet" href="{{ asset('css/search.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/dish_detail.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/categories.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/css/search.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/css/dish_detail.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/css/categories.css') }}">
 
 @endsection
 
