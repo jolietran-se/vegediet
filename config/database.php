@@ -1,11 +1,4 @@
 <?php
-// Config database Heroku Postgres
-$url = parse_url(getenv('DATABASE_URL'));
-$host = $url['host'] ?? null;
-$username = $url['user'] ?? null;
-$password = $url['pass'] ?? null;
-$database = substr($url['path'], 1) ?? null;
-
 return [
 
     /*
@@ -86,11 +79,11 @@ return [
 
         'pgsql_production' => [
             'driver' => 'pgsql',
-            'host' => $host,
-            'port' => env('DB_PORT', '5432'),
-            'database' => $database,
-            'username' => $username,
-            'password' => $password,
+            'host' => 'ec2-54-243-193-59.compute-1.amazonaws.com',
+            'port' => '5432',
+            'database' => 'dbt45rmaujh5fa',
+            'username' => 'ofxoaesujgurch',
+            'password' => '506197c4b59dc7aab3df09115d06440c4fa9d46f28696e5544d6f85835c42e7f',
             'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',
