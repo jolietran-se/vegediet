@@ -13,6 +13,7 @@ class DishesTableSeeder extends Seeder
     {
         $dishes = [
             [
+                'id' => 1,
                 'name' => 'Khoai lang luộc',
                 'farina_amount' => 28.5,
                 'protein_amount' => 0.8,
@@ -25,6 +26,7 @@ class DishesTableSeeder extends Seeder
                 'slug' => 'khoai-lang-luoc',
                 'created_at' => '2019-01-01 08:46:46',
             ], [
+                'id' => 2,
                 'name' => 'Đậu cô ve luộc',
                 'farina_amount' => 54.9,
                 'protein_amount' => 21.8,
@@ -37,6 +39,7 @@ class DishesTableSeeder extends Seeder
                 'slug' => 'dau-co-ve-luoc',
                 'created_at' => '2019-01-02 08:46:46',
             ], [
+                'id' => 3,
                 'name' => 'Đậu phụ xốt tứ xuyên',
                 'farina_amount' => 70.5,
                 'protein_amount' => 60.2,
@@ -49,6 +52,7 @@ class DishesTableSeeder extends Seeder
                 'slug' => 'dau-phu-xot-tu-xuyen',
                 'created_at' => '2019-01-03 08:46:46',
             ], [
+                'id' => 4,
                 'name' => 'Bún xào chay',
                 'farina_amount' => 30.4,
                 'protein_amount' => 15.8,
@@ -61,6 +65,7 @@ class DishesTableSeeder extends Seeder
                 'slug' => 'bun-xao-chay',
                 'created_at' => '2019-01-04 08:46:46',
             ], [
+                'id' => 5,
                 'name' => 'Đậu hũ cay xốt',
                 'farina_amount' => 55.9,
                 'protein_amount' => 26.8,
@@ -73,6 +78,7 @@ class DishesTableSeeder extends Seeder
                 'slug' => 'dau-hu-xot-cay',
                 'created_at' => '2019-01-05 08:46:46',
             ], [
+                'id' => 6,
                 'name' => 'Đậu hũ la hán',
                 'farina_amount' => 60.6,
                 'protein_amount' => 21.2,
@@ -85,6 +91,7 @@ class DishesTableSeeder extends Seeder
                 'slug' => 'dau-hu-la-han',
                 'created_at' => '2019-01-06 08:46:46',
             ], [
+                'id' => 7,
                 'name' => 'Rau củ kho chay',
                 'farina_amount' => 30.7,
                 'protein_amount' => 23.4,
@@ -97,6 +104,7 @@ class DishesTableSeeder extends Seeder
                 'slug' => 'rau-cu-kho-chay',
                 'created_at' => '2019-01-07 08:46:46',
             ], [
+                'id' => 8,
                 'name' => 'Chả giò bắp chay',
                 'farina_amount' => 64.9,
                 'protein_amount' => 51.8,
@@ -109,6 +117,7 @@ class DishesTableSeeder extends Seeder
                 'slug' => 'cha-gio-bap-chay',
                 'created_at' => '2019-01-08 08:46:46',
             ], [
+                'id' => 9,
                 'name' => 'Bún bò huế chay',
                 'farina_amount' => 54.9,
                 'protein_amount' => 21.8,
@@ -121,6 +130,7 @@ class DishesTableSeeder extends Seeder
                 'slug' => 'bun-bo-hue-chay',
                 'created_at' => '2019-01-08 08:46:46',
             ], [
+                'id' => 10,
                 'name' => 'Salad cà chua bi',
                 'farina_amount' => 24.9,
                 'protein_amount' => 11.8,
@@ -133,6 +143,7 @@ class DishesTableSeeder extends Seeder
                 'slug' => 'salad-ca-chua-bi',
                 'created_at' => '2019-01-08 08:46:46',
             ], [
+                'id' => 11,
                 'name' => 'Rau chân vịt trộn bơ lạc',
                 'farina_amount' => 54.9,
                 'protein_amount' => 21.8,
