@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
 @section('head')
-    <link rel="stylesheet" href="{{ asset('css/dish_detail.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/user.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/css/dish_detail.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/css/user.css') }}">
 
 @endsection
 
@@ -133,17 +133,17 @@
 @endsection
 
 @section('foot')
-    <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
-    <script src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('public/bower_components/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('public/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <!-- Specific Page External Plugins -->
-    <script src="{{ asset('bower_components/slick-carousel/slick/slick.min.js') }}"></script>
-    <script src="{{ asset('bower_components/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
-    <script src="{{ asset('bower_components/magnific-popup/dist/jquery.magnific-popup.min.js') }}"></script>
-    <script src="{{ asset('bower_components/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
-    <script src="{{ asset('bower_components/elevatezoom3/jquery.elevatezoom.js') }}"></script>
-    <script src="{{ asset('bower_components/jquery-colorbox/jquery.colorbox-min.js') }}"></script>
+    <script src="{{ asset('public/bower_components/slick-carousel/slick/slick.min.js') }}"></script>
+    <script src="{{ asset('public/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
+    <script src="{{ asset('public/bower_components/magnific-popup/dist/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('public/bower_components/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ asset('public/bower_components/elevatezoom3/jquery.elevatezoom.js') }}"></script>
+    <script src="{{ asset('public/bower_components/jquery-colorbox/jquery.colorbox-min.js') }}"></script>
     <!-- Custom -->
-    <script src="{{ asset('js/dish_detail.js') }}"></script>
+    <script src="{{ asset('public/js/dish_detail.js') }}"></script>
     <!-- SweetAlert -->
     
     <!-- Delete dish with SweetAlert2 -->

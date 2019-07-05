@@ -1,10 +1,10 @@
 @extends('layouts.master')
 
 @section('head')
-    <link rel="stylesheet" href="{{ asset('css/dish_detail.css') }}">
-    <link rel="stylesheet" href="{{ asset('bower_components/bootstrap-fileinput/css/fileinput.css') }}">
-    <link rel="stylesheet" href="{{ asset('bower_components/select2/dist/css/select2.css') }}">
-    <link rel="stylesheet" href="{{ asset('bower_components/sweetalert2/dist/sweetalert2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/css/dish_detail.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/bower_components/bootstrap-fileinput/css/fileinput.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/bower_components/select2/dist/css/select2.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/bower_components/sweetalert2/dist/sweetalert2.min.css') }}">
     
     <style type="text/css">
         .main-section{
@@ -249,15 +249,15 @@
 
 @section('foot')
     <!-- Upload Image with fileinput -->
-    <script src="{{ asset('bower_components/bootstrap-fileinput/js/fileinput.js') }}" type="text/javascript"></script>
-	<script src="{{ asset('bower_components/bootstrap-fileinput/themes/fa/theme.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('bower_components/popper.js/dist/umd/popper.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('public/bower_components/bootstrap-fileinput/js/fileinput.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('public/bower_components/bootstrap-fileinput/themes/fa/theme.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('public/bower_components/popper.js/dist/umd/popper.min.js') }}" type="text/javascript"></script>
     
     <!-- Create Tags with Select2 -->
-	<script src="{{ asset('bower_components/select2/dist/js/select2.full.min.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('public/bower_components/select2/dist/js/select2.full.min.js') }}" type="text/javascript"></script>
     
     <!-- SweetAlert -->
-	<script src="{{ asset('bower_components/sweetalert2/dist/sweetalert2.min.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('public/bower_components/sweetalert2/dist/sweetalert2.min.js') }}" type="text/javascript"></script>
     
     <!-- Upload images -->
     <script type="text/javascript">

@@ -35,7 +35,9 @@
     "popper.js": "^1.14.6",
     "sweetalert2": "^7.33.1",
     "bootstrap-fileinput": "4.4.7",
-    "select2": "^4.0.7"
+    "select2": "^4.0.7",
+    "jscroll": "^2.4.1",
+    "jquery-colorbox": "^1.6.4"
   },
   "private": true
 }

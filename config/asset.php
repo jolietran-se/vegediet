@@ -6,7 +6,7 @@ return [
         'slide' => 'public/images/slides/',
         'dish_detail' => '../public/images/dishes/',
         'owner_avatar' => '../public/images/avatars/',
-        'auth_avatar' => 'public/images/avatars/',
+        'auth_avatar' => '../public/images/avatars/',
     ],
 
     'profile_path' => [
