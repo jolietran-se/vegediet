@@ -6,23 +6,23 @@
         <meta charset="utf-8">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <link rel="icon" href="/favicon.ico">
-        <link rel="shortcut icon" href="/favicon.ico">
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link rel="icon" href="public/favicon.ico">
+        <link rel="shortcut icon" href="public/favicon.ico">
+        <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
 
-        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/slider.css') }}">
-        <link rel="stylesheet" href="{{ asset('bower_components/components-font-awesome/css/font-awesome.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('public/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('public/css/slider.css') }}">
+        <link rel="stylesheet" href="{{ asset('public/bower_components/components-font-awesome/css/font-awesome.min.css') }}">
 
-        <script src="{{ asset('bower_components/jquery/dist/jquery.js') }}"></script>
-        <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
-        <script src="{{ asset('bower_components/jquery-migrate/jquery-migrate.js') }}"></script> 
-        <script src="{{ asset('bower_components/jquery.easing/js/jquery.easing.js') }}"></script>
-        <script src="{{ asset('bower_components/jquery-carouFredSel/jquery.carouFredSel-6.2.1-packed.js') }}"></script>
+        <script src="{{ asset('public/bower_components/jquery/dist/jquery.js') }}"></script>
+        <script src="{{ asset('public/bower_components/jquery/dist/jquery.min.js') }}"></script>
+        <script src="{{ asset('public/bower_components/jquery-migrate/jquery-migrate.js') }}"></script> 
+        <script src="{{ asset('public/bower_components/jquery.easing/js/jquery.easing.js') }}"></script>
+        <script src="{{ asset('public/bower_components/jquery-carouFredSel/jquery.carouFredSel-6.2.1-packed.js') }}"></script>
 
-        <script src="{{ asset('js/superfish.js') }}"></script>
-        <script src="{{ asset('js/sForm.js') }}"></script>
-        <script src="{{ asset('js/tms-0.4.1.js') }}"></script>
+        <script src="{{ asset('public/js/superfish.js') }}"></script>
+        <script src="{{ asset('public/js/sForm.js') }}"></script>
+        <script src="{{ asset('public/js/tms-0.4.1.js') }}"></script>
     @yield('head')
     </head>
     <body>

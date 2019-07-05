@@ -1,19 +1,19 @@
 <?php
 return [
     'image_path' => [
-        'avatar' => 'images/avatars/',
-        'dish' => 'images/dishes/',
-        'slide' => 'images/slides/',
-        'dish_detail' => '../images/dishes/',
-        'owner_avatar' => '../images/avatars/',
-        'auth_avatar' => '/images/avatars/',
+        'avatar' => 'public/images/avatars/',
+        'dish' => 'public/images/dishes/',
+        'slide' => 'public/images/slides/',
+        'dish_detail' => '../public/images/dishes/',
+        'owner_avatar' => '../public/images/avatars/',
+        'auth_avatar' => 'public/images/avatars/',
     ],
 
     'profile_path' => [
-        'dish' => '../images/dishes/',
+        'dish' => '../public/images/dishes/',
     ],
 
     'category_path' => [
-        'dish' => '../images/dishes/',
+        'dish' => '../public/images/dishes/',
     ],
 ];
