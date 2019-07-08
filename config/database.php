@@ -84,7 +84,8 @@ return [
             'port' => '5432',
             'database' => 'deic636bh1ovn3',
             'username' => 'ftqpfsjahvxrtt',
-            'password' => '8d7259eb28da623bd76960b3146aab4e604382b82a8f83f568f603a479173de1',
+            'password' => '8d7259eb28da623bd76960b3146aab4e604382b82a8f83f568f603a479173de1
+            ',
             'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',
