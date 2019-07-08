@@ -80,12 +80,11 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'host' => 'ec2-107-22-211-248.compute-1.amazonaws.com',
+            'host' => 'ec2-54-83-1-101.compute-1.amazonaws.com',
             'port' => '5432',
-            'database' => 'deic636bh1ovn3',
-            'username' => 'ftqpfsjahvxrtt',
-            'password' => '8d7259eb28da623bd76960b3146aab4e604382b82a8f83f568f603a479173de1
-            ',
+            'database' => 'd3k8vbueobd1dm',
+            'username' => 'kylbjbblofwlip',
+            'password' => '4ab2352bf0e7af9a1d909898844826dc2d13a23d4f4483e8b90482123e1c6d3d',
             'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',
