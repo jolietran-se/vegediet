@@ -1,13 +1,13 @@
 @extends('layouts.master')
 
 @section('head')
-    <link rel="stylesheet" href="{{ asset('public/bower_components/slick-carousel/slick/slick.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/bower_components/slick-carousel/slick/slick-theme.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/bower_components/magnific-popup/dist/magnific-popup.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/bower_components/bootstrap-select/dist/css/bootstrap-select.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/bower_components/sweetalert2/dist/sweetalert2.min.css') }}">
+    <link rel="stylesheet" href="{{ url('public/bower_components/slick-carousel/slick/slick.css') }}">
+    <link rel="stylesheet" href="{{ url('public/bower_components/slick-carousel/slick/slick-theme.css') }}">
+    <link rel="stylesheet" href="{{ url('public/bower_components/magnific-popup/dist/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ url('public/bower_components/bootstrap-select/dist/css/bootstrap-select.css') }}">
+    <link rel="stylesheet" href="{{ url('public/bower_components/sweetalert2/dist/sweetalert2.min.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('public/css/dish_detail.css') }}">
+    <link rel="stylesheet" href="{{ url('public/css/dish_detail.css') }}">
 
 @endsection
 
@@ -213,19 +213,19 @@
 @endsection
 
 @section('foot')
-    <script src="{{ asset('public/bower_components/jquery/dist/jquery.min.js') }}"></script>
-    <script src="{{ asset('public/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url('public/bower_components/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ url('public/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <!-- Specific Page External Plugins -->
-    <script src="{{ asset('public/bower_components/slick-carousel/slick/slick.min.js') }}"></script>
-    <script src="{{ asset('public/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
-    <script src="{{ asset('public/bower_components/magnific-popup/dist/jquery.magnific-popup.min.js') }}"></script>
-    <script src="{{ asset('public/bower_components/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
-    <script src="{{ asset('public/bower_components/elevatezoom3/jquery.elevatezoom.js') }}"></script>
-    <script src="{{ asset('public/bower_components/jquery-colorbox/jquery.colorbox-min.js') }}"></script>
+    <script src="{{ url('public/bower_components/slick-carousel/slick/slick.min.js') }}"></script>
+    <script src="{{ url('public/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
+    <script src="{{ url('public/bower_components/magnific-popup/dist/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ url('public/bower_components/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ url('public/bower_components/elevatezoom3/jquery.elevatezoom.js') }}"></script>
+    <script src="{{ url('public/bower_components/jquery-colorbox/jquery.colorbox-min.js') }}"></script>
     <!-- Custom -->
-    <script src="{{ asset('public/js/dish_detail.js') }}"></script>
+    <script src="{{ url('public/js/dish_detail.js') }}"></script>
     <!-- SweetAlert -->
-	<script src="{{ asset('public/bower_components/sweetalert2/dist/sweetalert2.min.js') }}" type="text/javascript"></script>
+	<script src="{{ url('public/bower_components/sweetalert2/dist/sweetalert2.min.js') }}" type="text/javascript"></script>
     
     <!-- Delete dish with SweetAlert2 -->
 

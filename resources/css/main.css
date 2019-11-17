@@ -3,15 +3,15 @@
 ///////////////////////////////////////////////////////////////// [ FONT ]*/
 @font-face {
     font-family: SourceSansPro-Light;
-    src: url('/bower_components/source-sans-pro/TTF/SourceSansPro-Light.ttf');
+    src: url('../bower_components/source-sans-pro/TTF/SourceSansPro-Light.ttf');
 }
 @font-face {
     font-family: SourceSansPro-Regular;
-    src: url('/bower_components/source-sans-pro/TTF/SourceSansPro-Regular.ttf');
+    src: url('../bower_components/source-sans-pro/TTF/SourceSansPro-Regular.ttf');
 }
 @font-face {
     font-family: SourceSansPro-Semibold;
-    src: url('/bower_components/source-sans-pro/TTF/SourceSansPro-Semibold.ttf');
+    src: url('../bower_components/source-sans-pro/TTF/SourceSansPro-Semibold.ttf');
 }
 /*/
 ///////////////////////////////////////////////////////////////// [ RESTYLE TAG ]*/
@@ -25,7 +25,7 @@ body, html {
     font-family: SourceSansPro-Light, sans-serif;
 }
 #app{
-    background: url("/images/bg-01.jpg") no-repeat center center fixed;
+    background: url("../images/bg-01.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

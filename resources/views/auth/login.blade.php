@@ -13,12 +13,10 @@
     <span class="login100-form-title">{{ trans('login.login') }}</span>
 <!--     
     <a href="#" class="btn-face m-b-20">
-        <i class="fa fa-facebook-official"></i>
         {{ trans('login.facebook') }}
     </a>
 
 	<a href="#" class="btn-google m-b-20">
-		<img src="{{ asset('images/icon-google.png') }}" alt="GOOGLE">
 	    {{ trans('login.google') }}
 	</a> -->
     

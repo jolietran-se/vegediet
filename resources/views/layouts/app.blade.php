@@ -10,14 +10,14 @@
     <title>@yield('title')</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('/public/js/app.js') }}" defer></script>
-    <script src="{{ asset('/public/js/main.js') }}" defer></script>
+    <script src="{{ url('public/js/app.js') }}" defer></script>
+    <script src="{{ url('public/js/main.js') }}" defer></script>
 
     <!-- Styles -->
-    <link href="{{ asset('/public/css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('/public/css/main.css') }}" rel="stylesheet">
-    <link href="{{ asset('/public/css/util.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('/public/bower_components/components-font-awesome/css/font-awesome.min.css') }}">
+    <link href="{{ url('public/css/app.css') }}" rel="stylesheet">
+    <link href="{{ url('public/css/main.css') }}" rel="stylesheet">
+    <link href="{{ url('public/css/util.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url('public/bower_components/components-font-awesome/css/font-awesome.min.css') }}">
 </head>
 <body>
     <div class="limiter" id="app">

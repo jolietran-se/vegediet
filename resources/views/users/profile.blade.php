@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
 @section('head')
-    <link rel="stylesheet" href="{{ asset('public/css/dish_detail.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/css/user.css') }}">
+    <link rel="stylesheet" href="{{ url('public/css/dish_detail.css') }}">
+    <link rel="stylesheet" href="{{ url('public/css/user.css') }}">
 
 @endsection
 

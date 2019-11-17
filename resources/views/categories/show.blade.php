@@ -2,9 +2,9 @@
 
 @section('head')
     
-    <link rel="stylesheet" href="{{ asset('public/css/search.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/css/dish_detail.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/css/categories.css') }}">
+    <link rel="stylesheet" href="{{ url('public/css/search.css') }}">
+    <link rel="stylesheet" href="{{ url('public/css/dish_detail.css') }}">
+    <link rel="stylesheet" href="{{ url('public/css/categories.css') }}">
 
 @endsection
 

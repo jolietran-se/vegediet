@@ -1,9 +1,9 @@
 @extends('layouts.master')
 
 @section('head')
-<link rel="stylesheet" href="{{ asset('public/css/search.css') }}">
-<link rel="stylesheet" href="{{ asset('public/bower_components/components-font-awesome/css/font-awesome.min.css') }}">
-<link rel="stylesheet" href="{{ asset('public/css/dish_detail.css') }}">
+<link rel="stylesheet" href="{{ url('public/css/search.css') }}">
+<link rel="stylesheet" href="{{ url('public/bower_components/components-font-awesome/css/font-awesome.min.css') }}">
+<link rel="stylesheet" href="{{ url('public/css/dish_detail.css') }}">
 
 @endsection
 
@@ -77,14 +77,14 @@
 @endsection
 
 @section('foot')
-    <script src="{{ asset('public/bower_components/jscroll/dist/jquery.jscroll.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url('public/bower_components/jscroll/dist/jquery.jscroll.min.js') }}" type="text/javascript"></script>
     
     <script type="text/javascript">
         $('ul.pagination').hide();
         $(function() {
             $('.infinite-scroll').jscroll({
                 autoTrigger: true,
-                loadingHtml: '<img class="center-block" src="{{ asset('public/images/loading.gif') }}" alt="Loading..." />',
+                loadingHtml: '<img class="center-block" src="{{ url('public/images/loading.gif') }}" alt="Loading..." />',
                 padding: 0,
                 nextSelector: '.pagination li.active + li a',
                 contentSelector: 'div.infinite-scroll',
